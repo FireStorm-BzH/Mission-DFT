@@ -10,7 +10,6 @@
 :root{--gold:#c8a227;--dark:#080a0e;--card:#0d1015;--border:#1e1e18}
 body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh;font-size:18px}
 
-/* LOGIN */
 #loginScreen{position:fixed;inset:0;background:#080a0e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px;padding:24px}
 #loginScreen.hidden{display:none}
 .login-fenrir{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);object-fit:cover}
@@ -21,22 +20,16 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;padding:18px 44px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:380px}
 .login-btn:hover{opacity:.85}
 
-/* ACCESS DENIED */
 #accessDenied{position:fixed;inset:0;background:#080a0e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px;padding:24px}
 #accessDenied.show{display:flex}
 
-/* APP */
 #app{display:none}
 #app.show{display:block}
 
-/* TOPBAR */
 .topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:14px;font-weight:700;letter-spacing:2px}
 .user-badge{display:flex;align-items:center;gap:10px}
 .user-avatar{width:40px;height:40px;border-radius:50%;border:2px solid #0a0c10;object-fit:cover}
-#userName{font-weight:700;font-size:15px}
-#userRank{font-size:13px;letter-spacing:2px;opacity:.75}
 
-/* HERO */
 .hero{padding:1.6rem 1.2rem;border-bottom:2px solid var(--gold)}
 .fenrir-bar{display:flex;align-items:center;gap:16px;background:#0f1218;border:1px solid #2a2820;padding:16px;margin-bottom:16px;border-radius:4px}
 .fenrir-bar-img{width:100px;height:100px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0}
@@ -46,20 +39,17 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .htitle{font-size:clamp(44px,7vw,72px);line-height:.95;color:var(--gold);letter-spacing:2px;font-weight:700;margin-bottom:8px}
 .hsub{font-size:14px;letter-spacing:4px;color:#555040;margin-bottom:14px}
 
-/* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1.2rem}
 .stat{background:#0f1218;border:1px solid #2a2820;padding:16px 10px;text-align:center;border-radius:4px}
 .stat-n{font-size:34px;font-weight:700;color:var(--gold)}
 .stat-l{font-size:13px;letter-spacing:2px;color:#555040;margin-top:3px}
 
-/* PROGRESS */
 .progress{background:#0f1218;border:1px solid #2a2820;padding:1rem 1.2rem;display:flex;align-items:center;gap:14px;margin:.6rem 1.2rem;border-radius:4px}
 .pb-label{font-size:13px;letter-spacing:2px;color:#555040;white-space:nowrap}
 .pb-track{flex:1;height:8px;background:#1a1810;border-radius:4px}
 .pb-fill{height:8px;background:var(--gold);transition:width .4s;width:0%;border-radius:4px}
 .pb-pct{font-size:16px;color:var(--gold);font-weight:700;min-width:42px;text-align:right}
 
-/* FILTERS */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:1rem 1.2rem}
 .fb{background:#0f1218;border:1px solid #2a2820;color:#666050;font-size:13px;letter-spacing:2px;padding:9px 18px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .fb:hover,.fb.on{background:#1a1800;border-color:var(--gold);color:var(--gold)}
@@ -68,17 +58,14 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .fb.on.fg{border-color:#226622;color:#50b050;background:#051505}
 .fb.on.fb2{border-color:#224488;color:#6090cc;background:#050a15}
 
-/* SEARCH */
 .srch{display:flex;align-items:center;gap:10px;margin:0 1.2rem 1rem}
 .srch input{flex:1;background:#0f1218;border:1px solid #2a2820;color:#e8dfc8;font-size:16px;padding:10px 14px;outline:none;font-family:'Oswald',sans-serif;border-radius:3px}
 .srch input::placeholder{color:#333020}
 
-/* SECTION HEADER */
 .sec-hdr{display:flex;align-items:center;gap:10px;margin:1.8rem 1.2rem .8rem}
 .slbl{font-size:13px;letter-spacing:4px;color:var(--gold);font-weight:700;white-space:nowrap}
 .sline{flex:1;height:1px;background:rgba(200,162,39,.25)}
 
-/* MISSION CARDS — images et textes agrandis */
 .grid{margin:0 1.2rem;display:grid;gap:10px}
 .mc{background:var(--card);border:1px solid var(--border);border-left:6px solid #333;border-radius:0 4px 4px 0;overflow:hidden;transition:border-color .15s}
 .mc:hover{border-left-color:var(--gold)!important}
@@ -89,13 +76,14 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mc.pF{border-left-color:var(--gold)}
 .mc.done-mc{opacity:.5;border-left-color:#1a3a1a!important}
 
-/* CARTE PLUS GRANDE */
-.mc-head{display:flex;cursor:pointer;min-height:140px}
-.mc-thumb{width:160px;min-width:160px;height:160px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
-.mc-thumb img{width:100%;height:100%;object-fit:cover}
-.mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:11px;letter-spacing:1px;color:#c8a227;padding:4px 8px;font-family:'Oswald',sans-serif}
+/* CARTE VIGNETTE - ratio correct, pas de crop */
+.mc-head{display:flex;cursor:pointer;min-height:160px}
+.mc-thumb{width:180px;min-width:180px;height:180px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
+.mc-thumb img{width:100%;height:100%;object-fit:contain;background:#0a1520}
+.mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:11px;letter-spacing:1px;color:#c8a227;padding:4px 8px;font-family:'Oswald',sans-serif}
+.mc-img-upload{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);border:1px solid var(--gold);color:var(--gold);font-size:10px;padding:3px 6px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;border-radius:2px;z-index:2}
+.mc-img-upload:hover{background:var(--gold);color:#000}
 
-/* TEXTES AGRANDIS */
 .mc-info{flex:1;padding:1rem 1.2rem;min-width:0}
 .mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
 .mid{font-size:12px;letter-spacing:3px;color:#444030;font-weight:700}
@@ -110,38 +98,74 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mdesc{font-size:15px;color:#777060;line-height:1.7;font-family:sans-serif}
 .mdesc strong{color:#b0a888}
 .hint{font-size:13px;color:#3a3020;letter-spacing:2px;text-align:right;padding:.5rem 1.2rem;cursor:pointer}
-.hint:hover{color:#666050}
+.hint:hover{color:#888060}
 
-/* DETAIL ÉLARGI */
+/* DETAIL */
 .mdetail{display:none;border-top:1px solid #1a1a14;padding:1.2rem}
 .mc.open .mdetail{display:block}
 
-/* PHOTOS DETAIL PLUS GRANDES */
+/* PHOTOS DETAIL — grande hauteur, object-contain pour tout voir */
 .det-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.det-photo{height:260px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px}
-.det-photo img{width:100%;height:100%;object-fit:cover}
-.det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:12px;letter-spacing:2px;color:#888070;padding:5px 10px;font-family:'Oswald',sans-serif}
-.hvt-slot{background:#100808;border:2px dashed #3a1010;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
+.det-photo{height:320px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.det-photo img{width:100%;height:100%;object-fit:contain}
+.det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);font-size:12px;letter-spacing:2px;color:#888070;padding:5px 10px;font-family:'Oswald',sans-serif}
+.det-photo-btn{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.75);border:1px solid var(--gold);color:var(--gold);font-size:11px;padding:4px 8px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;border-radius:2px}
+.det-photo-btn:hover{background:var(--gold);color:#000}
+
+.hvt-slot{background:#100808;border:2px dashed #3a1010;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
 .hvt-slot:hover{border-color:var(--gold)}
-.hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hvt-lbl{font-size:13px;letter-spacing:2px;color:#3a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
+.hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0a0808}
+.hvt-lbl{font-size:14px;letter-spacing:2px;color:#4a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
+
 .photo-tag{display:inline-block;font-size:13px;letter-spacing:2px;padding:5px 12px;margin-bottom:10px;font-weight:700;border-radius:2px}
 .tag-alive{background:#081808;color:#50a050}
 .tag-dead{background:#180808;color:#ff5050}
 .tag-hv{background:#181008;color:#ff8030}
 .fenrir-mission{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);object-fit:cover}
 
-/* OBJECTIVES AGRANDIS */
 .objs{margin-bottom:12px}
 .obj{display:flex;gap:10px;margin-bottom:8px;font-size:15px;color:#777060;font-family:sans-serif;line-height:1.6}
 .onum{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:28px;font-size:16px}
 
-/* REWARDS */
 .rwds{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .rpill{font-size:13px;letter-spacing:1px;color:var(--gold);background:#141000;border:1px solid #282000;padding:5px 12px;font-weight:700;border-radius:2px}
-.done-btn{background:transparent;border:1px solid #2a2820;color:#666050;font-size:14px;letter-spacing:2px;padding:10px 20px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px;margin-top:6px}
+
+/* BOUTONS ACTION */
+.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.done-btn{background:transparent;border:1px solid #2a2820;color:#666050;font-size:14px;letter-spacing:2px;padding:10px 20px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .done-btn:hover{border-color:var(--gold);color:var(--gold)}
 .mc.done-mc .done-btn{color:#50a050;border-color:#1a3a1a}
+.edit-btn{background:transparent;border:1px solid #2a3a4a;color:#4a6a8a;font-size:13px;letter-spacing:2px;padding:10px 16px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
+.edit-btn:hover{border-color:#6090cc;color:#6090cc}
+
+/* ZONE NOTES LIBRES */
+.notes-zone{margin-top:12px;border-top:1px solid #1a2030;padding-top:10px}
+.notes-lbl{font-size:11px;letter-spacing:3px;color:#334050;margin-bottom:6px;font-weight:700}
+.notes-ta{width:100%;background:#080c10;border:1px solid #1a2030;color:#a0b8c8;font-size:14px;padding:10px 12px;font-family:sans-serif;resize:vertical;min-height:80px;outline:none;border-radius:3px;line-height:1.6}
+.notes-ta:focus{border-color:#2a4060;color:#c8dce8}
+.notes-ta::placeholder{color:#1a2838}
+
+/* MODAL EDIT */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:#0d1015;border:1px solid var(--gold);border-radius:6px;padding:24px;width:100%;max-width:700px;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:20px;color:var(--gold);letter-spacing:2px;margin-bottom:18px;font-weight:700}
+.modal label{display:block;font-size:11px;letter-spacing:3px;color:#555040;margin-bottom:4px;margin-top:12px;font-weight:700}
+.modal input,.modal textarea,.modal select{width:100%;background:#080a0e;border:1px solid #2a2820;color:#e8dfc8;font-size:14px;padding:9px 12px;font-family:sans-serif;border-radius:3px;outline:none}
+.modal input:focus,.modal textarea:focus{border-color:var(--gold)}
+.modal textarea{resize:vertical;min-height:80px;line-height:1.6}
+.modal-btns{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+.modal-save{background:var(--gold);color:#000;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;padding:10px 24px;border:none;cursor:pointer;border-radius:3px}
+.modal-cancel{background:transparent;color:#666050;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;padding:10px 24px;border:1px solid #2a2820;cursor:pointer;border-radius:3px}
+.modal-cancel:hover{border-color:#555040;color:#888070}
+
+.obj-edit-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.obj-edit-row{display:flex;gap:6px;align-items:center}
+.obj-edit-row input{flex:1}
+.obj-del{background:#200808;border:1px solid #401010;color:#cc4444;font-size:14px;padding:8px 12px;cursor:pointer;border-radius:3px;font-family:sans-serif}
+.obj-del:hover{background:#400808}
+.obj-add{background:transparent;border:1px dashed #2a3a2a;color:#445544;font-size:12px;letter-spacing:2px;padding:7px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;border-radius:3px;margin-top:4px}
+.obj-add:hover{border-color:#50a050;color:#50a050}
 
 .hidden{display:none!important}
 .botbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:14px;font-weight:700;letter-spacing:4px;padding:10px;margin-top:2rem}
@@ -170,6 +194,41 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <strong style="color:#c8a227">Grade minimum : Contractuel</strong>
   </div>
   <button class="login-btn" style="max-width:240px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
+</div>
+
+<!-- MODAL ÉDITION -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div class="modal-title">✏ MODIFIER LA MISSION <span id="editModalId"></span></div>
+    <input type="hidden" id="editId">
+    <label>NOM DE LA MISSION</label>
+    <input type="text" id="editName">
+    <label>LOCALISATION</label>
+    <input type="text" id="editLoc">
+    <label>DESCRIPTION</label>
+    <textarea id="editDesc" rows="3"></textarea>
+    <label>OBJECTIFS</label>
+    <div class="obj-edit-list" id="editObjs"></div>
+    <button class="obj-add" onclick="addObjRow()">+ AJOUTER OBJECTIF</button>
+    <label>RÉCOMPENSES (séparées par virgule)</label>
+    <input type="text" id="editRewards">
+    <label>XP</label>
+    <input type="number" id="editXp">
+    <label>SECTEUR</label>
+    <input type="text" id="editSec">
+    <label>PRIORITÉ</label>
+    <select id="editCat">
+      <option value="p1">CRITIQUE (rouge)</option>
+      <option value="p2">URGENCE (orange)</option>
+      <option value="p3">TACTIQUE (vert)</option>
+      <option value="p4">RÉCUP (bleu)</option>
+      <option value="pF">FINALE (or)</option>
+    </select>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeEdit()">ANNULER</button>
+      <button class="modal-save" onclick="saveEdit()">💾 SAUVEGARDER</button>
+    </div>
+  </div>
 </div>
 
 <div id="app">
@@ -215,7 +274,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <button class="fb" style="border-color:var(--gold);color:var(--gold)" onclick="filt('pF',this)">FINALE</button>
   </div>
   <div class="srch">
-    <input type="text" placeholder="RECHERCHER UNE MISSION..." oninput="search(this.value)"/>
+    <input type="text" placeholder="RECHERCHER UNE MISSION..." oninput="searchM(this.value)"/>
   </div>
   <div id="allMissions"></div>
   <div class="botbar">iron tide — 52 missions — providence hq — dft — atlas ne tombe pas</div>
@@ -227,43 +286,35 @@ const SERVER_ID='1051477960722493520';
 const SITE_URL='https://firestorm-bzh.github.io/Mission-DFT/';
 
 const F={
-  salut:'images/fenrir/salut.png',
-  simple:'images/fenrir/Simple.png',
-  ordre:'images/fenrir/Ordre.png',
-  soldat:'images/fenrir/Soldat.png',
-  arme:'images/fenrir/Armé.png',
-  tank:'images/fenrir/assaut-tank.png',
-  gagne:'images/fenrir/gagnee.png',
-  surpris:'images/fenrir/Surpris.png',
-  baguette:'images/fenrir/baguette.png',
-  grade:'images/fenrir/remise-de-grade.png',
-  ecran:'images/fenrir/Ecran-Ordinateur.png',
+  salut:'images/fenrir/salut.png',simple:'images/fenrir/Simple.png',ordre:'images/fenrir/Ordre.png',
+  soldat:'images/fenrir/Soldat.png',arme:'images/fenrir/Armé.png',tank:'images/fenrir/assaut-tank.png',
+  gagne:'images/fenrir/gagnee.png',surpris:'images/fenrir/Surpris.png',baguette:'images/fenrir/baguette.png',
+  grade:'images/fenrir/remise-de-grade.png',ecran:'images/fenrir/Ecran-Ordinateur.png',
 };
 
-const HVT_PHOTOS=[
-  'images/hvt/1.png','images/hvt/2.png','images/hvt/3.png','images/hvt/4.png',
-  'images/hvt/5.png','images/hvt/6.png','images/hvt/7.png','images/hvt/8.png',
-  'images/hvt/9.png','images/hvt/10.png','images/hvt/11.png','images/hvt/12.png',
-  'images/hvt/13.png','images/hvt/14.png',
-];
+const HVT_PHOTOS=['images/hvt/1.png','images/hvt/2.png','images/hvt/3.png','images/hvt/4.png',
+'images/hvt/5.png','images/hvt/6.png','images/hvt/7.png','images/hvt/8.png','images/hvt/9.png',
+'images/hvt/10.png','images/hvt/11.png','images/hvt/12.png','images/hvt/13.png','images/hvt/14.png'];
 
-const CARTE=[
-  'images/carte/image14.png','images/carte/image.png','images/carte/image2 .png','images/carte/image3.png',
-  'images/carte/image4.png','images/carte/image5.png','images/carte/image6.png','images/carte/image7.png',
-  'images/carte/image8.png','images/carte/image9.png','images/carte/image10.png','images/carte/image11.png',
-  'images/carte/image12.png','images/carte/image13.png','images/carte/image15.png','images/carte/image16.1.png',
-  'images/carte/image16.2.png','images/carte/image17.png','images/carte/image18.png','images/carte/image19.png',
-  'images/carte/image20.png','images/carte/image21.png','images/carte/image22.png','images/carte/image23.png',
-  'images/carte/image24.png','images/carte/image25.png','images/carte/image26.png','images/carte/image27.png',
-  'images/carte/image28.png','images/carte/image29.png','images/carte/image30.png','images/carte/image31.png',
-  'images/carte/image31.1.png','images/carte/image32.png','images/carte/image33.png','images/carte/image34.png',
-  'images/carte/image35.png','images/carte/image36.png','images/carte/image37.png','images/carte/image38.png',
-  'images/carte/image39.png','images/carte/image40.png','images/carte/image41.png','images/carte/image42.png',
-  'images/carte/image43.png','images/carte/image44.png','images/carte/image45.png','images/carte/image46.png',
-  'images/carte/image47.png','images/carte/image48.png','images/carte/image49.png','images/carte/image50.png',
-];
+const CARTE=['images/carte/image14.png','images/carte/image.png','images/carte/image2 .png','images/carte/image3.png',
+'images/carte/image4.png','images/carte/image5.png','images/carte/image6.png','images/carte/image7.png',
+'images/carte/image8.png','images/carte/image9.png','images/carte/image10.png','images/carte/image11.png',
+'images/carte/image12.png','images/carte/image13.png','images/carte/image15.png','images/carte/image16.1.png',
+'images/carte/image16.2.png','images/carte/image17.png','images/carte/image18.png','images/carte/image19.png',
+'images/carte/image20.png','images/carte/image21.png','images/carte/image22.png','images/carte/image23.png',
+'images/carte/image24.png','images/carte/image25.png','images/carte/image26.png','images/carte/image27.png',
+'images/carte/image28.png','images/carte/image29.png','images/carte/image30.png','images/carte/image31.png',
+'images/carte/image31.1.png','images/carte/image32.png','images/carte/image33.png','images/carte/image34.png',
+'images/carte/image35.png','images/carte/image36.png','images/carte/image37.png','images/carte/image38.png',
+'images/carte/image39.png','images/carte/image40.png','images/carte/image41.png','images/carte/image42.png',
+'images/carte/image43.png','images/carte/image44.png','images/carte/image45.png','images/carte/image46.png',
+'images/carte/image47.png','images/carte/image48.png','images/carte/image49.png','images/carte/image50.png'];
 
-const MISSIONS=[
+// Stockage des overrides (images uploadées, notes, données modifiées)
+const OVERRIDES={};
+
+// MISSIONS DATA
+let MISSIONS=[
   {id:'M01',sec:'NORD-OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est menacé. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Éliminer les 6 infiltrés','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],xp:3000,rewards:['MÉDAILLE HQ','INTEL ENNEMI']},
   {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','HVT CAPTURÉ']},
   {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi','Neutraliser la garnison','Établir LZ ATLAS'],xp:1800,rewards:['FORT LIBÉRÉ']},
@@ -320,6 +371,7 @@ const MISSIONS=[
 
 const SECTIONS=['NORD-OUEST','NORD','CENTRAL','EST','CENTRAL-SUD','SUD','OFFSHORE','PRÉ-FINALE','MISSION FINALE'];
 
+// ---- RENDU ----
 function buildMissions(){
   const cont=document.getElementById('allMissions');
   let html='';
@@ -327,16 +379,26 @@ function buildMissions(){
     const ms=MISSIONS.filter(m=>m.sec===sec);
     if(!ms.length)return;
     html+=`<div class="sec-hdr"><span class="slbl">${sec}</span><div class="sline"></div></div><div class="grid">`;
-    ms.forEach((m,idx)=>{
-      const carteImg=CARTE[idx]||'';
-      const hvtImg=m.hvt!==null&&m.hvt!==undefined?HVT_PHOTOS[m.hvt]:'';
-      html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()}">
+    ms.forEach((m,gIdx)=>{
+      const globalIdx=MISSIONS.indexOf(m);
+      const carteImg=OVERRIDES[m.id+'_carte']||CARTE[globalIdx]||'';
+      const hvtImg=OVERRIDES[m.id+'_hvt']||(m.hvt!==null&&m.hvt!==undefined?HVT_PHOTOS[m.hvt]:'');
+      const notes=OVERRIDES[m.id+'_notes']||'';
+      html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()} ${m.sec.toLowerCase()}">
         <div class="mc-head" onclick="toggle('${m.id}')">
           <div class="mc-thumb">
-            ${carteImg?`<img src="${carteImg}" alt="terrain" onerror="this.style.display='none'"><div class="mc-thumb-overlay">${m.id}</div>`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:10px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">${m.id}</div>`}
+            ${carteImg
+              ? `<img src="${carteImg}" alt="carte" onerror="this.src='';this.style.display='none'">`
+              : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px"><div style="font-size:22px;opacity:.3">🗺</div><div style="font-size:9px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">PAS DE CARTE</div></div>`
+            }
+            <div class="mc-thumb-overlay">${m.id}</div>
+            <div class="mc-img-upload" onclick="event.stopPropagation();uploadImg('${m.id}','carte')" title="Changer la carte">🗺</div>
           </div>
           <div class="mc-info">
-            <div class="mc-top"><div><div class="mid">${m.id} — ${m.sec}</div><div class="mtitle">${m.name}</div></div><span class="mbadge ${m.bclass}">${m.badge}</span></div>
+            <div class="mc-top">
+              <div><div class="mid">${m.id} — ${m.sec}</div><div class="mtitle">${m.name}</div></div>
+              <span class="mbadge ${m.bclass}">${m.badge}</span>
+            </div>
             <div class="mloc">📍 ${m.loc}</div>
             <div class="mdesc">${m.desc}</div>
           </div>
@@ -344,16 +406,37 @@ function buildMissions(){
         <div class="hint" onclick="toggle('${m.id}')">▼ briefing complet</div>
         <div class="mdetail">
           <div class="det-photos">
-            ${carteImg?`<div class="det-photo"><img src="${carteImg}" alt="carte"><div class="det-photo-lbl">TERRAIN / CARTE</div></div>`:`<div class="det-photo" style="display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px;color:#2a3a4a">PAS DE CARTE</div>`}
-            ${hvtImg?`<div class="det-photo"><img src="${hvtImg}" alt="HVT"><div class="det-photo-lbl">PHOTO HVT</div></div>`:`<div class="hvt-slot" onclick="addPhoto('${m.id}')"><div class="hvt-lbl">📷 PHOTO HVT<br><span style="font-size:10px;color:#2a1818;font-family:sans-serif">Cliquer pour charger</span></div></div>`}
+            <div class="det-photo" id="${m.id}_carteBox">
+              ${carteImg
+                ? `<img src="${carteImg}" alt="carte" onerror="this.style.display='none'">`
+                : `<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="font-size:40px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE</div></div>`
+              }
+              <div class="det-photo-lbl">TERRAIN / CARTE</div>
+              <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte')">📁 CHANGER</button>
+            </div>
+            <div class="det-photo" id="${m.id}_hvtBox">
+              ${hvtImg
+                ? `<img src="${hvtImg}" alt="HVT" onerror="this.style.display='none'">`
+                : `<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="font-size:40px;opacity:.2">🎯</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE PHOTO HVT</div></div>`
+              }
+              <div class="det-photo-lbl">PHOTO HVT</div>
+              <button class="det-photo-btn" onclick="uploadImg('${m.id}','hvt')">📁 CHANGER</button>
+            </div>
           </div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
             <img src="${m.fenrir}" class="fenrir-mission" alt="Fenrir" onerror="this.style.display='none'">
             <span class="photo-tag ${m.tag==='alive'?'tag-alive':m.tag==='dead'?'tag-dead':'tag-hv'}">${m.tagLbl}</span>
           </div>
-          <div class="objs">${m.obj.map((o,i)=>`<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}</div>
+          <div class="objs" id="${m.id}_objs">${m.obj.map((o,i)=>`<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}</div>
           <div class="rwds"><span class="rpill">+${m.xp} XP</span>${m.rewards.map(r=>`<span class="rpill">${r}</span>`).join('')}</div>
-          <button class="done-btn" onclick="markDone('${m.id}')">✓ MARQUER COMPLÉTÉE</button>
+          <div class="notes-zone">
+            <div class="notes-lbl">📝 NOTES DE MISSION</div>
+            <textarea class="notes-ta" placeholder="Ajoute tes notes, stratégies, infos complémentaires ici..." onchange="saveNote('${m.id}',this.value)">${notes}</textarea>
+          </div>
+          <div class="action-row">
+            <button class="done-btn" onclick="markDone('${m.id}')">✓ MARQUER COMPLÉTÉE</button>
+            <button class="edit-btn" onclick="openEdit('${m.id}')">✏ MODIFIER MISSION</button>
+          </div>
         </div>
       </div>`;
     });
@@ -363,7 +446,9 @@ function buildMissions(){
 }
 
 function toggle(id){document.getElementById(id)?.classList.toggle('open')}
+
 function markDone(id){document.getElementById(id)?.classList.toggle('done-mc');saveProgress();updateProgress()}
+
 function updateProgress(){
   const done=document.querySelectorAll('.mc.done-mc').length;
   document.getElementById('sDone').textContent=done;
@@ -371,32 +456,138 @@ function updateProgress(){
   document.getElementById('pbFill').style.width=pct+'%';
   document.getElementById('pbPct').textContent=pct+'%';
 }
+
 function filt(cat,btn){
   document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',cat!=='all'&&mc.dataset.cat!==cat));
 }
-function search(q){
+
+function searchM(q){
   const s=q.toLowerCase().trim();
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',!!s&&!mc.dataset.name.includes(s)));
 }
-function addPhoto(id){
+
+// ---- UPLOAD IMAGES ----
+function uploadImg(id,type){
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
   inp.onchange=e=>{
     const f=e.target.files[0];if(!f)return;
     const r=new FileReader();
     r.onload=ev=>{
-      const slot=document.querySelector('#'+id+' .hvt-slot');
-      if(slot){slot.innerHTML=`<img src="${ev.target.result}" class="hvt-photo" alt="HVT">`;slot.onclick=null;}
+      const data=ev.target.result;
+      OVERRIDES[id+'_'+type]=data;
+      saveOverrides();
+      // Mise à jour live
+      if(type==='carte'){
+        const thumb=document.querySelector('#'+id+' .mc-thumb img');
+        if(thumb){thumb.src=data;}else{
+          const box=document.querySelector('#'+id+' .mc-thumb');
+          if(box){const img=document.createElement('img');img.src=data;box.prepend(img);}
+        }
+        const box=document.getElementById(id+'_carteBox');
+        if(box){let img=box.querySelector('img');if(!img){img=document.createElement('img');box.prepend(img);}img.src=data;}
+      }else{
+        const box=document.getElementById(id+'_hvtBox');
+        if(box){let img=box.querySelector('img');if(!img){img=document.createElement('img');box.prepend(img);}img.src=data;img.style.display='';}
+      }
     };r.readAsDataURL(f);
   };inp.click();
 }
+
+// ---- NOTES ----
+function saveNote(id,val){
+  OVERRIDES[id+'_notes']=val;
+  saveOverrides();
+}
+
+// ---- MODAL ÉDITION ----
+function openEdit(id){
+  const m=MISSIONS.find(x=>x.id===id);if(!m)return;
+  document.getElementById('editId').value=id;
+  document.getElementById('editModalId').textContent=id+' — '+m.name;
+  document.getElementById('editName').value=m.name;
+  document.getElementById('editLoc').value=m.loc;
+  document.getElementById('editDesc').value=m.desc.replace(/<strong>/g,'**').replace(/<\/strong>/g,'**');
+  document.getElementById('editRewards').value=m.rewards.join(', ');
+  document.getElementById('editXp').value=m.xp;
+  document.getElementById('editSec').value=m.sec;
+  document.getElementById('editCat').value=m.cat;
+  // Objectifs
+  const ol=document.getElementById('editObjs');
+  ol.innerHTML='';
+  m.obj.forEach((o,i)=>addObjRow(o));
+  document.getElementById('editModal').classList.add('show');
+}
+
+function addObjRow(val=''){
+  const ol=document.getElementById('editObjs');
+  const row=document.createElement('div');row.className='obj-edit-row';
+  row.innerHTML=`<input type="text" value="${val.replace(/"/g,'&quot;')}" placeholder="Objectif..."><button class="obj-del" onclick="this.parentNode.remove()">✕</button>`;
+  ol.appendChild(row);
+}
+
+function saveEdit(){
+  const id=document.getElementById('editId').value;
+  const m=MISSIONS.find(x=>x.id===id);if(!m)return;
+  m.name=document.getElementById('editName').value;
+  m.loc=document.getElementById('editLoc').value;
+  m.desc=document.getElementById('editDesc').value.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  m.rewards=document.getElementById('editRewards').value.split(',').map(s=>s.trim()).filter(Boolean);
+  m.xp=parseInt(document.getElementById('editXp').value)||m.xp;
+  m.sec=document.getElementById('editSec').value;
+  m.cat=document.getElementById('editCat').value;
+  m.obj=Array.from(document.querySelectorAll('#editObjs .obj-edit-row input')).map(i=>i.value).filter(Boolean);
+  closeEdit();
+  const wasDone=document.getElementById(id)?.classList.contains('done-mc');
+  const wasOpen=document.getElementById(id)?.classList.contains('open');
+  buildMissions();
+  loadProgress();
+  if(wasDone)document.getElementById(id)?.classList.add('done-mc');
+  if(wasOpen)document.getElementById(id)?.classList.add('open');
+  saveMissions();
+}
+
+function closeEdit(){document.getElementById('editModal').classList.remove('show')}
+
+// ---- PERSISTANCE ----
 function saveProgress(){
   try{localStorage.setItem('atlas_progress',JSON.stringify(Array.from(document.querySelectorAll('.mc.done-mc')).map(e=>e.id)));}catch(e){}
 }
 function loadProgress(){
   try{(JSON.parse(localStorage.getItem('atlas_progress')||'[]')).forEach(id=>{document.getElementById(id)?.classList.add('done-mc')});updateProgress();}catch(e){}
 }
+function saveOverrides(){
+  try{
+    // On sauvegarde sans les images (trop lourd) — juste notes
+    const toSave={};
+    Object.keys(OVERRIDES).forEach(k=>{if(!OVERRIDES[k].startsWith('data:'))toSave[k]=OVERRIDES[k];});
+    localStorage.setItem('atlas_overrides',JSON.stringify(toSave));
+    // Images séparément
+    Object.keys(OVERRIDES).forEach(k=>{
+      if(OVERRIDES[k].startsWith('data:')){try{localStorage.setItem('atlas_img_'+k,OVERRIDES[k]);}catch(e){}}
+    });
+  }catch(e){}
+}
+function loadOverrides(){
+  try{
+    const o=JSON.parse(localStorage.getItem('atlas_overrides')||'{}');
+    Object.assign(OVERRIDES,o);
+    // Images
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(k&&k.startsWith('atlas_img_')){OVERRIDES[k.replace('atlas_img_','')]=localStorage.getItem(k);}
+    }
+  }catch(e){}
+}
+function saveMissions(){
+  try{localStorage.setItem('atlas_missions_v2',JSON.stringify(MISSIONS));}catch(e){}
+}
+function loadMissions(){
+  try{const saved=JSON.parse(localStorage.getItem('atlas_missions_v2')||'null');if(saved&&saved.length)MISSIONS=saved;}catch(e){}
+}
+
+// ---- AUTH DISCORD ----
 function doLogin(){
   window.location.href='https://discord.com/api/oauth2/authorize?client_id='+CLIENT_ID+'&redirect_uri='+encodeURIComponent(SITE_URL)+'&response_type=token&scope=identify%20guilds.members.read';
 }
@@ -406,12 +597,15 @@ function loginSuccess(user){
   document.getElementById('userName').textContent=(user.name||'CONTRACTUEL').toUpperCase();
   document.getElementById('userRank').textContent='GRADE: '+(user.grade||'CONTRACTUEL').toUpperCase();
   if(user.avatar)document.getElementById('userAvatar').src=user.avatar;
-  buildMissions();loadProgress();
+  loadMissions();
+  loadOverrides();
+  buildMissions();
+  loadProgress();
 }
 async function handleDiscordToken(token){
   try{
     const r=await fetch('https://discord.com/api/users/@me',{headers:{Authorization:'Bearer '+token}});
-    if(!r.ok)throw new Error('Auth failed');
+    if(!r.ok)throw new Error();
     const user=await r.json();
     const avatar=user.avatar?`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`:'';
     const sess={name:user.username,avatar,grade:'Contractuel',loginTime:Date.now(),token};
