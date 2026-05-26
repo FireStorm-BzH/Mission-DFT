@@ -110,9 +110,8 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
-  <img src="images/fenrir/Simple.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.src='images/fenrir/salut.png'">
+  <img src="images/fenrir/salut.png" class="login-fenrir" alt="Sergent Fenrir">
   <div class="login-title">Mission DFT Secret Defence</div>
   <div class="login-sub">opération classifiée — accès restreint</div>
   <div class="login-msg">
@@ -124,7 +123,6 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
   <button class="login-btn" onclick="doLogin()">🔐 SE CONNECTER AVEC DISCORD</button>
 </div>
 
-<!-- ACCÈS REFUSÉ -->
 <div id="accessDenied">
   <img src="images/fenrir/Surpris.png" style="width:120px;height:120px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
   <div style="font-size:24px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
@@ -135,7 +133,6 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
   <button class="login-btn" style="max-width:220px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div class="topbar">
     <span>⚠ IRON TIDE — CLASSIFIÉ</span>
@@ -147,10 +144,9 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
       </div>
     </div>
   </div>
-
   <div class="hero">
     <div class="fenrir-bar">
-      <img src="images/fenrir/Ordre.png" class="fenrir-bar-img" alt="Fenrir" onerror="this.src='images/fenrir/salut.png'">
+      <img src="images/fenrir/Ordre.png" class="fenrir-bar-img" alt="Fenrir">
       <div class="fenrir-bar-msg">
         <strong>Sergent Fenrir — Briefing Opérationnel</strong><br>
         "Contractuels, l'île est en guerre. 52 points stratégiques sont sous contrôle ennemi. Chaque base libérée, chaque HVT capturé nous rapproche de la victoire. <strong>ATLAS ne recule pas.</strong>"
@@ -160,20 +156,17 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <div class="htitle">Mission<br>DFT</div>
     <div class="hsub">52 missions — défense totale de l'île — QG Providence</div>
   </div>
-
   <div class="stats">
     <div class="stat"><div class="stat-n" id="sTotal">52</div><div class="stat-l">missions</div></div>
     <div class="stat"><div class="stat-n" id="sDone">0</div><div class="stat-l">complétées</div></div>
     <div class="stat"><div class="stat-n">14</div><div class="stat-l">HVT</div></div>
     <div class="stat"><div class="stat-n">6</div><div class="stat-l">secteurs</div></div>
   </div>
-
   <div class="progress">
     <span class="pb-label">avancement</span>
     <div class="pb-track"><div class="pb-fill" id="pbFill"></div></div>
     <span class="pb-pct" id="pbPct">0%</span>
   </div>
-
   <div class="filters">
     <button class="fb on" onclick="filt('all',this)">TOUT</button>
     <button class="fb fr" onclick="filt('p1',this)">CRITIQUE</button>
@@ -182,11 +175,9 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <button class="fb fb2" onclick="filt('p4',this)">RÉCUP</button>
     <button class="fb" style="border-color:var(--gold);color:var(--gold)" onclick="filt('pF',this)">FINALE</button>
   </div>
-
   <div class="srch">
     <input type="text" placeholder="RECHERCHER UNE MISSION..." oninput="search(this.value)"/>
   </div>
-
   <div id="allMissions"></div>
   <div class="botbar">iron tide — 52 missions — providence hq — dft — atlas ne tombe pas</div>
 </div>
@@ -194,19 +185,14 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 <script>
 const CLIENT_ID='1508841496286200011';
 const SERVER_ID='1051477960722493520';
-const REDIRECT=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/');
+const SITE_URL='https://firestorm-bzh.github.io/Mission-DFT/';
 
-function doLogin(){
-  window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT}&response_type=token&scope=identify%20guilds.members.read`;
-}
-
-// Fenrir images par contexte
 const F={
   salut:'images/fenrir/salut.png',
   simple:'images/fenrir/Simple.png',
   ordre:'images/fenrir/Ordre.png',
   soldat:'images/fenrir/Soldat.png',
-  arme:'images/fenrir/Armé.png',
+  arme:'images/fenrir/Arm\u00e9.png',
   tank:'images/fenrir/assaut-tank.png',
   gagne:'images/fenrir/gagnee.png',
   surpris:'images/fenrir/Surpris.png',
@@ -215,25 +201,23 @@ const F={
   ecran:'images/fenrir/Ecran-Ordinateur.png',
 };
 
-// HVT photos
 const HVT_PHOTOS=[
-  'images/hvt/Capture d\'écran 2026-05-26 144046.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144133.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144344.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144513.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144724.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144807.png',
-  'images/hvt/Capture d\'écran 2026-05-26 144915.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145009.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145104.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145150.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145402.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145520.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145608.png',
-  'images/hvt/Capture d\'écran 2026-05-26 145643.png',
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144046.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144133.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144344.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144513.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144724.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144807.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 144915.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145009.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145104.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145150.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145402.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145520.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145608.png",
+  "images/hvt/Capture d'\u00e9cran 2026-05-26 145643.png",
 ];
 
-// Images de carte assignées aux missions (par ordre)
 const CARTE=[
   'images/carte/image14.png','images/carte/image.png',
   'images/carte/image2 .png','images/carte/image3.png',
@@ -265,57 +249,57 @@ const CARTE=[
 
 const MISSIONS=[
   {id:'M01',sec:'NORD-OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est menacé. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Éliminer les 6 infiltrés','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],xp:3000,rewards:['MÉDAILLE HQ','INTEL ENNEMI']},
-  {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable logistique HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','HVT CAPTURÉ']},
-  {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi avant arrivée','Neutraliser la garnison','Établir LZ ATLAS'],xp:1800,rewards:['FORT LIBÉRÉ']},
-  {id:'M04',sec:'NORD-OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent depuis la mer.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:F.soldat,obj:['Détruire 3 embarcations','Sécuriser le dock','Défense côtière établie'],xp:1500,rewards:['DOCK LIBÉRÉ']},
-  {id:'M05',sec:'NORD-OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite. <strong>Convoi de munitions remonte vers le centre.</strong>',tag:'dead',tagLbl:'EMBUSCADE',hvt:null,fenrir:F.arme,obj:['Tendre l\'embuscade','Détruire 4 véhicules de convoi','Sécuriser Kentucky'],xp:2000,rewards:['MUNITIONS RÉCUPÉRÉES']},
-  {id:'M06',sec:'NORD-OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Un prisonnier ATLAS est retenu ici.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:F.salut,obj:['Insertion hélico nocturne','Neutraliser les geôliers','Extraire le prisonnier'],xp:2500,rewards:['PRISONNIER SAUVÉ','MÉDAILLE SAUVETAGE']},
-  {id:'M07',sec:'NORD-OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes pétrole. <strong>Accès pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Neutraliser la garnison','Sécuriser les citernes'],xp:1600,rewards:['FORT HAWAII']},
-  {id:'M08',sec:'NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE',badge:'CRITIQUE',bclass:'br',desc:'Brouilleur radio paralyse nos communications. <strong>Détruire avant tout.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:3,fenrir:F.ecran,obj:['Atteindre la base sous brouillage','Détruire le brouilleur','Capturer le technicien'],xp:2200,rewards:['COMMUNICATIONS RÉTABLIES']},
-  {id:'M09',sec:'NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA',badge:'URGENCE',bclass:'bo',desc:'Dépôt logistique central. <strong>Ravitaille 8 bases ennemies.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:F.soldat,obj:['Infiltration nocturne','Détruire les stocks (5)','Exfiltration avant renforts'],xp:2300,rewards:['8 BASES AFFAIBLIES']},
-  {id:'M10',sec:'NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER',badge:'URGENCE',bclass:'bo',desc:'Lance-roquettes AA en position. <strong>Nos hélicos sont en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:F.arme,obj:['Détruire 3 positions AA','Neutraliser la garnison','LZ sécurisé établi'],xp:2100,rewards:['CIEL LIBRE']},
-  {id:'M11',sec:'NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement régional. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:1,fenrir:F.baguette,obj:['Assaut coordonné','Capturer l\'officier HVT','Tenir Titan'],xp:3200,rewards:['PC DÉTRUIT','HVT CAPTURÉ','MÉDAILLE TITAN']},
-  {id:'M12',sec:'NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE / CAPTIVA',badge:'TACTIQUE',bclass:'bg',desc:'Station radio. <strong>Coordonne les patrouilles du secteur.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.ecran,obj:['Infiltrer la station','Capturer l\'opérateur','Détruire le matériel'],xp:1700,rewards:['FRÉQUENCES ENNEMIES']},
-  {id:'M13',sec:'NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire. <strong>Carrefour stratégique central.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:F.tank,obj:['Bloquer les axes','Sécuriser le port','Tenir 10 minutes'],xp:2000,rewards:['PORT LIBÉRÉ']},
-  {id:'M14',sec:'NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON / BOCA GRANDE',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire les blindés de patrouille','Sécuriser Houston','Poster sentinelle ATLAS'],xp:1600,rewards:['AXE BLOQUÉ']},
-  {id:'M15',sec:'NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec installation militaire. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Assaut sur l\'installation','Capturer l\'opérateur','Détruire les antennes'],xp:2200,rewards:['RÉSEAU COUPÉ']},
-  {id:'M16',sec:'CENTRAL',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS — ÎLE AÉROPORT',badge:'CRITIQUE',bclass:'br',desc:'Île = aéroport militaire. <strong>Bombardiers prêts au décollage.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:0,fenrir:F.tank,obj:['Neutraliser la défense AA','Détruire 3 bombardiers','Capturer le pilote HVT','Tenir 5 minutes'],xp:3500,rewards:['AÉROPORT LIBÉRÉ','PILOTE HVT']},
-  {id:'M17',sec:'CENTRAL',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'BASE NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base. <strong>Général de brigade — HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:1,fenrir:F.grade,obj:['Pénétrer le PC','Capturer le Général HVT','Récupérer les documents'],xp:4000,rewards:['GÉNÉRAL CAPTURÉ','PLAN OFFENSIF','MÉDAILLE OMEGA']},
-  {id:'M18',sec:'CENTRAL',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'ORION MILITARY AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport avec 2 ponts. <strong>Hélicoptères toutes les 5 minutes.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Sécuriser la tour','Rétablir les vols ATLAS'],xp:3000,rewards:['AÉROPORT LIBÉRÉ']},
-  {id:'M19',sec:'CENTRAL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'ORION INDUSTRIAL COMPLEX',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle 2 ponts ferrés. <strong>Raffinerie ennemie.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:13,fenrir:F.arme,obj:['Traverser les 2 ponts','Neutraliser la garnison','Capturer le directeur HVT','Saboter les installations'],xp:3500,rewards:['RAFFINERIE DÉTRUITE']},
-  {id:'M20',sec:'CENTRAL',cat:'p1',name:'PRINCETON PORT',loc:'ORION PORT — 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs. <strong>Commandant ennemi dirige depuis ce port.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Assaut massif','Capturer le Commandant','Détruire les installations'],xp:4500,rewards:['COMMANDANT CAPTURÉ','MÉDAILLE PRINCETON']},
-  {id:'M21',sec:'CENTRAL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'JUNKYARD / PALMDALE — 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier avec gare de triage. <strong>Général dans son bunker — HVT ALPHA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Transport immédiat ATLAS'],xp:4200,rewards:['GÉNÉRAL HVT ALPHA']},
-  {id:'M22',sec:'CENTRAL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'FLATS CASTLE RUINS — 115-016',badge:'URGENCE',bclass:'bo',desc:'Ruines de château médiéval sur falaise. <strong>Pont stratégique contrôlé.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR',hvt:8,fenrir:F.soldat,obj:['Escalader le promontoire','Sécuriser les ruines','Capturer l\'ingénieur'],xp:2100,rewards:['CHÂTEAU LIBÉRÉ']},
-  {id:'M23',sec:'EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec tour. <strong>Renforts maritimes toutes les 20 minutes.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:F.tank,obj:['Détruire les jetées','Neutraliser défenses côtières','Tenir contre 3 vagues'],xp:3000,rewards:['CÔTE EST LIBÉRÉE']},
-  {id:'M24',sec:'EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR — 050-007',badge:'URGENCE',bclass:'bo',desc:'Archipel de 3 îlots. <strong>Tour d\'observation ennemi.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:F.soldat,obj:['Traverser les îlots','Escalader la tour','Installer relais ATLAS'],xp:1500,rewards:['ARCHIPEL LIBÉRÉ']},
-  {id:'M25',sec:'EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA',badge:'URGENCE',bclass:'bo',desc:'Lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:F.arme,obj:['Localiser 4 positions SAM','Détruire les lance-missiles','Sécuriser Alabama'],xp:2300,rewards:['CIEL LIBRE']},
-  {id:'M26',sec:'EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général — HVT priorité maximale.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Aucun tir d\'alarme'],xp:4200,rewards:['GÉNÉRAL CAPTURÉ']},
-  {id:'M27',sec:'EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:13,fenrir:F.ecran,obj:['Pénétrer le complexe','Capturer l\'ingénieur HVT','Saboter production (3)'],xp:2700,rewards:['PRODUCTION BLOQUÉE']},
-  {id:'M28',sec:'EST',cat:'p1',name:'EAST BOSTON PORT',loc:'EAST PORT — 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif. <strong>Toute la flotte ennemie dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:8,fenrir:F.tank,obj:['Neutraliser défense portuaire','Saboter 12 cuves','Capturer le chef portuaire'],xp:3500,rewards:['PORT DÉTRUIT','FLOTTE PARALYSÉE']},
-  {id:'M29',sec:'EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS',badge:'URGENCE',bclass:'bo',desc:'Station radar de surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:F.ecran,obj:['Approche basse altitude','Détruire le radar','Sécuriser Kansas'],xp:2000,rewards:['RADAR DÉTRUIT']},
-  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'DENVER / CAPE RASSA — 071-054',badge:'URGENCE',bclass:'bo',desc:'Grande ville avec pont ferroviaire. <strong>Carrefour central sud.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Bloquer le pont ferroviaire','Capturer le commandant HVT','Tenir 8 minutes'],xp:2500,rewards:['CARREFOUR LIBÉRÉ']},
-  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Compound béton accès pont unique. <strong>Très défendable.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Traverser le pont','Forcer le bunker','Capturer l\'opérateur radio'],xp:1900,rewards:['CODES RADIO']},
-  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo. <strong>Scientifique ennemi développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:5,fenrir:F.surpris,obj:['Infiltration silencieuse','Sécuriser le labo','Capturer le scientifique HVT'],xp:3000,rewards:['LABO SÉCURISÉ','SCIENTIFIQUE HVT']},
-  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN — 038-106',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée. <strong>Cache d\'armes découverte.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:F.soldat,obj:['Débarquement amphibie','Détruire la cache','Exfiltration'],xp:1400,rewards:['CACHE DÉTRUITE']},
+  {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','HVT CAPTURÉ']},
+  {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi','Neutraliser la garnison','Établir LZ ATLAS'],xp:1800,rewards:['FORT LIBÉRÉ']},
+  {id:'M04',sec:'NORD-OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:F.soldat,obj:['Détruire 3 embarcations','Sécuriser le dock','Défense côtière établie'],xp:1500,rewards:['DOCK LIBÉRÉ']},
+  {id:'M05',sec:'NORD-OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite. <strong>Convoi de munitions en route.</strong>',tag:'dead',tagLbl:'EMBUSCADE',hvt:null,fenrir:F.arme,obj:['Tendre l\'embuscade','Détruire 4 véhicules','Sécuriser Kentucky'],xp:2000,rewards:['MUNITIONS RÉCUPÉRÉES']},
+  {id:'M06',sec:'NORD-OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Prisonnier ATLAS retenu ici.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:F.salut,obj:['Insertion hélico nocturne','Neutraliser les geôliers','Extraire le prisonnier'],xp:2500,rewards:['PRISONNIER SAUVÉ','MÉDAILLE SAUVETAGE']},
+  {id:'M07',sec:'NORD-OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes. <strong>Accès pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Neutraliser la garnison','Sécuriser les citernes'],xp:1600,rewards:['FORT HAWAII']},
+  {id:'M08',sec:'NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE',badge:'CRITIQUE',bclass:'br',desc:'Brouilleur radio paralyse nos communications.',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:3,fenrir:F.ecran,obj:['Atteindre la base','Détruire le brouilleur','Capturer le technicien'],xp:2200,rewards:['COMMUNICATIONS RÉTABLIES']},
+  {id:'M09',sec:'NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA',badge:'URGENCE',bclass:'bo',desc:'Dépôt central. <strong>Ravitaille 8 bases ennemies.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:F.soldat,obj:['Infiltration nocturne','Détruire les stocks','Exfiltration'],xp:2300,rewards:['8 BASES AFFAIBLIES']},
+  {id:'M10',sec:'NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER',badge:'URGENCE',bclass:'bo',desc:'Lance-roquettes AA. <strong>Nos hélicos en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:F.arme,obj:['Détruire 3 positions AA','Neutraliser la garnison','LZ sécurisé'],xp:2100,rewards:['CIEL LIBRE']},
+  {id:'M11',sec:'NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:1,fenrir:F.baguette,obj:['Assaut coordonné','Capturer l\'officier HVT','Tenir Titan'],xp:3200,rewards:['PC DÉTRUIT','HVT CAPTURÉ','MÉDAILLE TITAN']},
+  {id:'M12',sec:'NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE',badge:'TACTIQUE',bclass:'bg',desc:'Station radio. <strong>Coordonne les patrouilles.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.ecran,obj:['Infiltrer la station','Capturer l\'opérateur','Détruire le matériel'],xp:1700,rewards:['FRÉQUENCES ENNEMIES']},
+  {id:'M13',sec:'NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire. <strong>Carrefour stratégique.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:F.tank,obj:['Bloquer les axes','Sécuriser le port','Tenir 10 minutes'],xp:2000,rewards:['PORT LIBÉRÉ']},
+  {id:'M14',sec:'NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire les blindés','Sécuriser Houston','Poster sentinelle ATLAS'],xp:1600,rewards:['AXE BLOQUÉ']},
+  {id:'M15',sec:'NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Assaut sur l\'installation','Capturer l\'opérateur','Détruire les antennes'],xp:2200,rewards:['RÉSEAU COUPÉ']},
+  {id:'M16',sec:'CENTRAL',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS — ÎLE AÉROPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport militaire. <strong>Bombardiers prêts.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:0,fenrir:F.tank,obj:['Neutraliser la défense AA','Détruire 3 bombardiers','Capturer le pilote HVT','Tenir 5 minutes'],xp:3500,rewards:['AÉROPORT LIBÉRÉ','PILOTE HVT']},
+  {id:'M17',sec:'CENTRAL',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base. <strong>Général HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:1,fenrir:F.grade,obj:['Pénétrer le PC','Capturer le Général','Récupérer les documents'],xp:4000,rewards:['GÉNÉRAL CAPTURÉ','PLAN OFFENSIF','MÉDAILLE OMEGA']},
+  {id:'M18',sec:'CENTRAL',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'ORION MILITARY AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport 2 ponts. <strong>Hélicoptères toutes les 5 min.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Sécuriser la tour','Rétablir les vols ATLAS'],xp:3000,rewards:['AÉROPORT LIBÉRÉ']},
+  {id:'M19',sec:'CENTRAL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'ORION INDUSTRIAL COMPLEX',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle 2 ponts ferrés. <strong>Raffinerie ennemie.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:13,fenrir:F.arme,obj:['Traverser les 2 ponts','Neutraliser la garnison','Capturer le directeur HVT','Saboter'],xp:3500,rewards:['RAFFINERIE DÉTRUITE']},
+  {id:'M20',sec:'CENTRAL',cat:'p1',name:'PRINCETON PORT',loc:'ORION PORT — 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs. <strong>Commandant ennemi ici.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Assaut massif','Capturer le Commandant','Détruire les installations'],xp:4500,rewards:['COMMANDANT CAPTURÉ','MÉDAILLE PRINCETON']},
+  {id:'M21',sec:'CENTRAL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'JUNKYARD / PALMDALE — 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier gare de triage. <strong>Général HVT ALPHA dans son bunker.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Transport immédiat ATLAS'],xp:4200,rewards:['GÉNÉRAL HVT ALPHA']},
+  {id:'M22',sec:'CENTRAL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'FLATS CASTLE RUINS',badge:'URGENCE',bclass:'bo',desc:'Ruines château sur falaise. <strong>Pont stratégique contrôlé.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR',hvt:8,fenrir:F.soldat,obj:['Escalader le promontoire','Sécuriser les ruines','Capturer l\'ingénieur'],xp:2100,rewards:['CHÂTEAU LIBÉRÉ']},
+  {id:'M23',sec:'EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec tour. <strong>Renforts maritimes toutes les 20 min.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:F.tank,obj:['Détruire les jetées','Neutraliser défenses côtières','Tenir contre 3 vagues'],xp:3000,rewards:['CÔTE EST LIBÉRÉE']},
+  {id:'M24',sec:'EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR',badge:'URGENCE',bclass:'bo',desc:'Archipel 3 îlots. <strong>Tour d\'observation ennemi.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:F.soldat,obj:['Traverser les îlots','Escalader la tour','Installer relais ATLAS'],xp:1500,rewards:['ARCHIPEL LIBÉRÉ']},
+  {id:'M25',sec:'EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA',badge:'URGENCE',bclass:'bo',desc:'Lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:F.arme,obj:['Localiser 4 SAM','Détruire les lance-missiles','Sécuriser Alabama'],xp:2300,rewards:['CIEL LIBRE']},
+  {id:'M26',sec:'EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général HVT priorité max.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Aucun tir d\'alarme'],xp:4200,rewards:['GÉNÉRAL CAPTURÉ']},
+  {id:'M27',sec:'EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:13,fenrir:F.ecran,obj:['Pénétrer le complexe','Capturer l\'ingénieur HVT','Saboter production'],xp:2700,rewards:['PRODUCTION BLOQUÉE']},
+  {id:'M28',sec:'EST',cat:'p1',name:'EAST BOSTON PORT',loc:'EAST PORT — 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif. <strong>Toute la flotte dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:8,fenrir:F.tank,obj:['Neutraliser défense portuaire','Saboter 12 cuves','Capturer le chef portuaire'],xp:3500,rewards:['PORT DÉTRUIT','FLOTTE PARALYSÉE']},
+  {id:'M29',sec:'EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS',badge:'URGENCE',bclass:'bo',desc:'Station radar surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:F.ecran,obj:['Approche basse altitude','Détruire le radar','Sécuriser Kansas'],xp:2000,rewards:['RADAR DÉTRUIT']},
+  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'DENVER / CAPE RASSA',badge:'URGENCE',bclass:'bo',desc:'Grande ville pont ferroviaire. <strong>Carrefour central sud.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Bloquer le pont ferroviaire','Capturer le commandant HVT','Tenir 8 minutes'],xp:2500,rewards:['CARREFOUR LIBÉRÉ']},
+  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Compound béton accès pont unique.',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Traverser le pont','Forcer le bunker','Capturer l\'opérateur radio'],xp:1900,rewards:['CODES RADIO']},
+  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo. <strong>Scientifique développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:5,fenrir:F.surpris,obj:['Infiltration silencieuse','Sécuriser le labo','Capturer le scientifique HVT'],xp:3000,rewards:['LABO SÉCURISÉ','SCIENTIFIQUE HVT']},
+  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée. <strong>Cache d\'armes découverte.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:F.soldat,obj:['Débarquement amphibie','Détruire la cache','Exfiltration'],xp:1400,rewards:['CACHE DÉTRUITE']},
   {id:'M34',sec:'CENTRAL-SUD',cat:'p3',name:'STARLIGHT ÉPAVE',loc:'BASE STARLIGHT',badge:'TACTIQUE',bclass:'bg',desc:'Zone brumeuse avec épave. <strong>Débarquements ennemis nocturnes.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.arme,obj:['Guetteurs sur la côte','Détruire 3 embarcations','Couler l\'épave'],xp:1700,rewards:['CÔTE SÉCURISÉE']},
-  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND — 117-062',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments en clairière à 55m. <strong>Sniper d\'élite ennemi basé ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:12,fenrir:F.arme,obj:['Approche silencieuse','Traquer le sniper','Capturer vivant'],xp:2600,rewards:['SNIPER CAPTURÉ']},
-  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'NORTH FORT — 119-095',badge:'URGENCE',bclass:'bo',desc:'Grande ville accès pont. <strong>Artillerie lourde vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Détruire 4 pièces artillerie','Sécuriser North Fort'],xp:2200,rewards:['ARTILLERIE DÉTRUITE']},
-  {id:'M37',sec:'SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'VIRGINIA / NEVADA / LAKE HAVEN',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport. <strong>Hélicos armés en préparation.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Neutraliser positions AA','Sécuriser les 2 bases et l\'aéroport'],xp:2800,rewards:['AÉROPORT LIBÉRÉ']},
-  {id:'M38',sec:'SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec mines sous-marines. <strong>Bloque l\'accès maritime.</strong>',tag:'dead',tagLbl:'DÉMINER',hvt:null,fenrir:F.soldat,obj:['Déminer 8 mines','Neutraliser la base','Voie maritime ATLAS établie'],xp:2000,rewards:['VOIE MARITIME LIBRE']},
-  {id:'M39',sec:'SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA — 035-152',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées fort fortifié. <strong>Dernier bastion ennemi sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.arme,obj:['Traverser le pont inter-île','Assaut sur le fort','Capturer le commandant'],xp:2400,rewards:['BASTION SUD LIBÉRÉ']},
-  {id:'M40',sec:'SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ. <strong>Débarquements ennemis réguliers.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.soldat,obj:['Sentinelles sur le promontoire','Repousser le débarquement','Sécuriser le LZ'],xp:1600,rewards:['PROMONTOIRE SÉCURISÉ']},
+  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments en clairière à 55m. <strong>Sniper d\'élite ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:12,fenrir:F.arme,obj:['Approche silencieuse','Traquer le sniper','Capturer vivant'],xp:2600,rewards:['SNIPER CAPTURÉ']},
+  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'NORTH FORT',badge:'URGENCE',bclass:'bo',desc:'Grande ville accès pont. <strong>Artillerie lourde vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Détruire 4 pièces artillerie','Sécuriser North Fort'],xp:2200,rewards:['ARTILLERIE DÉTRUITE']},
+  {id:'M37',sec:'SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'VIRGINIA / NEVADA / LAKE HAVEN',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport. <strong>Hélicos armés en préparation.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Neutraliser positions AA','Sécuriser les 2 bases'],xp:2800,rewards:['AÉROPORT LIBÉRÉ']},
+  {id:'M38',sec:'SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec mines sous-marines.',tag:'dead',tagLbl:'DÉMINER',hvt:null,fenrir:F.soldat,obj:['Déminer 8 mines','Neutraliser la base','Voie maritime ATLAS établie'],xp:2000,rewards:['VOIE MARITIME LIBRE']},
+  {id:'M39',sec:'SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées fort fortifié. <strong>Dernier bastion ennemi sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.arme,obj:['Traverser le pont inter-île','Assaut sur le fort','Capturer le commandant'],xp:2400,rewards:['BASTION SUD LIBÉRÉ']},
+  {id:'M40',sec:'SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ.',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.soldat,obj:['Sentinelles sur le promontoire','Repousser le débarquement','Sécuriser le LZ'],xp:1600,rewards:['PROMONTOIRE SÉCURISÉ']},
   {id:'M41',sec:'SUD',cat:'p3',name:'DELMARE WISCONSIN',loc:'DELMARE / WISCONSIN',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec pont. <strong>Brouilleur radio dans le clocher.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN RADIO',hvt:3,fenrir:F.ecran,obj:['Atteindre le village','Neutraliser les gardes','Capturer le technicien + désactiver'],xp:1600,rewards:['BROUILLEUR DÉTRUIT']},
-  {id:'M42',sec:'SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'NEBRASKA / ACLINE — 141-012',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire 2 ponts','Neutraliser la garnison','Sentinelle ATLAS permanente'],xp:1500,rewards:['AXE COUPÉ']},
+  {id:'M42',sec:'SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'NEBRASKA / ACLINE',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire 2 ponts','Neutraliser la garnison','Sentinelle ATLAS permanente'],xp:1500,rewards:['AXE COUPÉ']},
   {id:'M43',sec:'SUD',cat:'p3',name:'AUGUSTA BELLA VIDA',loc:'AUGUSTA / BELLA VIDA',badge:'TACTIQUE',bclass:'bg',desc:'Zone résidentielle occupée. <strong>Civils retenus en otage.</strong>',tag:'dead',tagLbl:'LIBÉRER OTAGES',hvt:null,fenrir:F.salut,obj:['Infiltration ultra-discrète','Neutraliser preneurs d\'otages','Évacuer les civils'],xp:2000,rewards:['CIVILS SAUVÉS','MÉDAILLE HUMANITAIRE']},
   {id:'M44',sec:'SUD',cat:'p4',name:'MICHIGAN SAUVETAGE',loc:'BASE MICHIGAN',badge:'RÉCUP',bclass:'bb',desc:'Île isolée. <strong>Équipe ATLAS portée disparue.</strong>',tag:'dead',tagLbl:'SAUVETAGE ÉQUIPE',hvt:null,fenrir:F.salut,obj:['Localiser l\'équipe','Neutraliser les ennemis','Exfiltrer par voie maritime'],xp:2200,rewards:['ÉQUIPE SAUVÉE']},
-  {id:'M45',sec:'OFFSHORE',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE — 045-110',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.tank,obj:['Insertion hélico','Neutraliser les gardes (6)','Capturer l\'opérateur'],xp:2800,rewards:['PLATEFORME LIBÉRÉE']},
+  {id:'M45',sec:'OFFSHORE',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.tank,obj:['Insertion hélico','Neutraliser les gardes (6)','Capturer l\'opérateur'],xp:2800,rewards:['PLATEFORME LIBÉRÉE']},
   {id:'M46',sec:'OFFSHORE',cat:'p3',name:'VESPER ARCHIPEL ISOLÉ',loc:'BASE VESPER',badge:'TACTIQUE',bclass:'bg',desc:'3 îlots en pleine mer. <strong>Caches d\'armes sur chaque îlot.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHES',hvt:null,fenrir:F.arme,obj:['Traverser par zodiac','Détruire 9 caches','Exfiltration maritime'],xp:1600,rewards:['ARCHIPEL NETTOYÉ']},
-  {id:'M47',sec:'NORD-OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON — 143-066',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs. <strong>Munitions cachées dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS',hvt:null,fenrir:F.soldat,obj:['Pénétrer la carrière','Détruire 5 silos à munitions','Neutraliser les ouvriers armés'],xp:2000,rewards:['STOCKS DÉTRUITS']},
+  {id:'M47',sec:'NORD-OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs. <strong>Munitions cachées dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS',hvt:null,fenrir:F.soldat,obj:['Pénétrer la carrière','Détruire 5 silos à munitions','Neutraliser les ouvriers armés'],xp:2000,rewards:['STOCKS DÉTRUITS']},
   {id:'M48',sec:'CENTRAL-SUD',cat:'p3',name:'MAINE GULFSHORE',loc:'BASE MAINE / GULFSHORE',badge:'TACTIQUE',bclass:'bg',desc:'Grande ville côtière dense. <strong>Combat de rue.</strong>',tag:'dead',tagLbl:'CQB URBAIN',hvt:null,fenrir:F.arme,obj:['Nettoyer bâtiment par bâtiment','Neutraliser 5 nids de tir','Hisser le drapeau ATLAS'],xp:1800,rewards:['VILLE LIBÉRÉE']},
-  {id:'M49',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée à l\'est. <strong>Insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration'],xp:1400,rewards:['BASE LIBÉRÉE']},
+  {id:'M49',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration'],xp:1400,rewards:['BASE LIBÉRÉE']},
   {id:'M50',sec:'SUD',cat:'p3',name:'COLORADO FORTIFIÉ',loc:'BASE COLORADO',badge:'TACTIQUE',bclass:'bg',desc:'Position fortifiée avec obusiers. <strong>Menacent tout le secteur sud.</strong>',tag:'dead',tagLbl:'DÉTRUIRE OBUSIERS',hvt:null,fenrir:F.tank,obj:['Approche nocturne','Détruire 4 obusiers lourds','Sécuriser Colorado'],xp:2200,rewards:['OBUSIERS DÉTRUITS']},
-  {id:'M51',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants. <strong>Synchroniser toutes les équipes.</strong>',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:F.baguette,obj:['Synchroniser toutes les équipes','Frapper simultanément 5 objectifs','Couper les communications ennemies','Ouvrir le couloir vers Providence'],xp:3500,rewards:['PRÉPARATION FINALE']},
-  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Toutes missions accomplies. L\'ennemi lance son assaut final.</strong> Trois vagues. Aucune retraite.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:F.gagne,obj:['TOUS convergent sur Providence','Vague 1 : infanterie (30)','Vague 2 : blindés (4)','Vague 3 : aérien + 20 élites','Éliminer le Commandant Suprême'],xp:6000,rewards:['DÉFENSEUR DE L\'ÎLE','LOOT TIER S','MÉDAILLE ATLAS']},
+  {id:'M51',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants.',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:F.baguette,obj:['Synchroniser toutes les équipes','Frapper 5 objectifs simultanément','Couper les communications','Ouvrir le couloir vers Providence'],xp:3500,rewards:['PRÉPARATION FINALE']},
+  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Assaut final sur le QG ATLAS.</strong> Trois vagues. Aucune retraite.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:F.gagne,obj:['TOUS convergent sur Providence','Vague 1 : infanterie (30)','Vague 2 : blindés (4)','Vague 3 : aérien + 20 élites','Éliminer le Commandant Suprême'],xp:6000,rewards:['DÉFENSEUR DE L\'ÎLE','LOOT TIER S','MÉDAILLE ATLAS']},
 ];
 
 const SECTIONS=['NORD-OUEST','NORD','CENTRAL','EST','CENTRAL-SUD','SUD','OFFSHORE','PRÉ-FINALE','MISSION FINALE'];
@@ -325,11 +309,11 @@ function buildMissions(){
   let html='';
   SECTIONS.forEach(sec=>{
     const ms=MISSIONS.filter(m=>m.sec===sec);
-    if(!ms.length) return;
+    if(!ms.length)return;
     html+=`<div class="sec-hdr"><span class="slbl">${sec}</span><div class="sline"></div></div><div class="grid">`;
     ms.forEach((m,idx)=>{
       const carteImg=CARTE[idx]||'';
-      const hvtImg=m.hvt!==null?HVT_PHOTOS[m.hvt]:'';
+      const hvtImg=m.hvt!==null&&m.hvt!==undefined?HVT_PHOTOS[m.hvt]:'';
       html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()}">
         <div class="mc-head" onclick="toggle('${m.id}')">
           <div class="mc-thumb">
@@ -364,7 +348,6 @@ function buildMissions(){
 
 function toggle(id){document.getElementById(id)?.classList.toggle('open')}
 function markDone(id){document.getElementById(id)?.classList.toggle('done-mc');saveProgress();updateProgress()}
-
 function updateProgress(){
   const done=document.querySelectorAll('.mc.done-mc').length;
   document.getElementById('sDone').textContent=done;
@@ -372,64 +355,72 @@ function updateProgress(){
   document.getElementById('pbFill').style.width=pct+'%';
   document.getElementById('pbPct').textContent=pct+'%';
 }
-
 function filt(cat,btn){
   document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',cat!=='all'&&mc.dataset.cat!==cat));
 }
-
 function search(q){
   const s=q.toLowerCase().trim();
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',!!s&&!mc.dataset.name.includes(s)));
 }
-
 const SAVED_PHOTOS={};
 function addPhoto(id){
-  const inp=document.createElement('input');
-  inp.type='file';inp.accept='image/*';
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
   inp.onchange=e=>{
     const f=e.target.files[0];if(!f)return;
     const r=new FileReader();
     r.onload=ev=>{
-      SAVED_PHOTOS[id]=ev.target.result;
-      const slot=document.querySelector(`#${id} .hvt-slot`);
+      const slot=document.querySelector('#'+id+' .hvt-slot');
       if(slot){slot.innerHTML=`<img src="${ev.target.result}" class="hvt-photo" alt="HVT">`;slot.onclick=null;}
     };r.readAsDataURL(f);
   };inp.click();
 }
-
 function saveProgress(){
   try{localStorage.setItem('atlas_progress',JSON.stringify(Array.from(document.querySelectorAll('.mc.done-mc')).map(e=>e.id)));}catch(e){}
 }
 function loadProgress(){
   try{(JSON.parse(localStorage.getItem('atlas_progress')||'[]')).forEach(id=>{document.getElementById(id)?.classList.add('done-mc')});updateProgress();}catch(e){}
 }
-
-// Auth Discord
 function doLogin(){
-  const redirect=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/');
-  window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify%20guilds.members.read`;
+  window.location.href='https://discord.com/api/oauth2/authorize?client_id='+CLIENT_ID+'&redirect_uri='+encodeURIComponent(SITE_URL)+'&response_type=token&scope=identify%20guilds.members.read';
 }
-
 function loginSuccess(user){
   document.getElementById('loginScreen').classList.add('hidden');
   document.getElementById('app').classList.add('show');
   document.getElementById('userName').textContent=(user.name||'CONTRACTUEL').toUpperCase();
   document.getElementById('userRank').textContent='GRADE: '+(user.grade||'CONTRACTUEL').toUpperCase();
-  if(user.avatar){document.getElementById('userAvatar').src=user.avatar;}
-  buildMissions();
-  loadProgress();
+  if(user.avatar)document.getElementById('userAvatar').src=user.avatar;
+  buildMissions();loadProgress();
 }
-
-// Vérifier si on a déjà une session
+async function handleDiscordToken(token){
+  try{
+    const r=await fetch('https://discord.com/api/users/@me',{headers:{Authorization:'Bearer '+token}});
+    if(!r.ok)throw new Error('Auth failed');
+    const user=await r.json();
+    const avatar=user.avatar?`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`:'';
+    const sess={name:user.username,avatar,grade:'Contractuel',loginTime:Date.now(),token};
+    sessionStorage.setItem('atlas_user',JSON.stringify(sess));
+    // Nettoyer l'URL
+    history.replaceState(null,'',SITE_URL);
+    loginSuccess(sess);
+  }catch(e){
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('accessDenied').classList.add('show');
+  }
+}
 window.addEventListener('load',()=>{
+  // 1. Vérifier si token Discord dans l'URL (après redirection OAuth2)
+  const hash=window.location.hash.substring(1);
+  const params=new URLSearchParams(hash);
+  const token=params.get('access_token');
+  if(token){handleDiscordToken(token);return;}
+  // 2. Vérifier session existante
   try{
     const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');
-    if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){
-      loginSuccess(sess);return;
-    }
+    if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){loginSuccess(sess);return;}
   }catch(e){}
+  // 3. Sinon afficher login
 });
 </script>
 </body>
