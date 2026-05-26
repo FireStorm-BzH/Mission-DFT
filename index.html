@@ -106,12 +106,23 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 
 /* PHOTOS DETAIL — grande hauteur, object-contain pour tout voir */
 .det-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.det-photo{height:320px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px;display:flex;align-items:center;justify-content:center}
-.det-photo img{width:100%;height:100%;object-fit:contain}
+
+/* ONGLETS TERRAIN */
+.terrain-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid #2a2820}
+.terrain-tab{font-size:11px;letter-spacing:3px;color:#444030;font-family:'Oswald',sans-serif;font-weight:700;padding:7px 14px;cursor:pointer;border:1px solid transparent;border-bottom:none;border-radius:3px 3px 0 0;transition:all .15s;background:transparent;user-select:none}
+.terrain-tab:hover{color:#888070}
+.terrain-tab.active{background:#0d1520;border-color:#2a3a4a;color:#6ab0e0}
+.terrain-panel{display:none;height:320px;overflow:hidden;border:1px solid #2a2820;border-top:none;position:relative;background:#0a1520;border-radius:0 3px 3px 3px;align-items:center;justify-content:center}
+.terrain-panel.active{display:flex}
+.terrain-panel img{width:100%;height:100%;object-fit:contain}
+.terrain-empty{display:flex;flex-direction:column;align-items:center;gap:8px}
 .det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);font-size:12px;letter-spacing:2px;color:#888070;padding:5px 10px;font-family:'Oswald',sans-serif}
 .det-photo-btn{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.75);border:1px solid var(--gold);color:var(--gold);font-size:11px;padding:4px 8px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;border-radius:2px}
 .det-photo-btn:hover{background:var(--gold);color:#000}
 
+/* COLONNE HVT */
+.det-photo{height:320px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.det-photo img{width:100%;height:100%;object-fit:contain}
 .hvt-slot{background:#100808;border:2px dashed #3a1010;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
 .hvt-slot:hover{border-color:var(--gold)}
 .hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0a0808}
@@ -382,6 +393,7 @@ function buildMissions(){
     ms.forEach((m,gIdx)=>{
       const globalIdx=MISSIONS.indexOf(m);
       const carteImg=OVERRIDES[m.id+'_carte']||CARTE[globalIdx]||'';
+      const carte2Img=OVERRIDES[m.id+'_carte2']||'';
       const hvtImg=OVERRIDES[m.id+'_hvt']||(m.hvt!==null&&m.hvt!==undefined?HVT_PHOTOS[m.hvt]:'');
       const notes=OVERRIDES[m.id+'_notes']||'';
       html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()} ${m.sec.toLowerCase()}">
@@ -406,14 +418,32 @@ function buildMissions(){
         <div class="hint" onclick="toggle('${m.id}')">▼ briefing complet</div>
         <div class="mdetail">
           <div class="det-photos">
-            <div class="det-photo" id="${m.id}_carteBox">
-              ${carteImg
-                ? `<img src="${carteImg}" alt="carte" onerror="this.style.display='none'">`
-                : `<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="font-size:40px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE</div></div>`
-              }
-              <div class="det-photo-lbl">TERRAIN / CARTE</div>
-              <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte')">📁 CHANGER</button>
+            <!-- COLONNE GAUCHE : TERRAIN avec 2 onglets -->
+            <div>
+              <div class="terrain-tabs">
+                <div class="terrain-tab active" onclick="switchTab('${m.id}',1,this)">🗺 CARTE 1</div>
+                <div class="terrain-tab" onclick="switchTab('${m.id}',2,this)">🗺 CARTE 2</div>
+              </div>
+              <!-- PANEL 1 -->
+              <div class="terrain-panel active" id="${m.id}_panel1">
+                ${carteImg
+                  ? `<img src="${carteImg}" alt="carte1" onerror="this.style.display='none'">`
+                  : `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE</div></div>`
+                }
+                <div class="det-photo-lbl">TERRAIN — VUE 1</div>
+                <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte')">📁 CHANGER</button>
+              </div>
+              <!-- PANEL 2 -->
+              <div class="terrain-panel" id="${m.id}_panel2">
+                ${carte2Img
+                  ? `<img src="${carte2Img}" alt="carte2" onerror="this.style.display='none'">`
+                  : `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE 2</div></div>`
+                }
+                <div class="det-photo-lbl">TERRAIN — VUE 2</div>
+                <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte2')">📁 CHANGER</button>
+              </div>
             </div>
+            <!-- COLONNE DROITE : HVT -->
             <div class="det-photo" id="${m.id}_hvtBox">
               ${hvtImg
                 ? `<img src="${hvtImg}" alt="HVT" onerror="this.style.display='none'">`
@@ -447,6 +477,17 @@ function buildMissions(){
 
 function toggle(id){document.getElementById(id)?.classList.toggle('open')}
 
+// ---- ONGLETS TERRAIN ----
+function switchTab(id,num,btn){
+  // onglets
+  const tabs=btn.parentNode.querySelectorAll('.terrain-tab');
+  tabs.forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  // panels
+  document.getElementById(id+'_panel1')?.classList.toggle('active',num===1);
+  document.getElementById(id+'_panel2')?.classList.toggle('active',num===2);
+}
+
 function markDone(id){document.getElementById(id)?.classList.toggle('done-mc');saveProgress();updateProgress()}
 
 function updateProgress(){
@@ -478,16 +519,21 @@ function uploadImg(id,type){
       const data=ev.target.result;
       OVERRIDES[id+'_'+type]=data;
       saveOverrides();
-      // Mise à jour live
       if(type==='carte'){
+        // Vignette header
         const thumb=document.querySelector('#'+id+' .mc-thumb img');
         if(thumb){thumb.src=data;}else{
           const box=document.querySelector('#'+id+' .mc-thumb');
           if(box){const img=document.createElement('img');img.src=data;box.prepend(img);}
         }
-        const box=document.getElementById(id+'_carteBox');
-        if(box){let img=box.querySelector('img');if(!img){img=document.createElement('img');box.prepend(img);}img.src=data;}
-      }else{
+        // Panel 1
+        const p1=document.getElementById(id+'_panel1');
+        if(p1){let img=p1.querySelector('img');if(!img){img=document.createElement('img');p1.prepend(img);}img.src=data;img.style.display='';}
+      } else if(type==='carte2'){
+        // Panel 2
+        const p2=document.getElementById(id+'_panel2');
+        if(p2){let img=p2.querySelector('img');if(!img){img=document.createElement('img');p2.prepend(img);}img.src=data;img.style.display='';}
+      } else if(type==='hvt'){
         const box=document.getElementById(id+'_hvtBox');
         if(box){let img=box.querySelector('img');if(!img){img=document.createElement('img');box.prepend(img);}img.src=data;img.style.display='';}
       }
