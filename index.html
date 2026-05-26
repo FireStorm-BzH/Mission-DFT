@@ -111,7 +111,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 <body>
 
 <div id="loginScreen">
-  <img src="images/fenrir/salut.png" class="login-fenrir" alt="Sergent Fenrir">
+  <img src="images/fenrir/salut.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.style.opacity='0'">
   <div class="login-title">Mission DFT Secret Defence</div>
   <div class="login-sub">opération classifiée — accès restreint</div>
   <div class="login-msg">
@@ -202,20 +202,20 @@ const F={
 };
 
 const HVT_PHOTOS=[
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144046.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144133.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144344.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144513.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144724.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144807.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 144915.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145009.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145104.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145150.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145402.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145520.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145608.png",
-  "images/hvt/Capture d'\u00e9cran 2026-05-26 145643.png",
+  'images/hvt/1.png',
+  'images/hvt/2.png',
+  'images/hvt/3.png',
+  'images/hvt/4.png',
+  'images/hvt/5.png',
+  'images/hvt/6.png',
+  'images/hvt/7.png',
+  'images/hvt/8.png',
+  'images/hvt/9.png',
+  'images/hvt/10.png',
+  'images/hvt/11.png',
+  'images/hvt/12.png',
+  'images/hvt/13.png',
+  'images/hvt/14.png',
 ];
 
 const CARTE=[
@@ -411,10 +411,13 @@ async function handleDiscordToken(token){
 }
 window.addEventListener('load',()=>{
   // 1. Vérifier si token Discord dans l'URL (après redirection OAuth2)
+  // Discord peut mettre les params dans n'importe quel ordre
   const hash=window.location.hash.substring(1);
-  const params=new URLSearchParams(hash);
-  const token=params.get('access_token');
-  if(token){handleDiscordToken(token);return;}
+  if(hash.includes('access_token')){
+    const params=new URLSearchParams(hash);
+    const token=params.get('access_token');
+    if(token){handleDiscordToken(token);return;}
+  }
   // 2. Vérifier session existante
   try{
     const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');
