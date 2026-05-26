@@ -8,17 +8,17 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--gold:#c8a227;--dark:#080a0e;--card:#0d1015;--border:#1e1e18}
-body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh;font-size:16px}
+body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh;font-size:18px}
 
 /* LOGIN */
 #loginScreen{position:fixed;inset:0;background:#080a0e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px;padding:24px}
 #loginScreen.hidden{display:none}
-.login-fenrir{width:180px;height:180px;border-radius:50%;border:3px solid var(--gold);object-fit:cover}
-.login-title{font-size:clamp(28px,7vw,52px);color:var(--gold);letter-spacing:3px;text-align:center;font-weight:700;line-height:1.1}
-.login-sub{font-size:13px;letter-spacing:4px;color:#555040;text-align:center}
-.login-msg{font-size:14px;color:#888070;text-align:center;max-width:340px;line-height:1.9;border:1px solid #2a2820;padding:16px 20px;font-family:sans-serif}
-.login-msg strong{color:#c8a227;font-family:'Oswald',sans-serif;font-size:15px}
-.login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:3px;padding:16px 40px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:340px}
+.login-fenrir{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);object-fit:cover}
+.login-title{font-size:clamp(36px,8vw,60px);color:var(--gold);letter-spacing:3px;text-align:center;font-weight:700;line-height:1.1}
+.login-sub{font-size:15px;letter-spacing:4px;color:#555040;text-align:center}
+.login-msg{font-size:16px;color:#888070;text-align:center;max-width:380px;line-height:1.9;border:1px solid #2a2820;padding:18px 22px;font-family:sans-serif}
+.login-msg strong{color:#c8a227;font-family:'Oswald',sans-serif;font-size:17px}
+.login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;padding:18px 44px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:380px}
 .login-btn:hover{opacity:.85}
 
 /* ACCESS DENIED */
@@ -30,38 +30,38 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 #app.show{display:block}
 
 /* TOPBAR */
-.topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:8px 16px;font-size:12px;font-weight:700;letter-spacing:2px}
+.topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:14px;font-weight:700;letter-spacing:2px}
 .user-badge{display:flex;align-items:center;gap:10px}
-.user-avatar{width:34px;height:34px;border-radius:50%;border:2px solid #0a0c10;object-fit:cover}
-#userName{font-weight:700;font-size:13px}
-#userRank{font-size:11px;letter-spacing:2px;opacity:.75}
+.user-avatar{width:40px;height:40px;border-radius:50%;border:2px solid #0a0c10;object-fit:cover}
+#userName{font-weight:700;font-size:15px}
+#userRank{font-size:13px;letter-spacing:2px;opacity:.75}
 
 /* HERO */
-.hero{padding:1.4rem 1rem;border-bottom:2px solid var(--gold)}
-.fenrir-bar{display:flex;align-items:center;gap:14px;background:#0f1218;border:1px solid #2a2820;padding:14px;margin-bottom:14px;border-radius:4px}
-.fenrir-bar-img{width:80px;height:80px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0}
-.fenrir-bar-msg{font-size:14px;color:#a09888;line-height:1.8;font-family:sans-serif;flex:1}
-.fenrir-bar-msg strong{color:#e8dfc8;font-family:'Oswald',sans-serif;font-size:15px}
-.htag{display:inline-block;background:#8b0000;color:#ffaaaa;font-size:11px;letter-spacing:4px;padding:4px 12px;margin-bottom:10px}
-.htitle{font-size:clamp(32px,6vw,56px);line-height:.95;color:var(--gold);letter-spacing:2px;font-weight:700;margin-bottom:6px}
-.hsub{font-size:12px;letter-spacing:4px;color:#555040;margin-bottom:12px}
+.hero{padding:1.6rem 1.2rem;border-bottom:2px solid var(--gold)}
+.fenrir-bar{display:flex;align-items:center;gap:16px;background:#0f1218;border:1px solid #2a2820;padding:16px;margin-bottom:16px;border-radius:4px}
+.fenrir-bar-img{width:100px;height:100px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0}
+.fenrir-bar-msg{font-size:16px;color:#a09888;line-height:1.8;font-family:sans-serif;flex:1}
+.fenrir-bar-msg strong{color:#e8dfc8;font-family:'Oswald',sans-serif;font-size:17px}
+.htag{display:inline-block;background:#8b0000;color:#ffaaaa;font-size:13px;letter-spacing:4px;padding:5px 14px;margin-bottom:12px}
+.htitle{font-size:clamp(44px,7vw,72px);line-height:.95;color:var(--gold);letter-spacing:2px;font-weight:700;margin-bottom:8px}
+.hsub{font-size:14px;letter-spacing:4px;color:#555040;margin-bottom:14px}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:1rem}
-.stat{background:#0f1218;border:1px solid #2a2820;padding:12px 8px;text-align:center;border-radius:4px}
-.stat-n{font-size:26px;font-weight:700;color:var(--gold)}
-.stat-l{font-size:11px;letter-spacing:2px;color:#555040;margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1.2rem}
+.stat{background:#0f1218;border:1px solid #2a2820;padding:16px 10px;text-align:center;border-radius:4px}
+.stat-n{font-size:34px;font-weight:700;color:var(--gold)}
+.stat-l{font-size:13px;letter-spacing:2px;color:#555040;margin-top:3px}
 
 /* PROGRESS */
-.progress{background:#0f1218;border:1px solid #2a2820;padding:.8rem 1rem;display:flex;align-items:center;gap:12px;margin:.5rem 1rem;border-radius:4px}
-.pb-label{font-size:11px;letter-spacing:2px;color:#555040;white-space:nowrap}
-.pb-track{flex:1;height:6px;background:#1a1810;border-radius:3px}
-.pb-fill{height:6px;background:var(--gold);transition:width .4s;width:0%;border-radius:3px}
-.pb-pct{font-size:14px;color:var(--gold);font-weight:700;min-width:36px;text-align:right}
+.progress{background:#0f1218;border:1px solid #2a2820;padding:1rem 1.2rem;display:flex;align-items:center;gap:14px;margin:.6rem 1.2rem;border-radius:4px}
+.pb-label{font-size:13px;letter-spacing:2px;color:#555040;white-space:nowrap}
+.pb-track{flex:1;height:8px;background:#1a1810;border-radius:4px}
+.pb-fill{height:8px;background:var(--gold);transition:width .4s;width:0%;border-radius:4px}
+.pb-pct{font-size:16px;color:var(--gold);font-weight:700;min-width:42px;text-align:right}
 
 /* FILTERS */
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin:.8rem 1rem}
-.fb{background:#0f1218;border:1px solid #2a2820;color:#666050;font-size:11px;letter-spacing:2px;padding:7px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:1rem 1.2rem}
+.fb{background:#0f1218;border:1px solid #2a2820;color:#666050;font-size:13px;letter-spacing:2px;padding:9px 18px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .fb:hover,.fb.on{background:#1a1800;border-color:var(--gold);color:var(--gold)}
 .fb.on.fr{border-color:#cc3333;color:#ff6060;background:#150505}
 .fb.on.fo{border-color:#cc6600;color:#ff9040;background:#150a05}
@@ -69,18 +69,18 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .fb.on.fb2{border-color:#224488;color:#6090cc;background:#050a15}
 
 /* SEARCH */
-.srch{display:flex;align-items:center;gap:10px;margin:0 1rem .8rem}
-.srch input{flex:1;background:#0f1218;border:1px solid #2a2820;color:#e8dfc8;font-size:14px;padding:8px 12px;outline:none;font-family:'Oswald',sans-serif;border-radius:3px}
+.srch{display:flex;align-items:center;gap:10px;margin:0 1.2rem 1rem}
+.srch input{flex:1;background:#0f1218;border:1px solid #2a2820;color:#e8dfc8;font-size:16px;padding:10px 14px;outline:none;font-family:'Oswald',sans-serif;border-radius:3px}
 .srch input::placeholder{color:#333020}
 
 /* SECTION HEADER */
-.sec-hdr{display:flex;align-items:center;gap:10px;margin:1.5rem 1rem .6rem}
-.slbl{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700;white-space:nowrap}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin:1.8rem 1.2rem .8rem}
+.slbl{font-size:13px;letter-spacing:4px;color:var(--gold);font-weight:700;white-space:nowrap}
 .sline{flex:1;height:1px;background:rgba(200,162,39,.25)}
 
-/* MISSION CARDS */
-.grid{margin:0 1rem;display:grid;gap:8px}
-.mc{background:var(--card);border:1px solid var(--border);border-left:5px solid #333;border-radius:0 4px 4px 0;overflow:hidden;transition:border-color .15s}
+/* MISSION CARDS — images et textes agrandis */
+.grid{margin:0 1.2rem;display:grid;gap:10px}
+.mc{background:var(--card);border:1px solid var(--border);border-left:6px solid #333;border-radius:0 4px 4px 0;overflow:hidden;transition:border-color .15s}
 .mc:hover{border-left-color:var(--gold)!important}
 .mc.p1{border-left-color:#8b0000}
 .mc.p2{border-left-color:#c84b00}
@@ -88,57 +88,63 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mc.p4{border-left-color:#224488}
 .mc.pF{border-left-color:var(--gold)}
 .mc.done-mc{opacity:.5;border-left-color:#1a3a1a!important}
-.mc-head{display:flex;cursor:pointer;min-height:100px}
-.mc-thumb{width:110px;min-width:110px;height:110px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
+
+/* CARTE PLUS GRANDE */
+.mc-head{display:flex;cursor:pointer;min-height:140px}
+.mc-thumb{width:160px;min-width:160px;height:160px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
 .mc-thumb img{width:100%;height:100%;object-fit:cover}
-.mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:9px;letter-spacing:1px;color:#c8a227;padding:3px 6px;font-family:'Oswald',sans-serif}
-.mc-info{flex:1;padding:.8rem 1rem;min-width:0}
-.mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:4px}
-.mid{font-size:10px;letter-spacing:3px;color:#444030;font-weight:700}
-.mbadge{font-size:10px;letter-spacing:2px;padding:3px 8px;font-weight:700;white-space:nowrap;flex-shrink:0;border-radius:2px}
+.mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:11px;letter-spacing:1px;color:#c8a227;padding:4px 8px;font-family:'Oswald',sans-serif}
+
+/* TEXTES AGRANDIS */
+.mc-info{flex:1;padding:1rem 1.2rem;min-width:0}
+.mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.mid{font-size:12px;letter-spacing:3px;color:#444030;font-weight:700}
+.mbadge{font-size:12px;letter-spacing:2px;padding:4px 10px;font-weight:700;white-space:nowrap;flex-shrink:0;border-radius:2px}
 .br{background:#200a0a;color:#ff5050}
 .bo{background:#201000;color:#ff8030}
 .bg{background:#081508;color:#50a050}
 .bb{background:#080f1e;color:#5080cc}
 .bgold{background:#181200;color:var(--gold)}
-.mtitle{font-size:17px;font-weight:700;color:#e0d8c0;letter-spacing:.5px;margin-bottom:4px;line-height:1.2}
-.mloc{font-size:11px;color:#555040;letter-spacing:2px;margin-bottom:5px}
-.mdesc{font-size:13px;color:#777060;line-height:1.6;font-family:sans-serif}
+.mtitle{font-size:22px;font-weight:700;color:#e0d8c0;letter-spacing:.5px;margin-bottom:6px;line-height:1.2}
+.mloc{font-size:13px;color:#555040;letter-spacing:2px;margin-bottom:7px}
+.mdesc{font-size:15px;color:#777060;line-height:1.7;font-family:sans-serif}
 .mdesc strong{color:#b0a888}
-.hint{font-size:11px;color:#3a3020;letter-spacing:2px;text-align:right;padding:.4rem 1rem;cursor:pointer}
+.hint{font-size:13px;color:#3a3020;letter-spacing:2px;text-align:right;padding:.5rem 1.2rem;cursor:pointer}
 .hint:hover{color:#666050}
 
-/* DETAIL */
-.mdetail{display:none;border-top:1px solid #1a1a14;padding:1rem}
+/* DETAIL ÉLARGI */
+.mdetail{display:none;border-top:1px solid #1a1a14;padding:1.2rem}
 .mc.open .mdetail{display:block}
-.det-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.det-photo{height:180px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px}
+
+/* PHOTOS DETAIL PLUS GRANDES */
+.det-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.det-photo{height:260px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px}
 .det-photo img{width:100%;height:100%;object-fit:cover}
-.det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:10px;letter-spacing:2px;color:#888070;padding:4px 8px;font-family:'Oswald',sans-serif}
-.hvt-slot{background:#100808;border:2px dashed #3a1010;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
+.det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:12px;letter-spacing:2px;color:#888070;padding:5px 10px;font-family:'Oswald',sans-serif}
+.hvt-slot{background:#100808;border:2px dashed #3a1010;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
 .hvt-slot:hover{border-color:var(--gold)}
 .hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hvt-lbl{font-size:11px;letter-spacing:2px;color:#3a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
-.photo-tag{display:inline-block;font-size:10px;letter-spacing:2px;padding:4px 10px;margin-bottom:8px;font-weight:700;border-radius:2px}
+.hvt-lbl{font-size:13px;letter-spacing:2px;color:#3a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
+.photo-tag{display:inline-block;font-size:13px;letter-spacing:2px;padding:5px 12px;margin-bottom:10px;font-weight:700;border-radius:2px}
 .tag-alive{background:#081808;color:#50a050}
 .tag-dead{background:#180808;color:#ff5050}
 .tag-hv{background:#181008;color:#ff8030}
-.fenrir-mission{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:cover}
+.fenrir-mission{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);object-fit:cover}
 
-/* OBJECTIVES */
-.objs{margin-bottom:10px}
-.obj{display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:#777060;font-family:sans-serif;line-height:1.5}
-.onum{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:24px;font-size:14px}
+/* OBJECTIVES AGRANDIS */
+.objs{margin-bottom:12px}
+.obj{display:flex;gap:10px;margin-bottom:8px;font-size:15px;color:#777060;font-family:sans-serif;line-height:1.6}
+.onum{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:28px;font-size:16px}
 
 /* REWARDS */
-.rwds{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.rpill{font-size:11px;letter-spacing:1px;color:var(--gold);background:#141000;border:1px solid #282000;padding:4px 10px;font-weight:700;border-radius:2px}
-.done-btn{background:transparent;border:1px solid #2a2820;color:#666050;font-size:12px;letter-spacing:2px;padding:8px 16px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px;margin-top:4px}
+.rwds{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.rpill{font-size:13px;letter-spacing:1px;color:var(--gold);background:#141000;border:1px solid #282000;padding:5px 12px;font-weight:700;border-radius:2px}
+.done-btn{background:transparent;border:1px solid #2a2820;color:#666050;font-size:14px;letter-spacing:2px;padding:10px 20px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px;margin-top:6px}
 .done-btn:hover{border-color:var(--gold);color:var(--gold)}
 .mc.done-mc .done-btn{color:#50a050;border-color:#1a3a1a}
 
 .hidden{display:none!important}
-.botbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:12px;font-weight:700;letter-spacing:4px;padding:8px;margin-top:2rem}
+.botbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:14px;font-weight:700;letter-spacing:4px;padding:10px;margin-top:2rem}
 </style>
 </head>
 <body>
@@ -157,13 +163,13 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 </div>
 
 <div id="accessDenied">
-  <img src="images/fenrir/Surpris.png" style="width:120px;height:120px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
-  <div style="font-size:24px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
-  <div style="font-size:12px;color:#666050;text-align:center;max-width:280px;line-height:1.8;font-family:sans-serif">
+  <img src="images/fenrir/Surpris.png" style="width:140px;height:140px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
+  <div style="font-size:28px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
+  <div style="font-size:15px;color:#666050;text-align:center;max-width:300px;line-height:1.8;font-family:sans-serif">
     Tu n'es pas membre du serveur DFT<br>ou tu n'as pas le grade requis.<br><br>
     <strong style="color:#c8a227">Grade minimum : Contractuel</strong>
   </div>
-  <button class="login-btn" style="max-width:220px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
+  <button class="login-btn" style="max-width:240px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
 </div>
 
 <div id="app">
@@ -172,8 +178,8 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <div class="user-badge">
       <img id="userAvatar" class="user-avatar" src="" alt="">
       <div>
-        <div id="userName" style="font-weight:700;font-size:11px">CONTRACTUEL</div>
-        <div id="userRank" style="font-size:8px;letter-spacing:2px;opacity:.7">GRADE: CONTRACTUEL</div>
+        <div id="userName" style="font-weight:700;font-size:13px">CONTRACTUEL</div>
+        <div id="userRank" style="font-size:10px;letter-spacing:2px;opacity:.7">GRADE: CONTRACTUEL</div>
       </div>
     </div>
   </div>
@@ -225,7 +231,7 @@ const F={
   simple:'images/fenrir/Simple.png',
   ordre:'images/fenrir/Ordre.png',
   soldat:'images/fenrir/Soldat.png',
-  arme:'images/fenrir/Arm\u00e9.png',
+  arme:'images/fenrir/Armé.png',
   tank:'images/fenrir/assaut-tank.png',
   gagne:'images/fenrir/gagnee.png',
   surpris:'images/fenrir/Surpris.png',
@@ -235,49 +241,26 @@ const F={
 };
 
 const HVT_PHOTOS=[
-  'images/hvt/1.png',
-  'images/hvt/2.png',
-  'images/hvt/3.png',
-  'images/hvt/4.png',
-  'images/hvt/5.png',
-  'images/hvt/6.png',
-  'images/hvt/7.png',
-  'images/hvt/8.png',
-  'images/hvt/9.png',
-  'images/hvt/10.png',
-  'images/hvt/11.png',
-  'images/hvt/12.png',
-  'images/hvt/13.png',
-  'images/hvt/14.png',
+  'images/hvt/1.png','images/hvt/2.png','images/hvt/3.png','images/hvt/4.png',
+  'images/hvt/5.png','images/hvt/6.png','images/hvt/7.png','images/hvt/8.png',
+  'images/hvt/9.png','images/hvt/10.png','images/hvt/11.png','images/hvt/12.png',
+  'images/hvt/13.png','images/hvt/14.png',
 ];
 
 const CARTE=[
-  'images/carte/image14.png','images/carte/image.png',
-  'images/carte/image2 .png','images/carte/image3.png',
-  'images/carte/image4.png','images/carte/image5.png',
-  'images/carte/image6.png','images/carte/image7.png',
-  'images/carte/image8.png','images/carte/image9.png',
-  'images/carte/image10.png','images/carte/image11.png',
-  'images/carte/image12.png','images/carte/image13.png',
-  'images/carte/image15.png','images/carte/image16.1.png',
-  'images/carte/image16.2.png','images/carte/image17.png',
-  'images/carte/image18.png','images/carte/image19.png',
-  'images/carte/image20.png','images/carte/image21.png',
-  'images/carte/image22.png','images/carte/image23.png',
-  'images/carte/image24.png','images/carte/image25.png',
-  'images/carte/image26.png','images/carte/image27.png',
-  'images/carte/image28.png','images/carte/image29.png',
-  'images/carte/image30.png','images/carte/image31.png',
-  'images/carte/image31.1.png','images/carte/image32.png',
-  'images/carte/image33.png','images/carte/image34.png',
-  'images/carte/image35.png','images/carte/image36.png',
-  'images/carte/image37.png','images/carte/image38.png',
-  'images/carte/image39.png','images/carte/image40.png',
-  'images/carte/image41.png','images/carte/image42.png',
-  'images/carte/image43.png','images/carte/image44.png',
-  'images/carte/image45.png','images/carte/image46.png',
-  'images/carte/image47.png','images/carte/image48.png',
-  'images/carte/image49.png','images/carte/image50.png',
+  'images/carte/image14.png','images/carte/image.png','images/carte/image2 .png','images/carte/image3.png',
+  'images/carte/image4.png','images/carte/image5.png','images/carte/image6.png','images/carte/image7.png',
+  'images/carte/image8.png','images/carte/image9.png','images/carte/image10.png','images/carte/image11.png',
+  'images/carte/image12.png','images/carte/image13.png','images/carte/image15.png','images/carte/image16.1.png',
+  'images/carte/image16.2.png','images/carte/image17.png','images/carte/image18.png','images/carte/image19.png',
+  'images/carte/image20.png','images/carte/image21.png','images/carte/image22.png','images/carte/image23.png',
+  'images/carte/image24.png','images/carte/image25.png','images/carte/image26.png','images/carte/image27.png',
+  'images/carte/image28.png','images/carte/image29.png','images/carte/image30.png','images/carte/image31.png',
+  'images/carte/image31.1.png','images/carte/image32.png','images/carte/image33.png','images/carte/image34.png',
+  'images/carte/image35.png','images/carte/image36.png','images/carte/image37.png','images/carte/image38.png',
+  'images/carte/image39.png','images/carte/image40.png','images/carte/image41.png','images/carte/image42.png',
+  'images/carte/image43.png','images/carte/image44.png','images/carte/image45.png','images/carte/image46.png',
+  'images/carte/image47.png','images/carte/image48.png','images/carte/image49.png','images/carte/image50.png',
 ];
 
 const MISSIONS=[
@@ -350,7 +333,7 @@ function buildMissions(){
       html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()}">
         <div class="mc-head" onclick="toggle('${m.id}')">
           <div class="mc-thumb">
-            ${carteImg?`<img src="${carteImg}" alt="terrain" onerror="this.style.display='none'"><div class="mc-thumb-overlay">${m.id}</div>`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:8px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">${m.id}</div>`}
+            ${carteImg?`<img src="${carteImg}" alt="terrain" onerror="this.style.display='none'"><div class="mc-thumb-overlay">${m.id}</div>`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:10px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">${m.id}</div>`}
           </div>
           <div class="mc-info">
             <div class="mc-top"><div><div class="mid">${m.id} — ${m.sec}</div><div class="mtitle">${m.name}</div></div><span class="mbadge ${m.bclass}">${m.badge}</span></div>
@@ -361,10 +344,10 @@ function buildMissions(){
         <div class="hint" onclick="toggle('${m.id}')">▼ briefing complet</div>
         <div class="mdetail">
           <div class="det-photos">
-            ${carteImg?`<div class="det-photo"><img src="${carteImg}" alt="carte"><div class="det-photo-lbl">TERRAIN / CARTE</div></div>`:`<div class="det-photo" style="display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:2px;color:#2a3a4a">PAS DE CARTE</div>`}
-            ${hvtImg?`<div class="det-photo"><img src="${hvtImg}" alt="HVT"><div class="det-photo-lbl">PHOTO HVT</div></div>`:`<div class="hvt-slot" onclick="addPhoto('${m.id}')"><div class="hvt-lbl">📷 PHOTO HVT<br><span style="font-size:8px;color:#2a1818;font-family:sans-serif">Cliquer pour charger</span></div></div>`}
+            ${carteImg?`<div class="det-photo"><img src="${carteImg}" alt="carte"><div class="det-photo-lbl">TERRAIN / CARTE</div></div>`:`<div class="det-photo" style="display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px;color:#2a3a4a">PAS DE CARTE</div>`}
+            ${hvtImg?`<div class="det-photo"><img src="${hvtImg}" alt="HVT"><div class="det-photo-lbl">PHOTO HVT</div></div>`:`<div class="hvt-slot" onclick="addPhoto('${m.id}')"><div class="hvt-lbl">📷 PHOTO HVT<br><span style="font-size:10px;color:#2a1818;font-family:sans-serif">Cliquer pour charger</span></div></div>`}
           </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
             <img src="${m.fenrir}" class="fenrir-mission" alt="Fenrir" onerror="this.style.display='none'">
             <span class="photo-tag ${m.tag==='alive'?'tag-alive':m.tag==='dead'?'tag-dead':'tag-hv'}">${m.tagLbl}</span>
           </div>
@@ -397,7 +380,6 @@ function search(q){
   const s=q.toLowerCase().trim();
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',!!s&&!mc.dataset.name.includes(s)));
 }
-const SAVED_PHOTOS={};
 function addPhoto(id){
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
   inp.onchange=e=>{
@@ -434,7 +416,6 @@ async function handleDiscordToken(token){
     const avatar=user.avatar?`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`:'';
     const sess={name:user.username,avatar,grade:'Contractuel',loginTime:Date.now(),token};
     sessionStorage.setItem('atlas_user',JSON.stringify(sess));
-    // Nettoyer l'URL
     history.replaceState(null,'',SITE_URL);
     loginSuccess(sess);
   }catch(e){
@@ -443,20 +424,16 @@ async function handleDiscordToken(token){
   }
 }
 window.addEventListener('load',()=>{
-  // 1. Vérifier si token Discord dans l'URL (après redirection OAuth2)
-  // Discord peut mettre les params dans n'importe quel ordre
   const hash=window.location.hash.substring(1);
   if(hash.includes('access_token')){
     const params=new URLSearchParams(hash);
     const token=params.get('access_token');
     if(token){handleDiscordToken(token);return;}
   }
-  // 2. Vérifier session existante
   try{
     const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');
     if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){loginSuccess(sess);return;}
   }catch(e){}
-  // 3. Sinon afficher login
 });
 </script>
 </body>
