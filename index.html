@@ -112,7 +112,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 
 <!-- LOGIN -->
 <div id="loginScreen">
-  <img src="images/fenrir/fenrir Simple.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.src='images/fenrir/fenrir salut.png'">
+  <img src="images/fenrir/Simple.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.src='images/fenrir/salut.png'">
   <div class="login-title">ATLAS — IRON TIDE</div>
   <div class="login-sub">opération classifiée — accès restreint</div>
   <div class="login-msg">
@@ -126,7 +126,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 
 <!-- ACCÈS REFUSÉ -->
 <div id="accessDenied">
-  <img src="images/fenrir/fenrir Surpris.png" style="width:120px;height:120px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
+  <img src="images/fenrir/Surpris.png" style="width:120px;height:120px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
   <div style="font-size:24px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
   <div style="font-size:12px;color:#666050;text-align:center;max-width:280px;line-height:1.8;font-family:sans-serif">
     Tu n'es pas membre du serveur DFT<br>ou tu n'as pas le grade requis.<br><br>
@@ -150,7 +150,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 
   <div class="hero">
     <div class="fenrir-bar">
-      <img src="images/fenrir/fenrir Ordre.png" class="fenrir-bar-img" alt="Fenrir" onerror="this.src='images/fenrir/fenrir salut.png'">
+      <img src="images/fenrir/Ordre.png" class="fenrir-bar-img" alt="Fenrir" onerror="this.src='images/fenrir/salut.png'">
       <div class="fenrir-bar-msg">
         <strong>Sergent Fenrir — Briefing Opérationnel</strong><br>
         "Contractuels, l'île est en guerre. 52 points stratégiques sont sous contrôle ennemi. Chaque base libérée, chaque HVT capturé nous rapproche de la victoire. <strong>ATLAS ne recule pas.</strong>"
@@ -194,7 +194,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 <script>
 const CLIENT_ID='1508841496286200011';
 const SERVER_ID='1051477960722493520';
-const REDIRECT=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/callback.html');
+const REDIRECT=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/');
 
 function doLogin(){
   window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT}&response_type=token&scope=identify%20guilds.members.read`;
@@ -202,17 +202,17 @@ function doLogin(){
 
 // Fenrir images par contexte
 const F={
-  salut:'images/fenrir/fenrir salut.png',
-  simple:'images/fenrir/fenrir Simple.png',
-  ordre:'images/fenrir/fenrir Ordre.png',
-  soldat:'images/fenrir/fenrir Soldat.png',
-  arme:'images/fenrir/fenrir Armé.png',
-  tank:'images/fenrir/fenrir assaut-tank.png',
-  gagne:'images/fenrir/fenrir gagnee.png',
-  surpris:'images/fenrir/fenrir Surpris.png',
-  baguette:'images/fenrir/fenrir baguette.png',
-  grade:'images/fenrir/fenrir remise-de-grade.png',
-  ecran:'images/fenrir/fenrir Ecran-Ordinateur.png',
+  salut:'images/fenrir/salut.png',
+  simple:'images/fenrir/Simple.png',
+  ordre:'images/fenrir/Ordre.png',
+  soldat:'images/fenrir/Soldat.png',
+  arme:'images/fenrir/Armé.png',
+  tank:'images/fenrir/assaut-tank.png',
+  gagne:'images/fenrir/gagnee.png',
+  surpris:'images/fenrir/Surpris.png',
+  baguette:'images/fenrir/baguette.png',
+  grade:'images/fenrir/remise-de-grade.png',
+  ecran:'images/fenrir/Ecran-Ordinateur.png',
 };
 
 // HVT photos
@@ -408,7 +408,7 @@ function loadProgress(){
 
 // Auth Discord
 function doLogin(){
-  const redirect=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/callback.html');
+  const redirect=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/');
   window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify%20guilds.members.read`;
 }
 
