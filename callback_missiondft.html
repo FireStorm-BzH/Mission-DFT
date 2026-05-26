@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS — Connexion Discord</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080a0e;font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh;display:flex;align-items:center;justify-content:center}
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+.card{background:#0d1015;border:1px solid #1e1e18;border-top:3px solid #c8a227;padding:2rem;text-align:center;max-width:380px;width:90%}
+.logo{font-size:48px;margin-bottom:16px}
+.title{font-size:24px;font-weight:700;color:#c8a227;letter-spacing:2px;margin-bottom:6px}
+.sub{font-size:10px;letter-spacing:4px;color:#555040;margin-bottom:20px}
+.status{font-size:13px;color:#a09888;line-height:1.8;font-family:sans-serif;margin-bottom:16px}
+.status strong{color:#e8dfc8}
+.spinner{width:32px;height:32px;border:2px solid #2a2820;border-top-color:#c8a227;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ok{background:#051508;border:1px solid #0a3a10;color:#70aa70;padding:10px;font-size:12px;margin-bottom:12px;font-family:sans-serif}
+.err{background:#150505;border:1px solid #3a0a0a;color:#cc7070;padding:10px;font-size:12px;margin-bottom:12px;font-family:sans-serif}
+.grade{display:inline-block;background:#1a1800;border:1px solid #3a2800;color:#c8a227;font-size:9px;letter-spacing:3px;padding:3px 12px;font-weight:700;margin:4px}
+.btn{background:#c8a227;color:#0a0c10;font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;padding:10px 24px;border:none;cursor:pointer;width:100%;margin-top:8px}
+.btn:hover{opacity:.85}
+.btn.secondary{background:transparent;border:1px solid #2a2820;color:#666050}
+.avatar{width:64px;height:64px;border-radius:50%;border:2px solid #c8a227;margin:0 auto 12px;display:block}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">🐺</div>
+  <div class="title">ATLAS — IRON TIDE</div>
+  <div class="sub">vérification discord en cours</div>
+  <div id="content">
+    <div class="spinner"></div>
+    <div class="status">Connexion à Discord en cours...<br><strong>Vérification du grade en cours</strong></div>
+  </div>
+</div>
+
+<script>
+const CLIENT_ID = '1508841496286200011';
+const SERVER_ID = '1051477960722493520';
+// Rôles autorisés — ajoute l'ID du rôle Contractuel ici
+// Pour récupérer l'ID : Paramètres serveur → Rôles → clic droit "Contractuel" → Copier l'ID
+const ALLOWED_ROLES = [
+  'ROLE_ID_CONTRACTUEL',   // ← remplace par l'ID du rôle Contractuel
+  'ROLE_ID_CAPORAL',       // ← optionnel : ajouter les autres grades si besoin
+];
+
+const GRADE_NAMES = {
+  'ROLE_ID_CONTRACTUEL': 'Contractuel',
+  'ROLE_ID_CAPORAL': 'Caporal',
+};
+
+// Hiérarchie complète DFT
+const ALL_GRADES = [
+  'Contractuel','Caporal','Caporal Chef',
+  'Sergent','Sergent Chef','Adjudant',
+  'Major','Lieutenant','Capitaine'
+];
+
+function setContent(html) {
+  document.getElementById('content').innerHTML = html;
+}
+
+function getToken() {
+  // Récupérer le token depuis le fragment d'URL (#access_token=...)
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+  return params.get('access_token');
+}
+
+async function getUser(token) {
+  const r = await fetch('https://discord.com/api/users/@me', {
+    headers: { Authorization: 'Bearer ' + token }
+  });
+  if (!r.ok) throw new Error('Impossible de récupérer le profil Discord');
+  return r.json();
+}
+
+async function getMember(token) {
+  const r = await fetch(`https://discord.com/api/users/@me/guilds/${SERVER_ID}/member`, {
+    headers: { Authorization: 'Bearer ' + token }
+  });
+  if (r.status === 404) return null; // pas membre du serveur
+  if (!r.ok) throw new Error('Impossible de vérifier l\'appartenance au serveur');
+  return r.json();
+}
+
+function detectGrade(roles) {
+  if (!roles || !roles.length) return 'Contractuel';
+  // Priorité par ordre décroissant (Capitaine > Lieutenant > etc.)
+  const gradeMap = {
+    'Capitaine': 8, 'Lieutenant': 7, 'Major': 6,
+    'Adjudant': 5, 'Sergent Chef': 4, 'Sergent': 3,
+    'Caporal Chef': 2, 'Caporal': 1, 'Contractuel': 0
+  };
+  let highestGrade = 'Contractuel';
+  let highestLevel = -1;
+  for (const [name, level] of Object.entries(gradeMap)) {
+    if (ALLOWED_ROLES.some(r => roles.includes(r)) && level > highestLevel) {
+      highestGrade = name;
+      highestLevel = level;
+    }
+  }
+  return highestGrade;
+}
+
+async function run() {
+  try {
+    const token = getToken();
+    if (!token) {
+      // Pas de token = rediriger vers Discord OAuth2
+      const redirect = encodeURIComponent(`https://firestorm-bzh.github.io/Mission-DFT/callback.html`);
+      const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify%20guilds.members.read`;
+      window.location.href = url;
+      return;
+    }
+
+    setContent(`
+      <div class="spinner"></div>
+      <div class="status">Identification en cours...<br><strong>Connexion au serveur DFT</strong></div>
+    `);
+
+    // Récupérer l'utilisateur
+    const user = await getUser(token);
+    const avatarUrl = user.avatar
+      ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`
+      : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`;
+
+    setContent(`
+      <div class="spinner"></div>
+      <div class="status">Vérification du grade...<br><strong>${user.username}</strong></div>
+    `);
+
+    // Vérifier l'appartenance au serveur
+    const member = await getMember(token);
+
+    if (!member) {
+      setContent(`
+        <div class="err">❌ Tu n'es pas membre du serveur DFT.</div>
+        <div class="status">
+          Ce briefing opérationnel est réservé aux membres actifs.<br>
+          Rejoins le serveur Discord DFT pour y accéder.
+        </div>
+        <button class="btn secondary" onclick="window.location.href='index.html'">RETOUR</button>
+      `);
+      return;
+    }
+
+    // Vérifier les rôles
+    const memberRoles = member.roles || [];
+    const hasAccess = ALLOWED_ROLES.some(r => memberRoles.includes(r))
+      || ALLOWED_ROLES[0] === 'ROLE_ID_CONTRACTUEL'; // Mode dev : accès si IDs pas encore configurés
+
+    if (!hasAccess) {
+      setContent(`
+        <img src="${avatarUrl}" class="avatar" alt="avatar">
+        <div class="err">❌ Grade insuffisant — accès refusé.</div>
+        <div class="status">
+          <strong>${user.username}</strong><br>
+          Le grade minimum requis est <strong>Contractuel</strong>.<br>
+          Contacte un officier DFT pour obtenir ton grade.
+        </div>
+        <button class="btn secondary" onclick="window.location.href='index.html'">RETOUR</button>
+      `);
+      return;
+    }
+
+    // Accès accordé !
+    const grade = detectGrade(memberRoles);
+    const sessionData = {
+      id: user.id,
+      name: user.username,
+      avatar: avatarUrl,
+      grade: grade,
+      token: token,
+      loginTime: Date.now()
+    };
+    sessionStorage.setItem('atlas_user', JSON.stringify(sessionData));
+
+    setContent(`
+      <img src="${avatarUrl}" class="avatar" alt="avatar">
+      <div class="ok">✅ Accès autorisé — Bienvenue Contractuel !</div>
+      <div class="status">
+        <strong>${user.username}</strong><br>
+        Grade : <span class="grade">${grade.toUpperCase()}</span><br>
+        Authentifié sur le serveur DFT
+      </div>
+      <div class="status" style="font-size:11px;color:#555040;margin-top:8px">
+        Redirection vers le briefing dans 2 secondes...
+      </div>
+    `);
+
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 2000);
+
+  } catch (err) {
+    setContent(`
+      <div class="err">❌ Erreur : ${err.message}</div>
+      <div class="status">
+        Réessaie dans quelques secondes.<br>
+        Si le problème persiste, contacte un officier DFT.
+      </div>
+      <button class="btn" onclick="location.reload()">RÉESSAYER</button>
+      <button class="btn secondary" onclick="window.location.href='index.html'">MODE DÉMO</button>
+    `);
+  }
+}
+
+run();
+</script>
+</body>
+</html>
