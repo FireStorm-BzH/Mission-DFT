@@ -10,6 +10,7 @@
 :root{--gold:#c8a227;--dark:#080a0e;--card:#0d1015;--border:#1e1e18}
 body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh;font-size:18px}
 
+/* ===== LOGIN ===== */
 #loginScreen{position:fixed;inset:0;background:#080a0e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px;padding:24px}
 #loginScreen.hidden{display:none}
 .login-fenrir{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);object-fit:cover}
@@ -19,17 +20,20 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .login-msg strong{color:#c8a227;font-family:'Oswald',sans-serif;font-size:17px}
 .login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;padding:18px 44px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:380px}
 .login-btn:hover{opacity:.85}
-
 #accessDenied{position:fixed;inset:0;background:#080a0e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px;padding:24px}
 #accessDenied.show{display:flex}
 
+/* ===== APP ===== */
 #app{display:none}
 #app.show{display:block}
-
-.topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:14px;font-weight:700;letter-spacing:2px}
+.topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:14px;font-weight:700;letter-spacing:2px;gap:10px;flex-wrap:wrap}
 .user-badge{display:flex;align-items:center;gap:10px}
 .user-avatar{width:40px;height:40px;border-radius:50%;border:2px solid #0a0c10;object-fit:cover}
+.topbar-btns{display:flex;gap:6px}
+.topbar-btn{background:#0a0c10;color:var(--gold);border:none;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;padding:6px 12px;cursor:pointer;font-weight:700;border-radius:2px;transition:opacity .2s}
+.topbar-btn:hover{opacity:.8}
 
+/* ===== HERO ===== */
 .hero{padding:1.6rem 1.2rem;border-bottom:2px solid var(--gold)}
 .fenrir-bar{display:flex;align-items:center;gap:16px;background:#0f1218;border:1px solid #2a2820;padding:16px;margin-bottom:16px;border-radius:4px}
 .fenrir-bar-img{width:100px;height:100px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0}
@@ -39,17 +43,38 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .htitle{font-size:clamp(44px,7vw,72px);line-height:.95;color:var(--gold);letter-spacing:2px;font-weight:700;margin-bottom:8px}
 .hsub{font-size:14px;letter-spacing:4px;color:#555040;margin-bottom:14px}
 
+/* ===== STATS ===== */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1.2rem}
 .stat{background:#0f1218;border:1px solid #2a2820;padding:16px 10px;text-align:center;border-radius:4px}
 .stat-n{font-size:34px;font-weight:700;color:var(--gold)}
 .stat-l{font-size:13px;letter-spacing:2px;color:#555040;margin-top:3px}
-
 .progress{background:#0f1218;border:1px solid #2a2820;padding:1rem 1.2rem;display:flex;align-items:center;gap:14px;margin:.6rem 1.2rem;border-radius:4px}
 .pb-label{font-size:13px;letter-spacing:2px;color:#555040;white-space:nowrap}
 .pb-track{flex:1;height:8px;background:#1a1810;border-radius:4px}
 .pb-fill{height:8px;background:var(--gold);transition:width .4s;width:0%;border-radius:4px}
 .pb-pct{font-size:16px;color:var(--gold);font-weight:700;min-width:42px;text-align:right}
 
+/* ===== PRÉSENCE JOUEURS ===== */
+.presence-panel{margin:0 1.2rem 1rem;background:#080c10;border:1px solid #1a2820;border-radius:4px;overflow:hidden}
+.presence-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#0a1018;border-bottom:1px solid #1a2820;cursor:pointer}
+.presence-title{font-size:12px;letter-spacing:4px;color:var(--gold);font-weight:700}
+.presence-dot{width:8px;height:8px;border-radius:50%;background:#2a5a2a;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.presence-body{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.presence-add{display:flex;gap:8px}
+.presence-add input{flex:1;background:#080a0e;border:1px solid #2a2820;color:#e8dfc8;font-size:14px;padding:8px 12px;font-family:'Oswald',sans-serif;border-radius:3px;outline:none}
+.presence-add input:focus{border-color:var(--gold)}
+.presence-add-btn{background:var(--gold);color:#000;border:none;font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;padding:8px 14px;cursor:pointer;border-radius:3px}
+.players-list{display:flex;flex-wrap:wrap;gap:8px}
+.player-chip{display:flex;align-items:center;gap:6px;background:#0f1a10;border:1px solid #1a3a1a;border-radius:20px;padding:5px 12px;font-size:13px;color:#70c070;font-family:'Oswald',sans-serif;letter-spacing:1px;position:relative;cursor:default}
+.player-chip .p-status{width:7px;height:7px;border-radius:50%;background:#50c050;flex-shrink:0}
+.player-chip .p-status.away{background:#c08030}
+.player-chip .p-remove{background:none;border:none;color:#335533;font-size:12px;cursor:pointer;padding:0 2px;margin-left:2px;line-height:1}
+.player-chip .p-remove:hover{color:#cc4444}
+.player-chip.away-chip{background:#1a1208;border-color:#3a2a10;color:#a08040}
+.presence-empty{font-size:12px;color:#2a3a2a;letter-spacing:2px;font-family:'Oswald',sans-serif}
+
+/* ===== FILTRES + RECHERCHE ===== */
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:1rem 1.2rem}
 .fb{background:#0f1218;border:1px solid #2a2820;color:#666050;font-size:13px;letter-spacing:2px;padding:9px 18px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .fb:hover,.fb.on{background:#1a1800;border-color:var(--gold);color:var(--gold)}
@@ -57,15 +82,16 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .fb.on.fo{border-color:#cc6600;color:#ff9040;background:#150a05}
 .fb.on.fg{border-color:#226622;color:#50b050;background:#051505}
 .fb.on.fb2{border-color:#224488;color:#6090cc;background:#050a15}
-
 .srch{display:flex;align-items:center;gap:10px;margin:0 1.2rem 1rem}
 .srch input{flex:1;background:#0f1218;border:1px solid #2a2820;color:#e8dfc8;font-size:16px;padding:10px 14px;outline:none;font-family:'Oswald',sans-serif;border-radius:3px}
 .srch input::placeholder{color:#333020}
 
+/* ===== SECTION HEADER ===== */
 .sec-hdr{display:flex;align-items:center;gap:10px;margin:1.8rem 1.2rem .8rem}
 .slbl{font-size:13px;letter-spacing:4px;color:var(--gold);font-weight:700;white-space:nowrap}
 .sline{flex:1;height:1px;background:rgba(200,162,39,.25)}
 
+/* ===== MISSION CARDS ===== */
 .grid{margin:0 1.2rem;display:grid;gap:10px}
 .mc{background:var(--card);border:1px solid var(--border);border-left:6px solid #333;border-radius:0 4px 4px 0;overflow:hidden;transition:border-color .15s}
 .mc:hover{border-left-color:var(--gold)!important}
@@ -74,25 +100,18 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mc.p3{border-left-color:#1a6a2a}
 .mc.p4{border-left-color:#224488}
 .mc.pF{border-left-color:var(--gold)}
-.mc.done-mc{opacity:.5;border-left-color:#1a3a1a!important}
-
-/* CARTE VIGNETTE - ratio correct, pas de crop */
+.mc.done-mc{opacity:.55;border-left-color:#1a3a1a!important}
 .mc-head{display:flex;cursor:pointer;min-height:160px}
 .mc-thumb{width:180px;min-width:180px;height:180px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
 .mc-thumb img{width:100%;height:100%;object-fit:contain;background:#0a1520}
 .mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:11px;letter-spacing:1px;color:#c8a227;padding:4px 8px;font-family:'Oswald',sans-serif}
 .mc-img-upload{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);border:1px solid var(--gold);color:var(--gold);font-size:10px;padding:3px 6px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;border-radius:2px;z-index:2}
 .mc-img-upload:hover{background:var(--gold);color:#000}
-
 .mc-info{flex:1;padding:1rem 1.2rem;min-width:0}
 .mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
 .mid{font-size:12px;letter-spacing:3px;color:#444030;font-weight:700}
 .mbadge{font-size:12px;letter-spacing:2px;padding:4px 10px;font-weight:700;white-space:nowrap;flex-shrink:0;border-radius:2px}
-.br{background:#200a0a;color:#ff5050}
-.bo{background:#201000;color:#ff8030}
-.bg{background:#081508;color:#50a050}
-.bb{background:#080f1e;color:#5080cc}
-.bgold{background:#181200;color:var(--gold)}
+.br{background:#200a0a;color:#ff5050}.bo{background:#201000;color:#ff8030}.bg{background:#081508;color:#50a050}.bb{background:#080f1e;color:#5080cc}.bgold{background:#181200;color:var(--gold)}
 .mtitle{font-size:22px;font-weight:700;color:#e0d8c0;letter-spacing:.5px;margin-bottom:6px;line-height:1.2}
 .mloc{font-size:13px;color:#555040;letter-spacing:2px;margin-bottom:7px}
 .mdesc{font-size:15px;color:#777060;line-height:1.7;font-family:sans-serif}
@@ -100,48 +119,75 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .hint{font-size:13px;color:#3a3020;letter-spacing:2px;text-align:right;padding:.5rem 1.2rem;cursor:pointer}
 .hint:hover{color:#888060}
 
-/* DETAIL */
+/* ===== SQUAD MINI BADGE sur la carte ===== */
+.mc-squad-bar{display:flex;flex-wrap:wrap;gap:4px;padding:4px 10px 6px;background:#08100a;border-top:1px solid #0f2010}
+.mc-squad-chip{font-size:10px;letter-spacing:1px;color:#40a040;background:#0a1a0a;border:1px solid #1a3a1a;border-radius:10px;padding:2px 8px;font-family:'Oswald',sans-serif}
+
+/* ===== DETAIL ===== */
 .mdetail{display:none;border-top:1px solid #1a1a14;padding:1.2rem}
 .mc.open .mdetail{display:block}
 
-/* PHOTOS DETAIL — grande hauteur, object-contain pour tout voir */
+/* ===== ONGLETS TERRAIN ===== */
 .det-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-
-/* ONGLETS TERRAIN */
 .terrain-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid #2a2820}
 .terrain-tab{font-size:11px;letter-spacing:3px;color:#444030;font-family:'Oswald',sans-serif;font-weight:700;padding:7px 14px;cursor:pointer;border:1px solid transparent;border-bottom:none;border-radius:3px 3px 0 0;transition:all .15s;background:transparent;user-select:none}
 .terrain-tab:hover{color:#888070}
 .terrain-tab.active{background:#0d1520;border-color:#2a3a4a;color:#6ab0e0}
-.terrain-panel{display:none;height:320px;overflow:hidden;border:1px solid #2a2820;border-top:none;position:relative;background:#0a1520;border-radius:0 3px 3px 3px;align-items:center;justify-content:center}
+.terrain-panel{display:none;height:300px;overflow:hidden;border:1px solid #2a2820;border-top:none;position:relative;background:#0a1520;border-radius:0 3px 3px 3px;align-items:center;justify-content:center}
 .terrain-panel.active{display:flex}
 .terrain-panel img{width:100%;height:100%;object-fit:contain}
 .terrain-empty{display:flex;flex-direction:column;align-items:center;gap:8px}
+.det-photo{height:300px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.det-photo img{width:100%;height:100%;object-fit:contain}
 .det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);font-size:12px;letter-spacing:2px;color:#888070;padding:5px 10px;font-family:'Oswald',sans-serif}
 .det-photo-btn{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.75);border:1px solid var(--gold);color:var(--gold);font-size:11px;padding:4px 8px;cursor:pointer;font-family:'Oswald',sans-serif;letter-spacing:1px;border-radius:2px}
 .det-photo-btn:hover{background:var(--gold);color:#000}
 
-/* COLONNE HVT */
-.det-photo{height:320px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520;border-radius:3px;display:flex;align-items:center;justify-content:center}
-.det-photo img{width:100%;height:100%;object-fit:contain}
-.hvt-slot{background:#100808;border:2px dashed #3a1010;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;border-radius:3px}
-.hvt-slot:hover{border-color:var(--gold)}
-.hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0a0808}
-.hvt-lbl{font-size:14px;letter-spacing:2px;color:#4a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
+/* ===== MÉDAILLES ===== */
+.medals-section{margin-bottom:12px}
+.medals-lbl{font-size:11px;letter-spacing:3px;color:#5a4a10;margin-bottom:8px;font-weight:700}
+.medals-row{display:flex;gap:8px;flex-wrap:wrap}
+.medal{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:default;transition:transform .15s}
+.medal:hover{transform:scale(1.08)}
+.medal-icon{font-size:28px;filter:drop-shadow(0 0 4px rgba(200,162,39,.4))}
+.medal-name{font-size:9px;letter-spacing:2px;color:#888060;font-family:'Oswald',sans-serif;font-weight:700;text-align:center;max-width:70px;line-height:1.2}
 
-.photo-tag{display:inline-block;font-size:13px;letter-spacing:2px;padding:5px 12px;margin-bottom:10px;font-weight:700;border-radius:2px}
-.tag-alive{background:#081808;color:#50a050}
-.tag-dead{background:#180808;color:#ff5050}
-.tag-hv{background:#181008;color:#ff8030}
-.fenrir-mission{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);object-fit:cover}
+/* ===== SQUAD DANS MISSION ===== */
+.squad-section{margin-bottom:14px;border:1px solid #1a3020;border-radius:4px;overflow:hidden;background:#07100a}
+.squad-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#0a1a0c;border-bottom:1px solid #1a3020}
+.squad-title{font-size:11px;letter-spacing:4px;color:#50a050;font-weight:700}
+.squad-count{font-size:11px;color:#2a5a2a;letter-spacing:2px}
+.squad-body{padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.squad-members{display:flex;flex-wrap:wrap;gap:6px;min-height:32px}
+.squad-member{display:flex;align-items:center;gap:6px;background:#0d1f0d;border:1px solid #1a4a1a;border-radius:3px;padding:5px 10px;font-size:13px;color:#70c070;font-family:'Oswald',sans-serif;letter-spacing:1px}
+.squad-member .sm-role{font-size:10px;color:#3a7a3a;letter-spacing:2px}
+.squad-member .sm-remove{background:none;border:none;color:#225522;font-size:13px;cursor:pointer;margin-left:4px}
+.squad-member .sm-remove:hover{color:#cc4444}
+.squad-empty{font-size:11px;color:#1a3a1a;letter-spacing:3px;font-family:'Oswald',sans-serif;padding:6px 0}
+.squad-add-row{display:flex;gap:6px;flex-wrap:wrap}
+.squad-player-btn{background:#0a1a0a;border:1px solid #1a3a1a;color:#40a040;font-size:12px;letter-spacing:1px;padding:6px 12px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;border-radius:3px;transition:all .15s}
+.squad-player-btn:hover{background:#0f2a0f;border-color:var(--gold);color:var(--gold)}
+.squad-player-btn.assigned{background:#0a200a;border-color:#50a050;color:#90e090}
+.squad-add-custom{display:flex;gap:6px;margin-top:4px}
+.squad-add-custom input{flex:1;background:#080a0e;border:1px solid #1a3020;color:#e8dfc8;font-size:13px;padding:6px 10px;font-family:sans-serif;border-radius:3px;outline:none;min-width:0}
+.squad-add-custom input:focus{border-color:#50a050}
+.squad-add-custom select{background:#080a0e;border:1px solid #1a3020;color:#a0c0a0;font-size:12px;padding:6px 8px;font-family:'Oswald',sans-serif;border-radius:3px;outline:none}
+.squad-add-custom-btn{background:#1a3a1a;color:#50a050;border:1px solid #2a5a2a;font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:6px 12px;cursor:pointer;border-radius:3px}
+.squad-add-custom-btn:hover{background:#2a5a2a;color:#90e090}
 
+/* ===== OBJECTIFS ===== */
 .objs{margin-bottom:12px}
 .obj{display:flex;gap:10px;margin-bottom:8px;font-size:15px;color:#777060;font-family:sans-serif;line-height:1.6}
 .onum{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:28px;font-size:16px}
 
-.rwds{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.rpill{font-size:13px;letter-spacing:1px;color:var(--gold);background:#141000;border:1px solid #282000;padding:5px 12px;font-weight:700;border-radius:2px}
+/* ===== NOTES ===== */
+.notes-zone{margin-top:12px;border-top:1px solid #1a2030;padding-top:10px}
+.notes-lbl{font-size:11px;letter-spacing:3px;color:#334050;margin-bottom:6px;font-weight:700}
+.notes-ta{width:100%;background:#080c10;border:1px solid #1a2030;color:#a0b8c8;font-size:14px;padding:10px 12px;font-family:sans-serif;resize:vertical;min-height:80px;outline:none;border-radius:3px;line-height:1.6}
+.notes-ta:focus{border-color:#2a4060;color:#c8dce8}
+.notes-ta::placeholder{color:#1a2838}
 
-/* BOUTONS ACTION */
+/* ===== BOUTONS ACTION ===== */
 .action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
 .done-btn{background:transparent;border:1px solid #2a2820;color:#666050;font-size:14px;letter-spacing:2px;padding:10px 20px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .done-btn:hover{border-color:var(--gold);color:var(--gold)}
@@ -149,84 +195,78 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .edit-btn{background:transparent;border:1px solid #2a3a4a;color:#4a6a8a;font-size:13px;letter-spacing:2px;padding:10px 16px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;transition:all .2s;border-radius:3px}
 .edit-btn:hover{border-color:#6090cc;color:#6090cc}
 
-/* ZONE NOTES LIBRES */
-.notes-zone{margin-top:12px;border-top:1px solid #1a2030;padding-top:10px}
-.notes-lbl{font-size:11px;letter-spacing:3px;color:#334050;margin-bottom:6px;font-weight:700}
-.notes-ta{width:100%;background:#080c10;border:1px solid #1a2030;color:#a0b8c8;font-size:14px;padding:10px 12px;font-family:sans-serif;resize:vertical;min-height:80px;outline:none;border-radius:3px;line-height:1.6}
-.notes-ta:focus{border-color:#2a4060;color:#c8dce8}
-.notes-ta::placeholder{color:#1a2838}
-
-/* MODAL EDIT */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+/* ===== MODAL GÉNÉRAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
 .modal-overlay.show{display:flex}
-.modal{background:#0d1015;border:1px solid var(--gold);border-radius:6px;padding:24px;width:100%;max-width:700px;max-height:90vh;overflow-y:auto}
-.modal-title{font-size:20px;color:var(--gold);letter-spacing:2px;margin-bottom:18px;font-weight:700}
-.modal label{display:block;font-size:11px;letter-spacing:3px;color:#555040;margin-bottom:4px;margin-top:12px;font-weight:700}
+.modal{background:#0d1015;border:1px solid var(--gold);border-radius:6px;padding:24px;width:100%;max-width:680px;margin:auto}
+.modal-title{font-size:20px;color:var(--gold);letter-spacing:2px;margin-bottom:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+.modal label{display:block;font-size:11px;letter-spacing:3px;color:#555040;margin-bottom:4px;margin-top:14px;font-weight:700}
 .modal input,.modal textarea,.modal select{width:100%;background:#080a0e;border:1px solid #2a2820;color:#e8dfc8;font-size:14px;padding:9px 12px;font-family:sans-serif;border-radius:3px;outline:none}
 .modal input:focus,.modal textarea:focus{border-color:var(--gold)}
 .modal textarea{resize:vertical;min-height:80px;line-height:1.6}
-.modal-btns{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+.modal-btns{display:flex;gap:10px;margin-top:20px;justify-content:flex-end;flex-wrap:wrap}
 .modal-save{background:var(--gold);color:#000;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;padding:10px 24px;border:none;cursor:pointer;border-radius:3px}
 .modal-cancel{background:transparent;color:#666050;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;padding:10px 24px;border:1px solid #2a2820;cursor:pointer;border-radius:3px}
 .modal-cancel:hover{border-color:#555040;color:#888070}
-
 .obj-edit-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
 .obj-edit-row{display:flex;gap:6px;align-items:center}
 .obj-edit-row input{flex:1}
-.obj-del{background:#200808;border:1px solid #401010;color:#cc4444;font-size:14px;padding:8px 12px;cursor:pointer;border-radius:3px;font-family:sans-serif}
+.obj-del{background:#200808;border:1px solid #401010;color:#cc4444;font-size:14px;padding:8px 12px;cursor:pointer;border-radius:3px}
 .obj-del:hover{background:#400808}
 .obj-add{background:transparent;border:1px dashed #2a3a2a;color:#445544;font-size:12px;letter-spacing:2px;padding:7px 14px;cursor:pointer;font-family:'Oswald',sans-serif;font-weight:700;border-radius:3px;margin-top:4px}
 .obj-add:hover{border-color:#50a050;color:#50a050}
 
+/* Medals edit in modal */
+.medal-edit-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.medal-edit-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;opacity:.4;transition:opacity .15s;padding:6px 10px;border:1px solid #1a1810;border-radius:4px}
+.medal-edit-item:hover{opacity:.75}
+.medal-edit-item.sel{opacity:1;border-color:var(--gold);background:#181200}
+.medal-edit-item .mei{font-size:26px}
+.medal-edit-item .men{font-size:9px;letter-spacing:2px;color:#888060;font-family:'Oswald',sans-serif;text-align:center;max-width:68px;line-height:1.2}
+
 .hidden{display:none!important}
 .botbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:14px;font-weight:700;letter-spacing:4px;padding:10px;margin-top:2rem}
+
+/* photo-tag */
+.photo-tag{display:inline-block;font-size:13px;letter-spacing:2px;padding:5px 12px;margin-bottom:10px;font-weight:700;border-radius:2px}
+.tag-alive{background:#081808;color:#50a050}
+.tag-dead{background:#180808;color:#ff5050}
+.tag-hv{background:#181008;color:#ff8030}
+.fenrir-mission{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);object-fit:cover}
 </style>
 </head>
 <body>
 
+<!-- LOGIN -->
 <div id="loginScreen">
-  <img src="images/fenrir/salut.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.style.opacity='0'">
+  <img src="images/fenrir/salut.png" class="login-fenrir" alt="Fenrir" onerror="this.style.opacity='0'">
   <div class="login-title">Mission DFT Secret Defence</div>
   <div class="login-sub">opération classifiée — accès restreint</div>
-  <div class="login-msg">
-    <strong>"Contractuel, identifie-toi."</strong><br><br>
-    Seuls les membres du serveur <strong>DFT</strong><br>
-    avec le grade <strong>Contractuel ou supérieur</strong><br>
-    peuvent accéder à ce briefing opérationnel.
-  </div>
+  <div class="login-msg"><strong>"Contractuel, identifie-toi."</strong><br><br>Seuls les membres du serveur <strong>DFT</strong><br>avec le grade <strong>Contractuel ou supérieur</strong><br>peuvent accéder à ce briefing opérationnel.</div>
   <button class="login-btn" onclick="doLogin()">🔐 SE CONNECTER AVEC DISCORD</button>
 </div>
 
 <div id="accessDenied">
   <img src="images/fenrir/Surpris.png" style="width:140px;height:140px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
   <div style="font-size:28px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
-  <div style="font-size:15px;color:#666050;text-align:center;max-width:300px;line-height:1.8;font-family:sans-serif">
-    Tu n'es pas membre du serveur DFT<br>ou tu n'as pas le grade requis.<br><br>
-    <strong style="color:#c8a227">Grade minimum : Contractuel</strong>
-  </div>
-  <button class="login-btn" style="max-width:240px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
+  <div style="font-size:15px;color:#666050;text-align:center;max-width:300px;line-height:1.8;font-family:sans-serif">Grade minimum : <strong style="color:#c8a227">Contractuel</strong></div>
+  <button class="login-btn" style="max-width:220px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
 </div>
 
-<!-- MODAL ÉDITION -->
+<!-- MODAL ÉDITION MISSION -->
 <div class="modal-overlay" id="editModal">
   <div class="modal">
-    <div class="modal-title">✏ MODIFIER LA MISSION <span id="editModalId"></span></div>
+    <div class="modal-title">✏ MODIFIER <span id="editModalId"></span></div>
     <input type="hidden" id="editId">
-    <label>NOM DE LA MISSION</label>
-    <input type="text" id="editName">
-    <label>LOCALISATION</label>
-    <input type="text" id="editLoc">
-    <label>DESCRIPTION</label>
-    <textarea id="editDesc" rows="3"></textarea>
+    <label>NOM DE LA MISSION</label><input type="text" id="editName">
+    <label>LOCALISATION</label><input type="text" id="editLoc">
+    <label>DESCRIPTION (utilise **texte** pour le gras)</label><textarea id="editDesc" rows="3"></textarea>
     <label>OBJECTIFS</label>
     <div class="obj-edit-list" id="editObjs"></div>
     <button class="obj-add" onclick="addObjRow()">+ AJOUTER OBJECTIF</button>
-    <label>RÉCOMPENSES (séparées par virgule)</label>
-    <input type="text" id="editRewards">
-    <label>XP</label>
-    <input type="number" id="editXp">
-    <label>SECTEUR</label>
-    <input type="text" id="editSec">
+    <label>MÉDAILLES DE RÉCOMPENSE</label>
+    <div class="medal-edit-list" id="editMedals"></div>
+    <label>SECTEUR</label><input type="text" id="editSec">
     <label>PRIORITÉ</label>
     <select id="editCat">
       <option value="p1">CRITIQUE (rouge)</option>
@@ -242,6 +282,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
   </div>
 </div>
 
+<!-- APP -->
 <div id="app">
   <div class="topbar">
     <span>⚠ IRON TIDE — CLASSIFIÉ</span>
@@ -253,29 +294,44 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
       </div>
     </div>
   </div>
+
   <div class="hero">
     <div class="fenrir-bar">
       <img src="images/fenrir/Ordre.png" class="fenrir-bar-img" alt="Fenrir">
-      <div class="fenrir-bar-msg">
-        <strong>Sergent Fenrir — Briefing Opérationnel</strong><br>
-        "Contractuels, l'île est en guerre. 52 points stratégiques sont sous contrôle ennemi. Chaque base libérée, chaque HVT capturé nous rapproche de la victoire. <strong>ATLAS ne recule pas.</strong>"
-      </div>
+      <div class="fenrir-bar-msg"><strong>Sergent Fenrir — Briefing Opérationnel</strong><br>"Contractuels, l'île est en guerre. 52 points stratégiques sont sous contrôle ennemi. Chaque base libérée, chaque HVT capturé nous rapproche de la victoire. <strong>ATLAS ne recule pas.</strong>"</div>
     </div>
     <div class="htag">ultra secret — yeux seulement</div>
     <div class="htitle">Mission<br>DFT</div>
     <div class="hsub">52 missions — défense totale de l'île — QG Providence</div>
   </div>
+
   <div class="stats">
     <div class="stat"><div class="stat-n" id="sTotal">52</div><div class="stat-l">missions</div></div>
     <div class="stat"><div class="stat-n" id="sDone">0</div><div class="stat-l">complétées</div></div>
     <div class="stat"><div class="stat-n">14</div><div class="stat-l">HVT</div></div>
-    <div class="stat"><div class="stat-n">6</div><div class="stat-l">secteurs</div></div>
+    <div class="stat"><div class="stat-n" id="sOnline">0</div><div class="stat-l">en ligne</div></div>
   </div>
   <div class="progress">
     <span class="pb-label">avancement</span>
     <div class="pb-track"><div class="pb-fill" id="pbFill"></div></div>
     <span class="pb-pct" id="pbPct">0%</span>
   </div>
+
+  <!-- PRÉSENCE -->
+  <div class="presence-panel">
+    <div class="presence-header" onclick="togglePresence()">
+      <div class="presence-title"><span class="presence-dot"></span>PRÉSENCE OPÉRATEURS</div>
+      <span style="font-size:11px;color:#3a5a3a;letter-spacing:2px" id="presenceCount">0 EN LIGNE</span>
+    </div>
+    <div class="presence-body" id="presenceBody">
+      <div class="presence-add">
+        <input type="text" id="newPlayerInput" placeholder="NOM DU JOUEUR..." onkeydown="if(event.key==='Enter')addPlayer()">
+        <button class="presence-add-btn" onclick="addPlayer()">+ REJOINDRE</button>
+      </div>
+      <div class="players-list" id="playersList"><div class="presence-empty">Aucun opérateur en ligne</div></div>
+    </div>
+  </div>
+
   <div class="filters">
     <button class="fb on" onclick="filt('all',this)">TOUT</button>
     <button class="fb fr" onclick="filt('p1',this)">CRITIQUE</button>
@@ -295,6 +351,30 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 const CLIENT_ID='1508841496286200011';
 const SERVER_ID='1051477960722493520';
 const SITE_URL='https://firestorm-bzh.github.io/Mission-DFT/';
+
+// ===== MÉDAILLES =====
+const ALL_MEDALS=[
+  {id:'atlas',icon:'🏅',name:'ATLAS'},
+  {id:'hvt',icon:'🎯',name:'HVT CAPTURÉ'},
+  {id:'titan',icon:'⚔️',name:'TITAN'},
+  {id:'omega',icon:'🌟',name:'OMÉGA'},
+  {id:'sauvetage',icon:'🛡️',name:'SAUVETAGE'},
+  {id:'hq',icon:'🏛️',name:'QG DÉFENDU'},
+  {id:'sniper',icon:'🔭',name:'SNIPER D\'ÉLITE'},
+  {id:'demolition',icon:'💥',name:'DEMOLITION'},
+  {id:'infiltration',icon:'🥷',name:'INFILTRATION'},
+  {id:'pilote',icon:'✈️',name:'AS DU CIEL'},
+  {id:'marin',icon:'⚓',name:'MARIN DE FER'},
+  {id:'humanitaire',icon:'🕊️',name:'HUMANITAIRE'},
+  {id:'blindé',icon:'🚀',name:'AS BLINDÉ'},
+  {id:'radio',icon:'📡',name:'OPÉRATEUR RADIO'},
+  {id:'commandant',icon:'🎖️',name:'COMMANDANT'},
+  {id:'defenseile',icon:'🗺️',name:'DÉFENSEUR ILE'},
+  {id:'ironside',icon:'🔱',name:'IRON SIDE'},
+  {id:'recon',icon:'👁️',name:'RECON'},
+];
+
+const ROLES_SQUAD=['Chef d\'équipe','Assaut','Soutien','Sniper','Médic','Pilote','Démolition','Recon'];
 
 const F={
   salut:'images/fenrir/salut.png',simple:'images/fenrir/Simple.png',ordre:'images/fenrir/Ordre.png',
@@ -321,68 +401,72 @@ const CARTE=['images/carte/image14.png','images/carte/image.png','images/carte/i
 'images/carte/image43.png','images/carte/image44.png','images/carte/image45.png','images/carte/image46.png',
 'images/carte/image47.png','images/carte/image48.png','images/carte/image49.png','images/carte/image50.png'];
 
-// Stockage des overrides (images uploadées, notes, données modifiées)
 const OVERRIDES={};
 
-// MISSIONS DATA
+// JOUEURS EN LIGNE
+let PLAYERS=[];  // [{name, status:'online'|'away'}]
+
+// SQUADS PAR MISSION: {MXX: [{name, role}]}
+let SQUADS={};
+
 let MISSIONS=[
-  {id:'M01',sec:'NORD-OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est menacé. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Éliminer les 6 infiltrés','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],xp:3000,rewards:['MÉDAILLE HQ','INTEL ENNEMI']},
-  {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','HVT CAPTURÉ']},
-  {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi','Neutraliser la garnison','Établir LZ ATLAS'],xp:1800,rewards:['FORT LIBÉRÉ']},
-  {id:'M04',sec:'NORD-OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:F.soldat,obj:['Détruire 3 embarcations','Sécuriser le dock','Défense côtière établie'],xp:1500,rewards:['DOCK LIBÉRÉ']},
-  {id:'M05',sec:'NORD-OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite. <strong>Convoi de munitions en route.</strong>',tag:'dead',tagLbl:'EMBUSCADE',hvt:null,fenrir:F.arme,obj:['Tendre l\'embuscade','Détruire 4 véhicules','Sécuriser Kentucky'],xp:2000,rewards:['MUNITIONS RÉCUPÉRÉES']},
-  {id:'M06',sec:'NORD-OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Prisonnier ATLAS retenu ici.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:F.salut,obj:['Insertion hélico nocturne','Neutraliser les geôliers','Extraire le prisonnier'],xp:2500,rewards:['PRISONNIER SAUVÉ','MÉDAILLE SAUVETAGE']},
-  {id:'M07',sec:'NORD-OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes. <strong>Accès pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Neutraliser la garnison','Sécuriser les citernes'],xp:1600,rewards:['FORT HAWAII']},
-  {id:'M08',sec:'NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE',badge:'CRITIQUE',bclass:'br',desc:'Brouilleur radio paralyse nos communications.',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:3,fenrir:F.ecran,obj:['Atteindre la base','Détruire le brouilleur','Capturer le technicien'],xp:2200,rewards:['COMMUNICATIONS RÉTABLIES']},
-  {id:'M09',sec:'NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA',badge:'URGENCE',bclass:'bo',desc:'Dépôt central. <strong>Ravitaille 8 bases ennemies.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:F.soldat,obj:['Infiltration nocturne','Détruire les stocks','Exfiltration'],xp:2300,rewards:['8 BASES AFFAIBLIES']},
-  {id:'M10',sec:'NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER',badge:'URGENCE',bclass:'bo',desc:'Lance-roquettes AA. <strong>Nos hélicos en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:F.arme,obj:['Détruire 3 positions AA','Neutraliser la garnison','LZ sécurisé'],xp:2100,rewards:['CIEL LIBRE']},
-  {id:'M11',sec:'NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:1,fenrir:F.baguette,obj:['Assaut coordonné','Capturer l\'officier HVT','Tenir Titan'],xp:3200,rewards:['PC DÉTRUIT','HVT CAPTURÉ','MÉDAILLE TITAN']},
-  {id:'M12',sec:'NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE',badge:'TACTIQUE',bclass:'bg',desc:'Station radio. <strong>Coordonne les patrouilles.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.ecran,obj:['Infiltrer la station','Capturer l\'opérateur','Détruire le matériel'],xp:1700,rewards:['FRÉQUENCES ENNEMIES']},
-  {id:'M13',sec:'NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire. <strong>Carrefour stratégique.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:F.tank,obj:['Bloquer les axes','Sécuriser le port','Tenir 10 minutes'],xp:2000,rewards:['PORT LIBÉRÉ']},
-  {id:'M14',sec:'NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire les blindés','Sécuriser Houston','Poster sentinelle ATLAS'],xp:1600,rewards:['AXE BLOQUÉ']},
-  {id:'M15',sec:'NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Assaut sur l\'installation','Capturer l\'opérateur','Détruire les antennes'],xp:2200,rewards:['RÉSEAU COUPÉ']},
-  {id:'M16',sec:'CENTRAL',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS — ÎLE AÉROPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport militaire. <strong>Bombardiers prêts.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:0,fenrir:F.tank,obj:['Neutraliser la défense AA','Détruire 3 bombardiers','Capturer le pilote HVT','Tenir 5 minutes'],xp:3500,rewards:['AÉROPORT LIBÉRÉ','PILOTE HVT']},
-  {id:'M17',sec:'CENTRAL',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base. <strong>Général HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:1,fenrir:F.grade,obj:['Pénétrer le PC','Capturer le Général','Récupérer les documents'],xp:4000,rewards:['GÉNÉRAL CAPTURÉ','PLAN OFFENSIF','MÉDAILLE OMEGA']},
-  {id:'M18',sec:'CENTRAL',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'ORION MILITARY AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport 2 ponts. <strong>Hélicoptères toutes les 5 min.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Sécuriser la tour','Rétablir les vols ATLAS'],xp:3000,rewards:['AÉROPORT LIBÉRÉ']},
-  {id:'M19',sec:'CENTRAL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'ORION INDUSTRIAL COMPLEX',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle 2 ponts ferrés. <strong>Raffinerie ennemie.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:13,fenrir:F.arme,obj:['Traverser les 2 ponts','Neutraliser la garnison','Capturer le directeur HVT','Saboter'],xp:3500,rewards:['RAFFINERIE DÉTRUITE']},
-  {id:'M20',sec:'CENTRAL',cat:'p1',name:'PRINCETON PORT',loc:'ORION PORT — 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs. <strong>Commandant ennemi ici.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Assaut massif','Capturer le Commandant','Détruire les installations'],xp:4500,rewards:['COMMANDANT CAPTURÉ','MÉDAILLE PRINCETON']},
-  {id:'M21',sec:'CENTRAL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'JUNKYARD / PALMDALE — 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier gare de triage. <strong>Général HVT ALPHA dans son bunker.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Transport immédiat ATLAS'],xp:4200,rewards:['GÉNÉRAL HVT ALPHA']},
-  {id:'M22',sec:'CENTRAL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'FLATS CASTLE RUINS',badge:'URGENCE',bclass:'bo',desc:'Ruines château sur falaise. <strong>Pont stratégique contrôlé.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR',hvt:8,fenrir:F.soldat,obj:['Escalader le promontoire','Sécuriser les ruines','Capturer l\'ingénieur'],xp:2100,rewards:['CHÂTEAU LIBÉRÉ']},
-  {id:'M23',sec:'EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec tour. <strong>Renforts maritimes toutes les 20 min.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:F.tank,obj:['Détruire les jetées','Neutraliser défenses côtières','Tenir contre 3 vagues'],xp:3000,rewards:['CÔTE EST LIBÉRÉE']},
-  {id:'M24',sec:'EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR',badge:'URGENCE',bclass:'bo',desc:'Archipel 3 îlots. <strong>Tour d\'observation ennemi.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:F.soldat,obj:['Traverser les îlots','Escalader la tour','Installer relais ATLAS'],xp:1500,rewards:['ARCHIPEL LIBÉRÉ']},
-  {id:'M25',sec:'EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA',badge:'URGENCE',bclass:'bo',desc:'Lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:F.arme,obj:['Localiser 4 SAM','Détruire les lance-missiles','Sécuriser Alabama'],xp:2300,rewards:['CIEL LIBRE']},
-  {id:'M26',sec:'EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général HVT priorité max.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Aucun tir d\'alarme'],xp:4200,rewards:['GÉNÉRAL CAPTURÉ']},
-  {id:'M27',sec:'EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:13,fenrir:F.ecran,obj:['Pénétrer le complexe','Capturer l\'ingénieur HVT','Saboter production'],xp:2700,rewards:['PRODUCTION BLOQUÉE']},
-  {id:'M28',sec:'EST',cat:'p1',name:'EAST BOSTON PORT',loc:'EAST PORT — 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif. <strong>Toute la flotte dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:8,fenrir:F.tank,obj:['Neutraliser défense portuaire','Saboter 12 cuves','Capturer le chef portuaire'],xp:3500,rewards:['PORT DÉTRUIT','FLOTTE PARALYSÉE']},
-  {id:'M29',sec:'EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS',badge:'URGENCE',bclass:'bo',desc:'Station radar surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:F.ecran,obj:['Approche basse altitude','Détruire le radar','Sécuriser Kansas'],xp:2000,rewards:['RADAR DÉTRUIT']},
-  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'DENVER / CAPE RASSA',badge:'URGENCE',bclass:'bo',desc:'Grande ville pont ferroviaire. <strong>Carrefour central sud.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Bloquer le pont ferroviaire','Capturer le commandant HVT','Tenir 8 minutes'],xp:2500,rewards:['CARREFOUR LIBÉRÉ']},
-  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Compound béton accès pont unique.',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Traverser le pont','Forcer le bunker','Capturer l\'opérateur radio'],xp:1900,rewards:['CODES RADIO']},
-  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo. <strong>Scientifique développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:5,fenrir:F.surpris,obj:['Infiltration silencieuse','Sécuriser le labo','Capturer le scientifique HVT'],xp:3000,rewards:['LABO SÉCURISÉ','SCIENTIFIQUE HVT']},
-  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée. <strong>Cache d\'armes découverte.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:F.soldat,obj:['Débarquement amphibie','Détruire la cache','Exfiltration'],xp:1400,rewards:['CACHE DÉTRUITE']},
-  {id:'M34',sec:'CENTRAL-SUD',cat:'p3',name:'STARLIGHT ÉPAVE',loc:'BASE STARLIGHT',badge:'TACTIQUE',bclass:'bg',desc:'Zone brumeuse avec épave. <strong>Débarquements ennemis nocturnes.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.arme,obj:['Guetteurs sur la côte','Détruire 3 embarcations','Couler l\'épave'],xp:1700,rewards:['CÔTE SÉCURISÉE']},
-  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments en clairière à 55m. <strong>Sniper d\'élite ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:12,fenrir:F.arme,obj:['Approche silencieuse','Traquer le sniper','Capturer vivant'],xp:2600,rewards:['SNIPER CAPTURÉ']},
-  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'NORTH FORT',badge:'URGENCE',bclass:'bo',desc:'Grande ville accès pont. <strong>Artillerie lourde vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Détruire 4 pièces artillerie','Sécuriser North Fort'],xp:2200,rewards:['ARTILLERIE DÉTRUITE']},
-  {id:'M37',sec:'SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'VIRGINIA / NEVADA / LAKE HAVEN',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport. <strong>Hélicos armés en préparation.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Neutraliser positions AA','Sécuriser les 2 bases'],xp:2800,rewards:['AÉROPORT LIBÉRÉ']},
-  {id:'M38',sec:'SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec mines sous-marines.',tag:'dead',tagLbl:'DÉMINER',hvt:null,fenrir:F.soldat,obj:['Déminer 8 mines','Neutraliser la base','Voie maritime ATLAS établie'],xp:2000,rewards:['VOIE MARITIME LIBRE']},
-  {id:'M39',sec:'SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées fort fortifié. <strong>Dernier bastion ennemi sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.arme,obj:['Traverser le pont inter-île','Assaut sur le fort','Capturer le commandant'],xp:2400,rewards:['BASTION SUD LIBÉRÉ']},
-  {id:'M40',sec:'SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ.',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.soldat,obj:['Sentinelles sur le promontoire','Repousser le débarquement','Sécuriser le LZ'],xp:1600,rewards:['PROMONTOIRE SÉCURISÉ']},
-  {id:'M41',sec:'SUD',cat:'p3',name:'DELMARE WISCONSIN',loc:'DELMARE / WISCONSIN',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec pont. <strong>Brouilleur radio dans le clocher.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN RADIO',hvt:3,fenrir:F.ecran,obj:['Atteindre le village','Neutraliser les gardes','Capturer le technicien + désactiver'],xp:1600,rewards:['BROUILLEUR DÉTRUIT']},
-  {id:'M42',sec:'SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'NEBRASKA / ACLINE',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire 2 ponts','Neutraliser la garnison','Sentinelle ATLAS permanente'],xp:1500,rewards:['AXE COUPÉ']},
-  {id:'M43',sec:'SUD',cat:'p3',name:'AUGUSTA BELLA VIDA',loc:'AUGUSTA / BELLA VIDA',badge:'TACTIQUE',bclass:'bg',desc:'Zone résidentielle occupée. <strong>Civils retenus en otage.</strong>',tag:'dead',tagLbl:'LIBÉRER OTAGES',hvt:null,fenrir:F.salut,obj:['Infiltration ultra-discrète','Neutraliser preneurs d\'otages','Évacuer les civils'],xp:2000,rewards:['CIVILS SAUVÉS','MÉDAILLE HUMANITAIRE']},
-  {id:'M44',sec:'SUD',cat:'p4',name:'MICHIGAN SAUVETAGE',loc:'BASE MICHIGAN',badge:'RÉCUP',bclass:'bb',desc:'Île isolée. <strong>Équipe ATLAS portée disparue.</strong>',tag:'dead',tagLbl:'SAUVETAGE ÉQUIPE',hvt:null,fenrir:F.salut,obj:['Localiser l\'équipe','Neutraliser les ennemis','Exfiltrer par voie maritime'],xp:2200,rewards:['ÉQUIPE SAUVÉE']},
-  {id:'M45',sec:'OFFSHORE',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.tank,obj:['Insertion hélico','Neutraliser les gardes (6)','Capturer l\'opérateur'],xp:2800,rewards:['PLATEFORME LIBÉRÉE']},
-  {id:'M46',sec:'OFFSHORE',cat:'p3',name:'VESPER ARCHIPEL ISOLÉ',loc:'BASE VESPER',badge:'TACTIQUE',bclass:'bg',desc:'3 îlots en pleine mer. <strong>Caches d\'armes sur chaque îlot.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHES',hvt:null,fenrir:F.arme,obj:['Traverser par zodiac','Détruire 9 caches','Exfiltration maritime'],xp:1600,rewards:['ARCHIPEL NETTOYÉ']},
-  {id:'M47',sec:'NORD-OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs. <strong>Munitions cachées dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS',hvt:null,fenrir:F.soldat,obj:['Pénétrer la carrière','Détruire 5 silos à munitions','Neutraliser les ouvriers armés'],xp:2000,rewards:['STOCKS DÉTRUITS']},
-  {id:'M48',sec:'CENTRAL-SUD',cat:'p3',name:'MAINE GULFSHORE',loc:'BASE MAINE / GULFSHORE',badge:'TACTIQUE',bclass:'bg',desc:'Grande ville côtière dense. <strong>Combat de rue.</strong>',tag:'dead',tagLbl:'CQB URBAIN',hvt:null,fenrir:F.arme,obj:['Nettoyer bâtiment par bâtiment','Neutraliser 5 nids de tir','Hisser le drapeau ATLAS'],xp:1800,rewards:['VILLE LIBÉRÉE']},
-  {id:'M49',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration'],xp:1400,rewards:['BASE LIBÉRÉE']},
-  {id:'M50',sec:'SUD',cat:'p3',name:'COLORADO FORTIFIÉ',loc:'BASE COLORADO',badge:'TACTIQUE',bclass:'bg',desc:'Position fortifiée avec obusiers. <strong>Menacent tout le secteur sud.</strong>',tag:'dead',tagLbl:'DÉTRUIRE OBUSIERS',hvt:null,fenrir:F.tank,obj:['Approche nocturne','Détruire 4 obusiers lourds','Sécuriser Colorado'],xp:2200,rewards:['OBUSIERS DÉTRUITS']},
-  {id:'M51',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants.',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:F.baguette,obj:['Synchroniser toutes les équipes','Frapper 5 objectifs simultanément','Couper les communications','Ouvrir le couloir vers Providence'],xp:3500,rewards:['PRÉPARATION FINALE']},
-  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Assaut final sur le QG ATLAS.</strong> Trois vagues. Aucune retraite.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:F.gagne,obj:['TOUS convergent sur Providence','Vague 1 : infanterie (30)','Vague 2 : blindés (4)','Vague 3 : aérien + 20 élites','Éliminer le Commandant Suprême'],xp:6000,rewards:['DÉFENSEUR DE L\'ÎLE','LOOT TIER S','MÉDAILLE ATLAS']},
+  {id:'M01',sec:'NORD-OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est menacé. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Éliminer les 6 infiltrés','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],medals:['atlas','hq']},
+  {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable HVT'],medals:['hvt','demolition']},
+  {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi','Neutraliser la garnison','Établir LZ ATLAS'],medals:['ironside']},
+  {id:'M04',sec:'NORD-OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:F.soldat,obj:['Détruire 3 embarcations','Sécuriser le dock','Défense côtière établie'],medals:['marin']},
+  {id:'M05',sec:'NORD-OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite. <strong>Convoi de munitions en route.</strong>',tag:'dead',tagLbl:'EMBUSCADE',hvt:null,fenrir:F.arme,obj:['Tendre l\'embuscade','Détruire 4 véhicules','Sécuriser Kentucky'],medals:['demolition']},
+  {id:'M06',sec:'NORD-OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Prisonnier ATLAS retenu ici.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:F.salut,obj:['Insertion hélico nocturne','Neutraliser les geôliers','Extraire le prisonnier'],medals:['sauvetage']},
+  {id:'M07',sec:'NORD-OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes. <strong>Accès pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Neutraliser la garnison','Sécuriser les citernes'],medals:['blindé']},
+  {id:'M08',sec:'NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE',badge:'CRITIQUE',bclass:'br',desc:'Brouilleur radio paralyse nos communications.',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:3,fenrir:F.ecran,obj:['Atteindre la base','Détruire le brouilleur','Capturer le technicien'],medals:['radio','infiltration']},
+  {id:'M09',sec:'NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA',badge:'URGENCE',bclass:'bo',desc:'Dépôt central. <strong>Ravitaille 8 bases ennemies.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:F.soldat,obj:['Infiltration nocturne','Détruire les stocks','Exfiltration'],medals:['demolition']},
+  {id:'M10',sec:'NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER',badge:'URGENCE',bclass:'bo',desc:'Lance-roquettes AA. <strong>Nos hélicos en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:F.arme,obj:['Détruire 3 positions AA','Neutraliser la garnison','LZ sécurisé'],medals:['pilote']},
+  {id:'M11',sec:'NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:1,fenrir:F.baguette,obj:['Assaut coordonné','Capturer l\'officier HVT','Tenir Titan'],medals:['titan','hvt']},
+  {id:'M12',sec:'NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE',badge:'TACTIQUE',bclass:'bg',desc:'Station radio. <strong>Coordonne les patrouilles.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.ecran,obj:['Infiltrer la station','Capturer l\'opérateur','Détruire le matériel'],medals:['radio']},
+  {id:'M13',sec:'NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire. <strong>Carrefour stratégique.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:F.tank,obj:['Bloquer les axes','Sécuriser le port','Tenir 10 minutes'],medals:['marin','ironside']},
+  {id:'M14',sec:'NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire les blindés','Sécuriser Houston','Poster sentinelle ATLAS'],medals:['recon']},
+  {id:'M15',sec:'NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Assaut sur l\'installation','Capturer l\'opérateur','Détruire les antennes'],medals:['radio','hvt']},
+  {id:'M16',sec:'CENTRAL',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS — ÎLE AÉROPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport militaire. <strong>Bombardiers prêts.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:0,fenrir:F.tank,obj:['Neutraliser la défense AA','Détruire 3 bombardiers','Capturer le pilote HVT','Tenir 5 minutes'],medals:['pilote','hvt']},
+  {id:'M17',sec:'CENTRAL',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base. <strong>Général HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:1,fenrir:F.grade,obj:['Pénétrer le PC','Capturer le Général','Récupérer les documents'],medals:['omega','hvt','commandant']},
+  {id:'M18',sec:'CENTRAL',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'ORION MILITARY AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport 2 ponts. <strong>Hélicoptères toutes les 5 min.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Sécuriser la tour','Rétablir les vols ATLAS'],medals:['pilote','demolition']},
+  {id:'M19',sec:'CENTRAL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'ORION INDUSTRIAL COMPLEX',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle 2 ponts ferrés. <strong>Raffinerie ennemie.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:13,fenrir:F.arme,obj:['Traverser les 2 ponts','Neutraliser la garnison','Capturer le directeur HVT','Saboter'],medals:['hvt','demolition']},
+  {id:'M20',sec:'CENTRAL',cat:'p1',name:'PRINCETON PORT',loc:'ORION PORT — 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs. <strong>Commandant ennemi ici.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Assaut massif','Capturer le Commandant','Détruire les installations'],medals:['commandant','hvt','ironside']},
+  {id:'M21',sec:'CENTRAL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'JUNKYARD / PALMDALE — 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier gare de triage. <strong>Général HVT ALPHA dans son bunker.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Transport immédiat ATLAS'],medals:['hvt','infiltration']},
+  {id:'M22',sec:'CENTRAL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'FLATS CASTLE RUINS',badge:'URGENCE',bclass:'bo',desc:'Ruines château sur falaise. <strong>Pont stratégique contrôlé.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR',hvt:8,fenrir:F.soldat,obj:['Escalader le promontoire','Sécuriser les ruines','Capturer l\'ingénieur'],medals:['hvt','recon']},
+  {id:'M23',sec:'EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec tour. <strong>Renforts maritimes toutes les 20 min.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:F.tank,obj:['Détruire les jetées','Neutraliser défenses côtières','Tenir contre 3 vagues'],medals:['marin','ironside']},
+  {id:'M24',sec:'EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR',badge:'URGENCE',bclass:'bo',desc:'Archipel 3 îlots. <strong>Tour d\'observation ennemi.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:F.soldat,obj:['Traverser les îlots','Escalader la tour','Installer relais ATLAS'],medals:['recon']},
+  {id:'M25',sec:'EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA',badge:'URGENCE',bclass:'bo',desc:'Lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:F.arme,obj:['Localiser 4 SAM','Détruire les lance-missiles','Sécuriser Alabama'],medals:['demolition','pilote']},
+  {id:'M26',sec:'EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général HVT priorité max.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Aucun tir d\'alarme'],medals:['hvt','infiltration']},
+  {id:'M27',sec:'EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:13,fenrir:F.ecran,obj:['Pénétrer le complexe','Capturer l\'ingénieur HVT','Saboter production'],medals:['hvt','demolition']},
+  {id:'M28',sec:'EST',cat:'p1',name:'EAST BOSTON PORT',loc:'EAST PORT — 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif. <strong>Toute la flotte dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:8,fenrir:F.tank,obj:['Neutraliser défense portuaire','Saboter 12 cuves','Capturer le chef portuaire'],medals:['marin','hvt']},
+  {id:'M29',sec:'EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS',badge:'URGENCE',bclass:'bo',desc:'Station radar surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:F.ecran,obj:['Approche basse altitude','Détruire le radar','Sécuriser Kansas'],medals:['radio','demolition']},
+  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'DENVER / CAPE RASSA',badge:'URGENCE',bclass:'bo',desc:'Grande ville pont ferroviaire. <strong>Carrefour central sud.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Bloquer le pont ferroviaire','Capturer le commandant HVT','Tenir 8 minutes'],medals:['commandant','hvt']},
+  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Compound béton accès pont unique.',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Traverser le pont','Forcer le bunker','Capturer l\'opérateur radio'],medals:['radio']},
+  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo. <strong>Scientifique développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:5,fenrir:F.surpris,obj:['Infiltration silencieuse','Sécuriser le labo','Capturer le scientifique HVT'],medals:['hvt','infiltration']},
+  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée. <strong>Cache d\'armes découverte.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:F.soldat,obj:['Débarquement amphibie','Détruire la cache','Exfiltration'],medals:['marin','demolition']},
+  {id:'M34',sec:'CENTRAL-SUD',cat:'p3',name:'STARLIGHT ÉPAVE',loc:'BASE STARLIGHT',badge:'TACTIQUE',bclass:'bg',desc:'Zone brumeuse avec épave. <strong>Débarquements ennemis nocturnes.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.arme,obj:['Guetteurs sur la côte','Détruire 3 embarcations','Couler l\'épave'],medals:['marin']},
+  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments en clairière à 55m. <strong>Sniper d\'élite ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:12,fenrir:F.arme,obj:['Approche silencieuse','Traquer le sniper','Capturer vivant'],medals:['sniper','hvt']},
+  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'NORTH FORT',badge:'URGENCE',bclass:'bo',desc:'Grande ville accès pont. <strong>Artillerie lourde vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Détruire 4 pièces artillerie','Sécuriser North Fort'],medals:['demolition','blindé']},
+  {id:'M37',sec:'SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'VIRGINIA / NEVADA / LAKE HAVEN',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport. <strong>Hélicos armés en préparation.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Neutraliser positions AA','Sécuriser les 2 bases'],medals:['pilote','blindé']},
+  {id:'M38',sec:'SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec mines sous-marines.',tag:'dead',tagLbl:'DÉMINER',hvt:null,fenrir:F.soldat,obj:['Déminer 8 mines','Neutraliser la base','Voie maritime ATLAS établie'],medals:['marin']},
+  {id:'M39',sec:'SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées fort fortifié. <strong>Dernier bastion ennemi sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.arme,obj:['Traverser le pont inter-île','Assaut sur le fort','Capturer le commandant'],medals:['commandant','ironside']},
+  {id:'M40',sec:'SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ.',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.soldat,obj:['Sentinelles sur le promontoire','Repousser le débarquement','Sécuriser le LZ'],medals:['recon']},
+  {id:'M41',sec:'SUD',cat:'p3',name:'DELMARE WISCONSIN',loc:'DELMARE / WISCONSIN',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec pont. <strong>Brouilleur radio dans le clocher.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN RADIO',hvt:3,fenrir:F.ecran,obj:['Atteindre le village','Neutraliser les gardes','Capturer le technicien + désactiver'],medals:['radio']},
+  {id:'M42',sec:'SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'NEBRASKA / ACLINE',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire 2 ponts','Neutraliser la garnison','Sentinelle ATLAS permanente'],medals:['demolition']},
+  {id:'M43',sec:'SUD',cat:'p3',name:'AUGUSTA BELLA VIDA',loc:'AUGUSTA / BELLA VIDA',badge:'TACTIQUE',bclass:'bg',desc:'Zone résidentielle occupée. <strong>Civils retenus en otage.</strong>',tag:'dead',tagLbl:'LIBÉRER OTAGES',hvt:null,fenrir:F.salut,obj:['Infiltration ultra-discrète','Neutraliser preneurs d\'otages','Évacuer les civils'],medals:['humanitaire','infiltration']},
+  {id:'M44',sec:'SUD',cat:'p4',name:'MICHIGAN SAUVETAGE',loc:'BASE MICHIGAN',badge:'RÉCUP',bclass:'bb',desc:'Île isolée. <strong>Équipe ATLAS portée disparue.</strong>',tag:'dead',tagLbl:'SAUVETAGE ÉQUIPE',hvt:null,fenrir:F.salut,obj:['Localiser l\'équipe','Neutraliser les ennemis','Exfiltrer par voie maritime'],medals:['sauvetage','marin']},
+  {id:'M45',sec:'OFFSHORE',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.tank,obj:['Insertion hélico','Neutraliser les gardes (6)','Capturer l\'opérateur'],medals:['pilote','hvt']},
+  {id:'M46',sec:'OFFSHORE',cat:'p3',name:'VESPER ARCHIPEL ISOLÉ',loc:'BASE VESPER',badge:'TACTIQUE',bclass:'bg',desc:'3 îlots en pleine mer. <strong>Caches d\'armes sur chaque îlot.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHES',hvt:null,fenrir:F.arme,obj:['Traverser par zodiac','Détruire 9 caches','Exfiltration maritime'],medals:['marin','demolition']},
+  {id:'M47',sec:'NORD-OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs. <strong>Munitions cachées dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS',hvt:null,fenrir:F.soldat,obj:['Pénétrer la carrière','Détruire 5 silos à munitions','Neutraliser les ouvriers armés'],medals:['demolition']},
+  {id:'M48',sec:'CENTRAL-SUD',cat:'p3',name:'MAINE GULFSHORE',loc:'BASE MAINE / GULFSHORE',badge:'TACTIQUE',bclass:'bg',desc:'Grande ville côtière dense. <strong>Combat de rue.</strong>',tag:'dead',tagLbl:'CQB URBAIN',hvt:null,fenrir:F.arme,obj:['Nettoyer bâtiment par bâtiment','Neutraliser 5 nids de tir','Hisser le drapeau ATLAS'],medals:['atlas']},
+  {id:'M49',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration'],medals:['infiltration']},
+  {id:'M50',sec:'SUD',cat:'p3',name:'COLORADO FORTIFIÉ',loc:'BASE COLORADO',badge:'TACTIQUE',bclass:'bg',desc:'Position fortifiée avec obusiers. <strong>Menacent tout le secteur sud.</strong>',tag:'dead',tagLbl:'DÉTRUIRE OBUSIERS',hvt:null,fenrir:F.tank,obj:['Approche nocturne','Détruire 4 obusiers lourds','Sécuriser Colorado'],medals:['demolition','blindé']},
+  {id:'M51',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants.',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:F.baguette,obj:['Synchroniser toutes les équipes','Frapper 5 objectifs simultanément','Couper les communications','Ouvrir le couloir vers Providence'],medals:['commandant','titan','atlas']},
+  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Assaut final sur le QG ATLAS.</strong> Trois vagues. Aucune retraite.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:F.gagne,obj:['TOUS convergent sur Providence','Vague 1 : infanterie (30)','Vague 2 : blindés (4)','Vague 3 : aérien + 20 élites','Éliminer le Commandant Suprême'],medals:['defenseile','atlas','omega','ironside','commandant']},
 ];
 
 const SECTIONS=['NORD-OUEST','NORD','CENTRAL','EST','CENTRAL-SUD','SUD','OFFSHORE','PRÉ-FINALE','MISSION FINALE'];
 
-// ---- RENDU ----
+// ===== BUILD MISSIONS =====
 function buildMissions(){
   const cont=document.getElementById('allMissions');
   let html='';
@@ -390,21 +474,30 @@ function buildMissions(){
     const ms=MISSIONS.filter(m=>m.sec===sec);
     if(!ms.length)return;
     html+=`<div class="sec-hdr"><span class="slbl">${sec}</span><div class="sline"></div></div><div class="grid">`;
-    ms.forEach((m,gIdx)=>{
+    ms.forEach(m=>{
       const globalIdx=MISSIONS.indexOf(m);
       const carteImg=OVERRIDES[m.id+'_carte']||CARTE[globalIdx]||'';
       const carte2Img=OVERRIDES[m.id+'_carte2']||'';
       const hvtImg=OVERRIDES[m.id+'_hvt']||(m.hvt!==null&&m.hvt!==undefined?HVT_PHOTOS[m.hvt]:'');
       const notes=OVERRIDES[m.id+'_notes']||'';
+      const squad=SQUADS[m.id]||[];
+      const medalIds=m.medals||[];
+      const squadBar=squad.length?`<div class="mc-squad-bar">${squad.map(s=>`<span class="mc-squad-chip">👤 ${s.name}</span>`).join('')}</div>`:'';
+      const medalsHtml=medalIds.map(mid=>{const md=ALL_MEDALS.find(x=>x.id===mid);return md?`<div class="medal" title="${md.name}"><div class="medal-icon">${md.icon}</div><div class="medal-name">${md.name}</div></div>`:''}).join('');
+      const squadMembersHtml=squad.length
+        ? squad.map((s,si)=>`<div class="squad-member"><span>${s.name}</span><span class="sm-role">${s.role||''}</span><button class="sm-remove" onclick="removeFromSquad('${m.id}',${si})">✕</button></div>`).join('')
+        : `<div class="squad-empty">AUCUN MEMBRE ASSIGNÉ</div>`;
+      const playerBtnsHtml=PLAYERS.length
+        ? `<div class="squad-add-row">${PLAYERS.map(p=>{const already=squad.some(s=>s.name===p.name);return `<button class="squad-player-btn${already?' assigned':''}" onclick="toggleSquadPlayer('${m.id}','${p.name}')">${already?'✓ ':''} ${p.name}</button>`}).join('')}</div>`
+        : `<div style="font-size:11px;color:#1a3020;letter-spacing:2px;font-family:Oswald,sans-serif">Aucun opérateur en ligne — ajoutez des joueurs dans le panneau de présence</div>`;
+
       html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()} ${m.sec.toLowerCase()}">
         <div class="mc-head" onclick="toggle('${m.id}')">
           <div class="mc-thumb">
-            ${carteImg
-              ? `<img src="${carteImg}" alt="carte" onerror="this.src='';this.style.display='none'">`
-              : `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px"><div style="font-size:22px;opacity:.3">🗺</div><div style="font-size:9px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">PAS DE CARTE</div></div>`
-            }
+            ${carteImg?`<img src="${carteImg}" alt="carte" onerror="this.src='';this.style.display='none'">`:
+            `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px"><div style="font-size:22px;opacity:.3">🗺</div><div style="font-size:9px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">PAS DE CARTE</div></div>`}
             <div class="mc-thumb-overlay">${m.id}</div>
-            <div class="mc-img-upload" onclick="event.stopPropagation();uploadImg('${m.id}','carte')" title="Changer la carte">🗺</div>
+            <div class="mc-img-upload" onclick="event.stopPropagation();uploadImg('${m.id}','carte')" title="Changer carte">🗺</div>
           </div>
           <div class="mc-info">
             <div class="mc-top">
@@ -415,54 +508,76 @@ function buildMissions(){
             <div class="mdesc">${m.desc}</div>
           </div>
         </div>
+        ${squadBar}
         <div class="hint" onclick="toggle('${m.id}')">▼ briefing complet</div>
         <div class="mdetail">
+          <!-- PHOTOS -->
           <div class="det-photos">
-            <!-- COLONNE GAUCHE : TERRAIN avec 2 onglets -->
             <div>
               <div class="terrain-tabs">
                 <div class="terrain-tab active" onclick="switchTab('${m.id}',1,this)">🗺 CARTE 1</div>
                 <div class="terrain-tab" onclick="switchTab('${m.id}',2,this)">🗺 CARTE 2</div>
               </div>
-              <!-- PANEL 1 -->
               <div class="terrain-panel active" id="${m.id}_panel1">
-                ${carteImg
-                  ? `<img src="${carteImg}" alt="carte1" onerror="this.style.display='none'">`
-                  : `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE</div></div>`
-                }
+                ${carteImg?`<img src="${carteImg}" alt="c1" onerror="this.style.display='none'">`:
+                `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE</div></div>`}
                 <div class="det-photo-lbl">TERRAIN — VUE 1</div>
                 <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte')">📁 CHANGER</button>
               </div>
-              <!-- PANEL 2 -->
               <div class="terrain-panel" id="${m.id}_panel2">
-                ${carte2Img
-                  ? `<img src="${carte2Img}" alt="carte2" onerror="this.style.display='none'">`
-                  : `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE 2</div></div>`
-                }
+                ${carte2Img?`<img src="${carte2Img}" alt="c2" onerror="this.style.display='none'">`:
+                `<div class="terrain-empty"><div style="font-size:36px;opacity:.2">🗺</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE CARTE 2</div></div>`}
                 <div class="det-photo-lbl">TERRAIN — VUE 2</div>
                 <button class="det-photo-btn" onclick="uploadImg('${m.id}','carte2')">📁 CHANGER</button>
               </div>
             </div>
-            <!-- COLONNE DROITE : HVT -->
             <div class="det-photo" id="${m.id}_hvtBox">
-              ${hvtImg
-                ? `<img src="${hvtImg}" alt="HVT" onerror="this.style.display='none'">`
-                : `<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="font-size:40px;opacity:.2">🎯</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE PHOTO HVT</div></div>`
-              }
+              ${hvtImg?`<img src="${hvtImg}" alt="HVT" onerror="this.style.display='none'">`:
+              `<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="font-size:40px;opacity:.2">🎯</div><div style="font-size:11px;letter-spacing:2px;color:#2a3a4a">AUCUNE PHOTO HVT</div></div>`}
               <div class="det-photo-lbl">PHOTO HVT</div>
               <button class="det-photo-btn" onclick="uploadImg('${m.id}','hvt')">📁 CHANGER</button>
             </div>
           </div>
+
+          <!-- TAG + FENRIR -->
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
             <img src="${m.fenrir}" class="fenrir-mission" alt="Fenrir" onerror="this.style.display='none'">
             <span class="photo-tag ${m.tag==='alive'?'tag-alive':m.tag==='dead'?'tag-dead':'tag-hv'}">${m.tagLbl}</span>
           </div>
-          <div class="objs" id="${m.id}_objs">${m.obj.map((o,i)=>`<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}</div>
-          <div class="rwds"><span class="rpill">+${m.xp} XP</span>${m.rewards.map(r=>`<span class="rpill">${r}</span>`).join('')}</div>
+
+          <!-- OBJECTIFS -->
+          <div class="objs">${m.obj.map((o,i)=>`<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}</div>
+
+          <!-- MÉDAILLES -->
+          <div class="medals-section">
+            <div class="medals-lbl">🏅 MÉDAILLES DE MISSION</div>
+            <div class="medals-row">${medalsHtml||'<span style="font-size:11px;letter-spacing:2px;color:#3a3020">AUCUNE MÉDAILLE</span>'}</div>
+          </div>
+
+          <!-- SQUAD -->
+          <div class="squad-section">
+            <div class="squad-header">
+              <span class="squad-title">⚔ SQUAD ASSIGNÉE</span>
+              <span class="squad-count">${squad.length} MEMBRE${squad.length>1?'S':''}</span>
+            </div>
+            <div class="squad-body">
+              <div class="squad-members" id="${m.id}_squad">${squadMembersHtml}</div>
+              ${playerBtnsHtml}
+              <div class="squad-add-custom">
+                <input type="text" id="${m.id}_customName" placeholder="Nom personnalisé...">
+                <select id="${m.id}_customRole">${ROLES_SQUAD.map(r=>`<option>${r}</option>`).join('')}</select>
+                <button class="squad-add-custom-btn" onclick="addCustomToSquad('${m.id}')">+ AJOUTER</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTES -->
           <div class="notes-zone">
             <div class="notes-lbl">📝 NOTES DE MISSION</div>
-            <textarea class="notes-ta" placeholder="Ajoute tes notes, stratégies, infos complémentaires ici..." onchange="saveNote('${m.id}',this.value)">${notes}</textarea>
+            <textarea class="notes-ta" placeholder="Stratégie, infos, remarques..." onchange="saveNote('${m.id}',this.value)">${notes}</textarea>
           </div>
+
+          <!-- ACTIONS -->
           <div class="action-row">
             <button class="done-btn" onclick="markDone('${m.id}')">✓ MARQUER COMPLÉTÉE</button>
             <button class="edit-btn" onclick="openEdit('${m.id}')">✏ MODIFIER MISSION</button>
@@ -475,21 +590,15 @@ function buildMissions(){
   cont.innerHTML=html;
 }
 
+// ===== TOGGLE / PROGRESS =====
 function toggle(id){document.getElementById(id)?.classList.toggle('open')}
-
-// ---- ONGLETS TERRAIN ----
 function switchTab(id,num,btn){
-  // onglets
-  const tabs=btn.parentNode.querySelectorAll('.terrain-tab');
-  tabs.forEach(t=>t.classList.remove('active'));
+  btn.parentNode.querySelectorAll('.terrain-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  // panels
   document.getElementById(id+'_panel1')?.classList.toggle('active',num===1);
   document.getElementById(id+'_panel2')?.classList.toggle('active',num===2);
 }
-
 function markDone(id){document.getElementById(id)?.classList.toggle('done-mc');saveProgress();updateProgress()}
-
 function updateProgress(){
   const done=document.querySelectorAll('.mc.done-mc').length;
   document.getElementById('sDone').textContent=done;
@@ -497,19 +606,115 @@ function updateProgress(){
   document.getElementById('pbFill').style.width=pct+'%';
   document.getElementById('pbPct').textContent=pct+'%';
 }
-
 function filt(cat,btn){
   document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',cat!=='all'&&mc.dataset.cat!==cat));
 }
-
 function searchM(q){
   const s=q.toLowerCase().trim();
   document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',!!s&&!mc.dataset.name.includes(s)));
 }
 
-// ---- UPLOAD IMAGES ----
+// ===== PRÉSENCE =====
+function togglePresence(){
+  const b=document.getElementById('presenceBody');
+  b.style.display=b.style.display==='none'?'flex':'none';
+}
+function addPlayer(){
+  const inp=document.getElementById('newPlayerInput');
+  const name=inp.value.trim().toUpperCase();
+  if(!name)return;
+  if(PLAYERS.find(p=>p.name===name)){inp.value='';return;}
+  PLAYERS.push({name,status:'online'});
+  inp.value='';
+  renderPlayers();
+  savePersist();
+  buildMissions();
+}
+function removePlayer(name){
+  PLAYERS=PLAYERS.filter(p=>p.name!==name);
+  // retirer aussi des squads
+  Object.keys(SQUADS).forEach(id=>{ SQUADS[id]=SQUADS[id].filter(s=>s.name!==name); });
+  renderPlayers();
+  savePersist();
+  buildMissions();
+}
+function renderPlayers(){
+  const list=document.getElementById('playersList');
+  const count=document.getElementById('presenceCount');
+  const online=PLAYERS.filter(p=>p.status==='online').length;
+  document.getElementById('sOnline').textContent=online;
+  count.textContent=online+' EN LIGNE';
+  if(!PLAYERS.length){list.innerHTML='<div class="presence-empty">Aucun opérateur en ligne</div>';return;}
+  list.innerHTML=PLAYERS.map(p=>`
+    <div class="player-chip${p.status==='away'?' away-chip':''}">
+      <span class="p-status${p.status==='away'?' away':''}"></span>
+      <span>${p.name}</span>
+      <button class="p-remove" onclick="removePlayer('${p.name}')">✕</button>
+    </div>`).join('');
+}
+
+// ===== SQUADS =====
+function toggleSquadPlayer(mid,pname){
+  if(!SQUADS[mid])SQUADS[mid]=[];
+  const idx=SQUADS[mid].findIndex(s=>s.name===pname);
+  if(idx>=0){SQUADS[mid].splice(idx,1);}
+  else{SQUADS[mid].push({name:pname,role:'Assaut'});}
+  savePersist();
+  rebuildSquadSection(mid);
+}
+function addCustomToSquad(mid){
+  const nameEl=document.getElementById(mid+'_customName');
+  const roleEl=document.getElementById(mid+'_customRole');
+  const name=nameEl.value.trim().toUpperCase();
+  if(!name)return;
+  if(!SQUADS[mid])SQUADS[mid]=[];
+  if(!SQUADS[mid].find(s=>s.name===name)){
+    SQUADS[mid].push({name,role:roleEl.value});
+    nameEl.value='';
+    savePersist();
+    rebuildSquadSection(mid);
+  }
+}
+function removeFromSquad(mid,idx){
+  if(!SQUADS[mid])return;
+  SQUADS[mid].splice(idx,1);
+  savePersist();
+  rebuildSquadSection(mid);
+}
+function rebuildSquadSection(mid){
+  const squad=SQUADS[mid]||[];
+  // Update squad members display
+  const sm=document.getElementById(mid+'_squad');
+  if(sm){
+    sm.innerHTML=squad.length
+      ? squad.map((s,si)=>`<div class="squad-member"><span>${s.name}</span><span class="sm-role">${s.role||''}</span><button class="sm-remove" onclick="removeFromSquad('${mid}',${si})">✕</button></div>`).join('')
+      : `<div class="squad-empty">AUCUN MEMBRE ASSIGNÉ</div>`;
+  }
+  // Update squad count header
+  const hdr=document.querySelector('#'+mid+' .squad-count');
+  if(hdr)hdr.textContent=squad.length+' MEMBRE'+(squad.length>1?'S':'');
+  // Update mini bar
+  const mc=document.getElementById(mid);
+  if(mc){
+    let bar=mc.querySelector('.mc-squad-bar');
+    if(squad.length){
+      const html=`<div class="mc-squad-bar">${squad.map(s=>`<span class="mc-squad-chip">👤 ${s.name}</span>`).join('')}</div>`;
+      if(bar){bar.outerHTML=html;}
+      else{mc.querySelector('.mc-head').insertAdjacentHTML('afterend',html);}
+    } else {
+      if(bar)bar.remove();
+    }
+  }
+  // Update player buttons
+  const addRow=document.querySelector('#'+mid+' .squad-add-row');
+  if(addRow){
+    addRow.innerHTML=PLAYERS.map(p=>{const already=squad.some(s=>s.name===p.name);return `<button class="squad-player-btn${already?' assigned':''}" onclick="toggleSquadPlayer('${mid}','${p.name}')">${already?'✓ ':''} ${p.name}</button>`}).join('');
+  }
+}
+
+// ===== UPLOAD IMAGES =====
 function uploadImg(id,type){
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
   inp.onchange=e=>{
@@ -520,20 +725,14 @@ function uploadImg(id,type){
       OVERRIDES[id+'_'+type]=data;
       saveOverrides();
       if(type==='carte'){
-        // Vignette header
         const thumb=document.querySelector('#'+id+' .mc-thumb img');
-        if(thumb){thumb.src=data;}else{
-          const box=document.querySelector('#'+id+' .mc-thumb');
-          if(box){const img=document.createElement('img');img.src=data;box.prepend(img);}
-        }
-        // Panel 1
+        if(thumb){thumb.src=data;}else{const box=document.querySelector('#'+id+' .mc-thumb');if(box){const img=document.createElement('img');img.src=data;box.prepend(img);}}
         const p1=document.getElementById(id+'_panel1');
         if(p1){let img=p1.querySelector('img');if(!img){img=document.createElement('img');p1.prepend(img);}img.src=data;img.style.display='';}
-      } else if(type==='carte2'){
-        // Panel 2
+      }else if(type==='carte2'){
         const p2=document.getElementById(id+'_panel2');
         if(p2){let img=p2.querySelector('img');if(!img){img=document.createElement('img');p2.prepend(img);}img.src=data;img.style.display='';}
-      } else if(type==='hvt'){
+      }else if(type==='hvt'){
         const box=document.getElementById(id+'_hvtBox');
         if(box){let img=box.querySelector('img');if(!img){img=document.createElement('img');box.prepend(img);}img.src=data;img.style.display='';}
       }
@@ -541,13 +740,11 @@ function uploadImg(id,type){
   };inp.click();
 }
 
-// ---- NOTES ----
-function saveNote(id,val){
-  OVERRIDES[id+'_notes']=val;
-  saveOverrides();
-}
+// ===== NOTES =====
+function saveNote(id,val){OVERRIDES[id+'_notes']=val;saveOverrides();}
 
-// ---- MODAL ÉDITION ----
+// ===== MODAL EDIT =====
+let _editMedals=[];
 function openEdit(id){
   const m=MISSIONS.find(x=>x.id===id);if(!m)return;
   document.getElementById('editId').value=id;
@@ -555,48 +752,55 @@ function openEdit(id){
   document.getElementById('editName').value=m.name;
   document.getElementById('editLoc').value=m.loc;
   document.getElementById('editDesc').value=m.desc.replace(/<strong>/g,'**').replace(/<\/strong>/g,'**');
-  document.getElementById('editRewards').value=m.rewards.join(', ');
-  document.getElementById('editXp').value=m.xp;
   document.getElementById('editSec').value=m.sec;
   document.getElementById('editCat').value=m.cat;
-  // Objectifs
-  const ol=document.getElementById('editObjs');
-  ol.innerHTML='';
-  m.obj.forEach((o,i)=>addObjRow(o));
+  const ol=document.getElementById('editObjs');ol.innerHTML='';
+  m.obj.forEach(o=>addObjRow(o));
+  // Medals
+  _editMedals=[...(m.medals||[])];
+  renderMedalPicker();
   document.getElementById('editModal').classList.add('show');
 }
-
+function renderMedalPicker(){
+  const list=document.getElementById('editMedals');
+  list.innerHTML=ALL_MEDALS.map(md=>`
+    <div class="medal-edit-item${_editMedals.includes(md.id)?' sel':''}" onclick="toggleMedalEdit('${md.id}',this)">
+      <div class="mei">${md.icon}</div>
+      <div class="men">${md.name}</div>
+    </div>`).join('');
+}
+function toggleMedalEdit(id,el){
+  const idx=_editMedals.indexOf(id);
+  if(idx>=0){_editMedals.splice(idx,1);el.classList.remove('sel');}
+  else{_editMedals.push(id);el.classList.add('sel');}
+}
 function addObjRow(val=''){
   const ol=document.getElementById('editObjs');
   const row=document.createElement('div');row.className='obj-edit-row';
   row.innerHTML=`<input type="text" value="${val.replace(/"/g,'&quot;')}" placeholder="Objectif..."><button class="obj-del" onclick="this.parentNode.remove()">✕</button>`;
   ol.appendChild(row);
 }
-
 function saveEdit(){
   const id=document.getElementById('editId').value;
   const m=MISSIONS.find(x=>x.id===id);if(!m)return;
   m.name=document.getElementById('editName').value;
   m.loc=document.getElementById('editLoc').value;
   m.desc=document.getElementById('editDesc').value.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  m.rewards=document.getElementById('editRewards').value.split(',').map(s=>s.trim()).filter(Boolean);
-  m.xp=parseInt(document.getElementById('editXp').value)||m.xp;
   m.sec=document.getElementById('editSec').value;
   m.cat=document.getElementById('editCat').value;
   m.obj=Array.from(document.querySelectorAll('#editObjs .obj-edit-row input')).map(i=>i.value).filter(Boolean);
+  m.medals=[..._editMedals];
   closeEdit();
   const wasDone=document.getElementById(id)?.classList.contains('done-mc');
   const wasOpen=document.getElementById(id)?.classList.contains('open');
-  buildMissions();
-  loadProgress();
+  buildMissions();loadProgress();
   if(wasDone)document.getElementById(id)?.classList.add('done-mc');
   if(wasOpen)document.getElementById(id)?.classList.add('open');
   saveMissions();
 }
-
 function closeEdit(){document.getElementById('editModal').classList.remove('show')}
 
-// ---- PERSISTANCE ----
+// ===== PERSISTANCE =====
 function saveProgress(){
   try{localStorage.setItem('atlas_progress',JSON.stringify(Array.from(document.querySelectorAll('.mc.done-mc')).map(e=>e.id)));}catch(e){}
 }
@@ -605,35 +809,33 @@ function loadProgress(){
 }
 function saveOverrides(){
   try{
-    // On sauvegarde sans les images (trop lourd) — juste notes
-    const toSave={};
-    Object.keys(OVERRIDES).forEach(k=>{if(!OVERRIDES[k].startsWith('data:'))toSave[k]=OVERRIDES[k];});
+    const toSave={};Object.keys(OVERRIDES).forEach(k=>{if(!OVERRIDES[k].startsWith('data:'))toSave[k]=OVERRIDES[k];});
     localStorage.setItem('atlas_overrides',JSON.stringify(toSave));
-    // Images séparément
-    Object.keys(OVERRIDES).forEach(k=>{
-      if(OVERRIDES[k].startsWith('data:')){try{localStorage.setItem('atlas_img_'+k,OVERRIDES[k]);}catch(e){}}
-    });
+    Object.keys(OVERRIDES).forEach(k=>{if(OVERRIDES[k].startsWith('data:')){try{localStorage.setItem('atlas_img_'+k,OVERRIDES[k]);}catch(e){}}});
   }catch(e){}
 }
 function loadOverrides(){
   try{
-    const o=JSON.parse(localStorage.getItem('atlas_overrides')||'{}');
-    Object.assign(OVERRIDES,o);
-    // Images
-    for(let i=0;i<localStorage.length;i++){
-      const k=localStorage.key(i);
-      if(k&&k.startsWith('atlas_img_')){OVERRIDES[k.replace('atlas_img_','')]=localStorage.getItem(k);}
-    }
+    const o=JSON.parse(localStorage.getItem('atlas_overrides')||'{}');Object.assign(OVERRIDES,o);
+    for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('atlas_img_')){OVERRIDES[k.replace('atlas_img_','')]=localStorage.getItem(k);}}
   }catch(e){}
 }
-function saveMissions(){
-  try{localStorage.setItem('atlas_missions_v2',JSON.stringify(MISSIONS));}catch(e){}
+function saveMissions(){try{localStorage.setItem('atlas_missions_v3',JSON.stringify(MISSIONS));}catch(e){}}
+function loadMissions(){try{const s=JSON.parse(localStorage.getItem('atlas_missions_v3')||'null');if(s&&s.length)MISSIONS=s;}catch(e){}}
+function savePersist(){
+  try{
+    localStorage.setItem('atlas_players',JSON.stringify(PLAYERS));
+    localStorage.setItem('atlas_squads',JSON.stringify(SQUADS));
+  }catch(e){}
 }
-function loadMissions(){
-  try{const saved=JSON.parse(localStorage.getItem('atlas_missions_v2')||'null');if(saved&&saved.length)MISSIONS=saved;}catch(e){}
+function loadPersist(){
+  try{
+    const p=JSON.parse(localStorage.getItem('atlas_players')||'[]');if(p.length)PLAYERS=p;
+    const sq=JSON.parse(localStorage.getItem('atlas_squads')||'{}');if(sq)SQUADS=sq;
+  }catch(e){}
 }
 
-// ---- AUTH DISCORD ----
+// ===== AUTH =====
 function doLogin(){
   window.location.href='https://discord.com/api/oauth2/authorize?client_id='+CLIENT_ID+'&redirect_uri='+encodeURIComponent(SITE_URL)+'&response_type=token&scope=identify%20guilds.members.read';
 }
@@ -643,10 +845,8 @@ function loginSuccess(user){
   document.getElementById('userName').textContent=(user.name||'CONTRACTUEL').toUpperCase();
   document.getElementById('userRank').textContent='GRADE: '+(user.grade||'CONTRACTUEL').toUpperCase();
   if(user.avatar)document.getElementById('userAvatar').src=user.avatar;
-  loadMissions();
-  loadOverrides();
-  buildMissions();
-  loadProgress();
+  loadMissions();loadOverrides();loadPersist();
+  buildMissions();loadProgress();renderPlayers();
 }
 async function handleDiscordToken(token){
   try{
@@ -656,8 +856,7 @@ async function handleDiscordToken(token){
     const avatar=user.avatar?`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`:'';
     const sess={name:user.username,avatar,grade:'Contractuel',loginTime:Date.now(),token};
     sessionStorage.setItem('atlas_user',JSON.stringify(sess));
-    history.replaceState(null,'',SITE_URL);
-    loginSuccess(sess);
+    history.replaceState(null,'',SITE_URL);loginSuccess(sess);
   }catch(e){
     document.getElementById('loginScreen').classList.add('hidden');
     document.getElementById('accessDenied').classList.add('show');
@@ -665,15 +864,8 @@ async function handleDiscordToken(token){
 }
 window.addEventListener('load',()=>{
   const hash=window.location.hash.substring(1);
-  if(hash.includes('access_token')){
-    const params=new URLSearchParams(hash);
-    const token=params.get('access_token');
-    if(token){handleDiscordToken(token);return;}
-  }
-  try{
-    const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');
-    if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){loginSuccess(sess);return;}
-  }catch(e){}
+  if(hash.includes('access_token')){const params=new URLSearchParams(hash);const token=params.get('access_token');if(token){handleDiscordToken(token);return;}}
+  try{const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){loginSuccess(sess);return;}}catch(e){}
 });
 </script>
 </body>
