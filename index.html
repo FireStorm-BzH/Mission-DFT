@@ -2,45 +2,34 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>ATLAS — Opération Iron Tide</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#c8a227;--red:#8b0000;--dark:#080a0e;--card:#0d1015;--border:#1e1e18}
+:root{--gold:#c8a227;--dark:#080a0e;--card:#0d1015;--border:#1e1e18}
 body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-height:100vh}
-
-/* LOGIN SCREEN */
-#loginScreen{position:fixed;inset:0;background:#080a0e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px}
+#loginScreen{position:fixed;inset:0;background:#080a0e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:16px;padding:20px}
 #loginScreen.hidden{display:none}
-.login-logo{width:140px;height:140px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;box-shadow:0 0 30px rgba(200,162,39,0.3)}
-.login-title{font-size:clamp(28px,5vw,48px);color:var(--gold);letter-spacing:3px;text-align:center}
+.login-fenrir{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;box-shadow:0 0 40px rgba(200,162,39,0.3)}
+.login-title{font-size:clamp(32px,6vw,56px);color:var(--gold);letter-spacing:3px;text-align:center;font-weight:700}
 .login-sub{font-size:11px;letter-spacing:5px;color:#555040;text-align:center}
-.login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;padding:14px 32px;border:none;cursor:pointer;transition:opacity .2s}
+.login-msg{font-size:12px;color:#888070;text-align:center;max-width:320px;line-height:1.8;border:1px solid #2a2820;padding:12px 16px;font-family:sans-serif}
+.login-msg strong{color:#c8a227;font-family:'Oswald',sans-serif}
+.login-btn{background:var(--gold);color:#0a0c10;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;padding:14px 40px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:320px}
 .login-btn:hover{opacity:.85}
-.login-note{font-size:10px;color:#444030;letter-spacing:2px;text-align:center;max-width:300px}
-.login-fenrir{font-size:12px;color:#666050;letter-spacing:2px;padding:10px 20px;border:1px solid #2a2820;text-align:center;max-width:340px;line-height:1.8}
-
-/* ACCESS DENIED */
-#accessDenied{position:fixed;inset:0;background:#080a0e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:16px}
+#accessDenied{position:fixed;inset:0;background:#080a0e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:16px;padding:20px}
 #accessDenied.show{display:flex}
-.denied-icon{font-size:64px;color:#8b0000}
-.denied-title{font-size:32px;color:#cc3333;letter-spacing:3px}
-.denied-text{font-size:12px;color:#666050;letter-spacing:2px;text-align:center;max-width:300px;line-height:1.8}
-.denied-img{width:100px;opacity:.6}
-
-/* MAIN APP */
 #app{display:none}
 #app.show{display:block}
-.topbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:10px;font-weight:700;letter-spacing:4px;padding:6px;display:flex;justify-content:space-between;align-items:center;padding:6px 16px}
-.user-badge{display:flex;align-items:center;gap:8px;font-size:11px}
-.user-avatar{width:24px;height:24px;border-radius:50%;border:1px solid #0a0c10}
-.user-rank{font-size:9px;letter-spacing:2px;opacity:.7}
-.hero{padding:1.2rem 1rem;border-bottom:2px solid var(--gold);background:linear-gradient(180deg,#0a0c10 0%,#080a0e 100%)}
-.fenrir-bar{display:flex;align-items:center;gap:16px;margin-bottom:12px;background:#0f1218;border:1px solid #2a2820;padding:10px 14px}
-.fenrir-img{width:60px;height:60px;object-fit:cover;border-radius:50%;border:2px solid var(--gold)}
-.fenrir-msg{font-size:12px;color:#a09888;line-height:1.7;font-family:sans-serif;flex:1}
-.fenrir-msg strong{color:#e8dfc8;font-family:'Oswald',sans-serif}
+.topbar{background:var(--gold);color:#0a0c10;display:flex;justify-content:space-between;align-items:center;padding:6px 16px;font-size:10px;font-weight:700;letter-spacing:3px}
+.user-badge{display:flex;align-items:center;gap:8px}
+.user-avatar{width:28px;height:28px;border-radius:50%;border:1px solid #0a0c10;object-fit:cover}
+.hero{padding:1.2rem 1rem;border-bottom:2px solid var(--gold)}
+.fenrir-bar{display:flex;align-items:center;gap:12px;background:#0f1218;border:1px solid #2a2820;padding:10px 12px;margin-bottom:12px}
+.fenrir-bar-img{width:70px;height:70px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex-shrink:0}
+.fenrir-bar-msg{font-size:12px;color:#a09888;line-height:1.7;font-family:sans-serif;flex:1}
+.fenrir-bar-msg strong{color:#e8dfc8;font-family:'Oswald',sans-serif}
 .htag{display:inline-block;background:#8b0000;color:#ffaaaa;font-size:9px;letter-spacing:4px;padding:3px 10px;margin-bottom:8px}
 .htitle{font-size:clamp(24px,5vw,48px);line-height:.95;color:var(--gold);letter-spacing:2px;font-weight:700;margin-bottom:4px}
 .hsub{font-size:10px;letter-spacing:4px;color:#555040;margin-bottom:10px}
@@ -62,6 +51,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .fb.on.fb2{border-color:#224488;color:#6090cc;background:#050a15}
 .srch{display:flex;align-items:center;gap:8px;margin:0 1rem .5rem}
 .srch input{flex:1;background:#0f1218;border:1px solid #2a2820;color:#e8dfc8;font-size:11px;padding:5px 8px;outline:none;font-family:'Oswald',sans-serif}
+.srch input::placeholder{color:#333020}
 .sec-hdr{display:flex;align-items:center;gap:8px;margin:1.2rem 1rem .5rem}
 .slbl{font-size:8px;letter-spacing:5px;color:var(--gold);font-weight:700;white-space:nowrap}
 .sline{flex:1;height:1px;background:rgba(200,162,39,.2)}
@@ -75,10 +65,9 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mc.pF{border-left-color:var(--gold)}
 .mc.done-mc{opacity:.55;border-left-color:#1a3a1a!important}
 .mc-head{display:flex;cursor:pointer}
-.mc-thumb{width:80px;min-width:80px;height:80px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative}
+.mc-thumb{width:90px;min-width:90px;height:90px;background:#0a1520;border-right:1px solid var(--border);overflow:hidden;position:relative;flex-shrink:0}
 .mc-thumb img{width:100%;height:100%;object-fit:cover}
-.mc-thumb-map{position:absolute;bottom:0;left:0;right:0;height:36px;background:#0a1520;overflow:hidden}
-.mc-thumb-map img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.mc-thumb-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);font-size:7px;letter-spacing:1px;color:#c8a227;padding:2px 4px;font-family:'Oswald',sans-serif}
 .mc-info{flex:1;padding:.6rem .7rem;min-width:0}
 .mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:4px;margin-bottom:2px}
 .mid{font-size:8px;letter-spacing:3px;color:#444030;font-weight:700}
@@ -96,21 +85,17 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mdetail{display:none;border-top:1px solid #1a1a14;padding:.7rem}
 .mc.open .mdetail{display:block}
 .det-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.det-photo{height:130px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520}
+.det-photo{height:140px;overflow:hidden;border:1px solid #2a2820;position:relative;background:#0a1520}
 .det-photo img{width:100%;height:100%;object-fit:cover}
-.det-photo-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:8px;letter-spacing:2px;color:#888070;padding:3px 6px;font-family:'Oswald',sans-serif}
-.hvt-slot{background:#100808;border:2px dashed #3a1010;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:border-color .2s;position:relative;overflow:hidden}
+.det-photo-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:7px;letter-spacing:2px;color:#888070;padding:3px 6px;font-family:'Oswald',sans-serif}
+.hvt-slot{background:#100808;border:2px dashed #3a1010;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s}
 .hvt-slot:hover{border-color:var(--gold)}
-.hvt-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hvt-slot-inner{display:flex;flex-direction:column;align-items:center;gap:5px;z-index:1}
-.hvt-icon{font-size:24px;color:#2a1818}
-.hvt-lbl{font-size:8px;letter-spacing:3px;color:#3a2020;font-weight:700;text-align:center}
-.hvt-sub{font-size:8px;color:#2a1818;text-align:center;line-height:1.5;font-family:sans-serif}
+.hvt-slot img.hvt-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hvt-lbl{font-size:8px;letter-spacing:3px;color:#3a2020;font-weight:700;text-align:center;font-family:'Oswald',sans-serif}
 .photo-tag{display:inline-block;font-size:7px;letter-spacing:3px;padding:2px 7px;margin-bottom:6px;font-weight:700}
 .tag-alive{background:#081808;color:#50a050}
 .tag-dead{background:#180808;color:#ff5050}
 .tag-hv{background:#181008;color:#ff8030}
-.fenrir-reaction{width:40px;height:40px;border-radius:50%;border:1px solid #2a2820;object-fit:cover;float:right;margin-left:8px}
 .objs{margin-bottom:7px}
 .obj{display:flex;gap:5px;margin-bottom:4px;font-size:10px;color:#666050;font-family:sans-serif}
 .onum{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:20px;font-size:11px}
@@ -121,80 +106,52 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
 .mc.done-mc .done-btn{color:#50a050;border-color:#1a3a1a}
 .hidden{display:none!important}
 .botbar{background:var(--gold);color:#0a0c10;text-align:center;font-size:9px;font-weight:700;letter-spacing:4px;padding:5px;margin-top:1.5rem}
-
-/* DISCORD SETUP GUIDE */
-.setup-guide{margin:1rem;background:#080e04;border:1px solid #203010;border-left:4px solid var(--gold);padding:1rem}
-.setup-title{font-size:10px;letter-spacing:4px;color:var(--gold);margin-bottom:8px;font-weight:700}
-.setup-step{display:flex;gap:10px;margin-bottom:8px;font-size:11px;color:#a09888;font-family:sans-serif}
-.setup-num{color:var(--gold);font-weight:700;font-family:'Oswald',sans-serif;min-width:20px}
-.setup-step a{color:#6090cc}
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
 <div id="loginScreen">
-  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Ccircle cx='70' cy='70' r='70' fill='%230d1015'/%3E%3Ctext x='70' y='85' text-anchor='middle' font-size='64' fill='%23c8a227'%3E🐺%3C/text%3E%3C/svg%3E" class="login-logo" alt="Fenrir">
+  <img src="images/fenrir/fenrir Simple.png" class="login-fenrir" alt="Sergent Fenrir" onerror="this.src='images/fenrir/fenrir salut.png'">
   <div class="login-title">ATLAS — IRON TIDE</div>
-  <div class="login-sub">accès réservé aux contractuels</div>
-  <div class="login-fenrir">
-    <strong>"Contractuel, identifie-toi."</strong><br>
-    Seuls les membres du serveur DFT avec le grade<br>
-    <strong>Contractuel ou supérieur</strong> peuvent accéder<br>
-    à ce briefing opérationnel.
+  <div class="login-sub">opération classifiée — accès restreint</div>
+  <div class="login-msg">
+    <strong>"Contractuel, identifie-toi."</strong><br><br>
+    Seuls les membres du serveur <strong>DFT</strong><br>
+    avec le grade <strong>Contractuel ou supérieur</strong><br>
+    peuvent accéder à ce briefing opérationnel.
   </div>
-
-  <div class="setup-guide">
-    <div class="setup-title">⚙ configuration requise — discord oauth2</div>
-    <div class="setup-step"><span class="setup-num">1</span><span>Va sur <a href="https://discord.com/developers/applications" target="_blank">discord.com/developers/applications</a></span></div>
-    <div class="setup-step"><span class="setup-num">2</span><span>Crée une application → "New Application" → nom : "ATLAS Iron Tide"</span></div>
-    <div class="setup-step"><span class="setup-num">3</span><span>Onglet OAuth2 → copie le <strong>Client ID</strong> → remplace <code>TON_CLIENT_ID</code> ci-dessous</span></div>
-    <div class="setup-step"><span class="setup-num">4</span><span>Ajoute l'URL de redirect : <code>https://ton-site.github.io/callback</code></span></div>
-    <div class="setup-step"><span class="setup-num">5</span><span>Héberge ce fichier sur GitHub Pages → accès Discord opérationnel</span></div>
-  </div>
-
-  <button class="login-btn" onclick="simulateLogin()">
-    🔐 SE CONNECTER AVEC DISCORD
-  </button>
-  <div class="login-note">
-    Serveur DFT ID: 1051477960722493520<br>
-    Rôle requis: Contractuel (et grades supérieurs)
-  </div>
-  <button style="background:transparent;border:1px solid #2a2820;color:#444030;font-size:9px;letter-spacing:2px;padding:6px 14px;cursor:pointer;font-family:'Oswald',sans-serif;margin-top:8px" onclick="demoMode()">
-    MODE DÉMO (sans Discord)
-  </button>
+  <button class="login-btn" onclick="doLogin()">🔐 SE CONNECTER AVEC DISCORD</button>
 </div>
 
-<!-- ACCESS DENIED -->
+<!-- ACCÈS REFUSÉ -->
 <div id="accessDenied">
-  <div style="font-size:48px">🚫</div>
-  <div class="denied-title">ACCÈS REFUSÉ</div>
-  <div class="denied-text">
-    Tu n'es pas membre du serveur DFT<br>ou tu ne possèdes pas le grade requis.<br><br>
+  <img src="images/fenrir/fenrir Surpris.png" style="width:120px;height:120px;border-radius:50%;border:2px solid #8b0000;object-fit:cover" alt="Fenrir">
+  <div style="font-size:24px;color:#cc3333;letter-spacing:3px;font-weight:700">ACCÈS REFUSÉ</div>
+  <div style="font-size:12px;color:#666050;text-align:center;max-width:280px;line-height:1.8;font-family:sans-serif">
+    Tu n'es pas membre du serveur DFT<br>ou tu n'as pas le grade requis.<br><br>
     <strong style="color:#c8a227">Grade minimum : Contractuel</strong>
   </div>
-  <button class="login-btn" style="margin-top:12px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">
-    RETOUR
-  </button>
+  <button class="login-btn" style="max-width:220px" onclick="document.getElementById('accessDenied').classList.remove('show');document.getElementById('loginScreen').classList.remove('hidden')">RETOUR</button>
 </div>
 
-<!-- MAIN APP -->
+<!-- APP -->
 <div id="app">
   <div class="topbar">
-    <span style="font-size:10px;letter-spacing:3px">⚠ IRON TIDE — CLASSIFIÉ</span>
+    <span>⚠ IRON TIDE — CLASSIFIÉ</span>
     <div class="user-badge">
       <img id="userAvatar" class="user-avatar" src="" alt="">
       <div>
-        <div id="userName" style="font-weight:700">CONTRACTUEL</div>
-        <div id="userRank" class="user-rank">GRADE: CONTRACTUEL</div>
+        <div id="userName" style="font-weight:700;font-size:11px">CONTRACTUEL</div>
+        <div id="userRank" style="font-size:8px;letter-spacing:2px;opacity:.7">GRADE: CONTRACTUEL</div>
       </div>
     </div>
   </div>
 
   <div class="hero">
     <div class="fenrir-bar">
-      <img id="fenrirHero" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%230d1015'/%3E%3Ctext x='30' y='40' text-anchor='middle' font-size='32' fill='%23c8a227'%3E🐺%3C/text%3E%3C/svg%3E" class="fenrir-img" alt="Fenrir">
-      <div class="fenrir-msg">
+      <img src="images/fenrir/fenrir Ordre.png" class="fenrir-bar-img" alt="Fenrir" onerror="this.src='images/fenrir/fenrir salut.png'">
+      <div class="fenrir-bar-msg">
         <strong>Sergent Fenrir — Briefing Opérationnel</strong><br>
         "Contractuels, l'île est en guerre. 52 points stratégiques sont sous contrôle ennemi. Chaque base libérée, chaque HVT capturé nous rapproche de la victoire. <strong>ATLAS ne recule pas.</strong>"
       </div>
@@ -208,7 +165,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <div class="stat"><div class="stat-n" id="sTotal">52</div><div class="stat-l">missions</div></div>
     <div class="stat"><div class="stat-n" id="sDone">0</div><div class="stat-l">complétées</div></div>
     <div class="stat"><div class="stat-n">14</div><div class="stat-l">HVT</div></div>
-    <div class="stat"><div class="stat-n" id="sMembers">—</div><div class="stat-l">connectés</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">secteurs</div></div>
   </div>
 
   <div class="progress">
@@ -223,7 +180,7 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
     <button class="fb fo" onclick="filt('p2',this)">URGENCE</button>
     <button class="fb fg" onclick="filt('p3',this)">TACTIQUE</button>
     <button class="fb fb2" onclick="filt('p4',this)">RÉCUP</button>
-    <button class="fb" onclick="filt('pF',this)" style="border-color:var(--gold);color:var(--gold)">FINALE</button>
+    <button class="fb" style="border-color:var(--gold);color:var(--gold)" onclick="filt('pF',this)">FINALE</button>
   </div>
 
   <div class="srch">
@@ -231,281 +188,249 @@ body{background:var(--dark);font-family:'Oswald',sans-serif;color:#e8dfc8;min-he
   </div>
 
   <div id="allMissions"></div>
-
   <div class="botbar">iron tide — 52 missions — providence hq — dft — atlas ne tombe pas</div>
 </div>
 
 <script>
-// ============ DONNÉES MISSIONS ============
-const FENRIR_IMGS = {
-  point: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Ccircle cx="20" cy="20" r="20" fill="%230d1015"/%3E%3Ctext x="20" y="27" text-anchor="middle" font-size="22" fill="%23c8a227"%3E🐺%3C/text%3E%3C/svg%3E',
-  victory: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Ccircle cx="20" cy="20" r="20" fill="%230d1015"/%3E%3Ctext x="20" y="27" text-anchor="middle" font-size="22"%3E🎉%3C/text%3E%3C/svg%3E',
-  salute: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Ccircle cx="20" cy="20" r="20" fill="%230d1015"/%3E%3Ctext x="20" y="27" text-anchor="middle" font-size="22"%3E🫡%3C/text%3E%3C/svg%3E',
+const CLIENT_ID='1508841496286200011';
+const SERVER_ID='1051477960722493520';
+const REDIRECT=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/callback.html');
+
+function doLogin(){
+  window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT}&response_type=token&scope=identify%20guilds.members.read`;
+}
+
+// Fenrir images par contexte
+const F={
+  salut:'images/fenrir/fenrir salut.png',
+  simple:'images/fenrir/fenrir Simple.png',
+  ordre:'images/fenrir/fenrir Ordre.png',
+  soldat:'images/fenrir/fenrir Soldat.png',
+  arme:'images/fenrir/fenrir Armé.png',
+  tank:'images/fenrir/fenrir assaut-tank.png',
+  gagne:'images/fenrir/fenrir gagnee.png',
+  surpris:'images/fenrir/fenrir Surpris.png',
+  baguette:'images/fenrir/fenrir baguette.png',
+  grade:'images/fenrir/fenrir remise-de-grade.png',
+  ecran:'images/fenrir/fenrir Ecran-Ordinateur.png',
 };
 
-const HVT_PHOTOS = {
-  hvt1: null, hvt2: null, hvt3: null, hvt4: null,
-  hvt5: null, hvt6: null, hvt7: null, hvt8: null,
-  hvt9: null, hvt10: null, hvt11: null, hvt12: null,
-  hvt13: null, hvt14: null,
-};
-
-const MISSIONS = [
-  // NORD-OUEST
-  {id:'M01',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est la dernière ligne. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER INFILTRÉS',hvt:null,fenrir:'salute',obj:['Éliminer les 6 infiltrés dans le périmètre HQ','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],xp:3000,rewards:['MÉDAILLE HQ','INTEL ENNEMI'],terrain:'QG fortifié, accès unique'},
-  {id:'M02',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — coord 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur en terrain forestier. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT — HVT',hvt:'hvt11',fenrir:'point',obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable logistique HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','MÉDAILLE CHICAGO'],terrain:'Compound clôturé en forêt dense'},
-  {id:'M03',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE — coord 009-152',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad, accessible par pont unique. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:'point',obj:['Détruire le convoi avant son arrivée','Neutraliser la garnison du fort','Établir un LZ ATLAS sur l\'hélipad'],xp:1800,rewards:['FORT LIBÉRÉ','LZ ACTIVÉ'],terrain:'Fort béton avec pont d\'accès unique'},
-  {id:'M04',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA — coord 010-052',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent depuis la mer.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:'point',obj:['Détruire les 3 embarcations ennemies','Sécuriser le dock','Défense côtière ATLAS établie'],xp:1500,rewards:['DOCK LIBÉRÉ'],terrain:'Péninsule côtière avec pont'},
-  {id:'M05',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY — coord 012-062',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite sur route principale. <strong>Convoi de munitions remonte vers le centre.</strong>',tag:'dead',tagLbl:'EMBUSCADE CONVOI',hvt:null,fenrir:'point',obj:['Tendre l\'embuscade sur la langue de terre','Détruire les 4 véhicules de convoi','Sécuriser Kentucky'],xp:2000,rewards:['MUNITIONS RÉCUPÉRÉES'],terrain:'Village sur presqu\'île étroite'},
-  {id:'M06',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA — coord 005-072',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Un prisonnier ATLAS est retenu dans cette base.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:'salute',obj:['Insertion hélico nocturne','Neutraliser les geôliers en silence','Extraire le prisonnier ATLAS'],xp:2500,rewards:['PRISONNIER SAUVÉ','MÉDAILLE SAUVETAGE'],terrain:'Base isolée côte ouest'},
-  {id:'M07',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — coord 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes de pétrole. <strong>Accès par pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER GARNISON',hvt:null,fenrir:'point',obj:['Traverser le pont sous feu ennemi','Neutraliser la garnison du fort','Sécuriser les citernes de carburant'],xp:1600,rewards:['FORT HAWAII','CARBURANT RÉCUP'],terrain:'Fort pentagonal avec citernes'},
-  // NORD
-  {id:'M08',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE — coord 035-020',badge:'CRITIQUE',bclass:'br',desc:'Nœud de communication ennemi. <strong>Brouilleur radio paralyse nos communications.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:'hvt4',fenrir:'point',obj:['Atteindre la base sous brouillage','Détruire le brouilleur radio','Capturer le technicien pour les codes'],xp:2200,rewards:['COMMUNICATIONS RÉTABLIES'],terrain:'Base radio en zone ouverte'},
-  {id:'M09',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA — coord 038-028',badge:'URGENCE',bclass:'bo',desc:'Dépôt logistique central. <strong>Ravitaille 8 bases ennemies autour.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:'point',obj:['Infiltration nocturne du dépôt','Détruire les stocks (5 points)','Exfiltration avant les renforts'],xp:2300,rewards:['8 BASES AFFAIBLIES'],terrain:'Dépôt logistique central'},
-  {id:'M10',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER — coord 038-036',badge:'URGENCE',bclass:'bo',desc:'Avant-poste avec lance-roquettes AA. <strong>Nos hélicos sont en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:'point',obj:['Détruire les 3 positions AA','Neutraliser la garnison','LZ sécurisé établi'],xp:2100,rewards:['CIEL LIBRE','LZ SÉCURISÉ'],terrain:'Avant-poste en zone dégagée'},
-  {id:'M11',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — coord 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement régional ennemi. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:'hvt2',fenrir:'salute',obj:['Assaut coordonné sur Titan','Capturer l\'officier HVT','Tenir Titan contre les contre-attaques'],xp:3200,rewards:['PC DÉTRUIT','HVT CAPTURÉ','MÉDAILLE TITAN'],terrain:'Forteresse centrale renforcée'},
-  {id:'M12',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE / CAPTIVA SOUND',badge:'TACTIQUE',bclass:'bg',desc:'Station radio sur petit promontoire côtier. <strong>Coordonne les patrouilles du secteur.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:'hvt4',fenrir:'point',obj:['Infiltrer la station radio','Capturer l\'opérateur pour les fréquences','Détruire le matériel de transmission'],xp:1700,rewards:['FRÉQUENCES ENNEMIES'],terrain:'Village côtier isolé'},
-  {id:'M13',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA — coord 029-121',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire avec quai. <strong>Carrefour stratégique central.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:'point',obj:['Bloquer les axes de renfort','Sécuriser le port Concord','Tenir la position 10 minutes'],xp:2000,rewards:['PORT LIBÉRÉ'],terrain:'Grand port militaire + ville'},
-  {id:'M14',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON / BOCA GRANDE — coord 017-103',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île étroite, route principale. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:'point',obj:['Détruire les véhicules blindés de patrouille','Sécuriser Houston','Poster une sentinelle ATLAS'],xp:1600,rewards:['AXE BLOQUÉ'],terrain:'Village sur presqu\'île côtière'},
-  {id:'M15',sec:'NORD — SECTEUR CENTRAL-NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT — coord 046-143',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec installation militaire. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:'hvt4',fenrir:'point',obj:['Assaut sur l\'installation militaire','Capturer l\'opérateur radio chef','Détruire les antennes de relais'],xp:2200,rewards:['RÉSEAU COUPÉ'],terrain:'Village côtier + base militaire'},
-  // CENTRAL
-  {id:'M16',sec:'CENTRAL — SECTEUR AÉROPORTS',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS / ILE AÉROPORT — coord 060-035',badge:'CRITIQUE',bclass:'br',desc:'Île entière = aéroport militaire. <strong>Bombardiers prêts au décollage — danger immédiat.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:'hvt1',fenrir:'point',obj:['Neutraliser la défense AA','Détruire les 3 bombardiers au sol','Capturer le pilote en chef HVT','Tenir l\'aéroport 5 minutes'],xp:3500,rewards:['AÉROPORT LIBÉRÉ','PILOTE HVT'],terrain:'Île aéroport avec piste longue'},
-  {id:'M17',sec:'CENTRAL — SECTEUR AÉROPORTS',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'BASE NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base adjacente. <strong>Général de brigade ennemi — HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:'hvt2',fenrir:'salute',obj:['Pénétrer le PC sous couverture','Capturer le Général HVT Omega','Récupérer les documents du plan offensif'],xp:4000,rewards:['GÉNÉRAL CAPTURÉ','PLAN OFFENSIF','MÉDAILLE OMEGA'],terrain:'Aéroport militaire avec hangars bunkerisés'},
-  {id:'M18',sec:'CENTRAL — SECTEUR AÉROPORTS',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'BASE MISSOURI / ORION MILITARY AIRPORT — coord 108-086',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport militaire avec 2 ponts d\'accès. <strong>Hélicoptères de combat décollent toutes les 5 minutes.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:'point',obj:['Détruire les 4 hélicos de combat au sol','Sécuriser la tour de contrôle','Rétablir les vols ATLAS'],xp:3000,rewards:['AÉROPORT MISSOURI','COULOIR AÉRIEN'],terrain:'Île aéroport avec 2 ponts'},
-  {id:'M19',sec:'CENTRAL — SECTEUR INDUSTRIEL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'BASE IDAHO / ORION INDUSTRIAL COMPLEX — coord 097-077',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle avec 2 ponts ferrés. <strong>Raffinerie produisant carburant ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:'hvt14',fenrir:'point',obj:['Traverser les 2 ponts sous feu','Neutraliser la garnison de la raffinerie','Capturer le directeur technique HVT','Saboter les installations'],xp:3500,rewards:['RAFFINERIE DÉTRUITE','HVT INGÉNIEUR'],terrain:'Île industrielle avec 2 ponts ferrés'},
-  {id:'M20',sec:'CENTRAL — SECTEUR INDUSTRIEL',cat:'p1',name:'PRINCETON PORT',loc:'BASE PRINCETON / ORION PORT — coord 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs avec voies ferrées. <strong>Commandant ennemi dirige depuis ce port.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT EN CHEF',hvt:'hvt9',fenrir:'salute',obj:['Assaut massif sur le port Princeton','Capturer le Commandant en Chef ennemi','Détruire les installations logistiques'],xp:4500,rewards:['COMMANDANT CAPTURÉ','MÉDAILLE PRINCETON','LOOT TIER S'],terrain:'Grand port à conteneurs avec voies ferrées'},
-  {id:'M21',sec:'CENTRAL — SECTEUR INDUSTRIEL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'BASE JUNKYARD / PALMDALE — coord 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier avec gare de triage. <strong>Général de division dans son bunker — HVT ALPHA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:'hvt2',fenrir:'salute',obj:['Pénétrer Junkyard sans détection','Localiser le Général dans son bunker','Capturer vivant — transport immédiat ATLAS'],xp:4200,rewards:['GÉNÉRAL HVT ALPHA','BUNKER SÉCURISÉ'],terrain:'Village + gare de triage + bunker béton'},
-  {id:'M22',sec:'CENTRAL — SECTEUR INDUSTRIEL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'BASE MISSISSIPPI / FLATS CASTLE RUINS — coord 115-016',badge:'URGENCE',bclass:'bo',desc:'Ruines de château médiéval sur promontoire rocheux. <strong>Pont stratégique contrôlé par l\'ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR PONT',hvt:'hvt9',fenrir:'point',obj:['Escalader le promontoire rocheux','Sécuriser les ruines du château','Capturer l\'ingénieur du pont pour les plans'],xp:2100,rewards:['CHÂTEAU LIBÉRÉ','PONT SÉCURISÉ'],terrain:'Ruines médiévales sur falaise rocheuse'},
-  // EST
-  {id:'M23',sec:'EST — CÔTE NORD-EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA — coord 076-032',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec village et tour. <strong>Renforts maritimes arrivent toutes les 20 minutes.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:'point',obj:['Détruire les jetées d\'accostage','Neutraliser les défenses côtières','Tenir California contre 3 vagues de renforts'],xp:3000,rewards:['CÔTE EST LIBÉRÉE'],terrain:'Langue de terre côtière avec tour'},
-  {id:'M24',sec:'EST — CÔTE NORD-EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR — coord 050-007',badge:'URGENCE',bclass:'bo',desc:'Archipel de 3 îlots reliés. <strong>Tour d\'observation ennemi à -95m de profondeur visible.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:'point',obj:['Traverser les îlots par embarcation','Escalader la tour d\'observation','Installer un relais ATLAS'],xp:1500,rewards:['ARCHIPEL LIBÉRÉ'],terrain:'3 îlots séparés par lagons'},
-  {id:'M25',sec:'EST — CÔTE NORD-EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA — coord 068-018',badge:'URGENCE',bclass:'bo',desc:'Base avec lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:'point',obj:['Localiser les 4 positions SAM','Détruire les lance-missiles','Sécuriser Alabama'],xp:2300,rewards:['CIEL NORD-EST LIBRE'],terrain:'Base avec positions SAM'},
-  {id:'M26',sec:'EST — CÔTE NORD-EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — coord 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général ennemi — HVT priorité maximale.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:'hvt2',fenrir:'salute',obj:['Pénétrer la zone sans détection','Capturer le Général dans son bunker','Aucun tir d\'alarme toute l\'opération'],xp:4200,rewards:['GÉNÉRAL CAPTURÉ','LOOT TIER A'],terrain:'Zone industrielle nord-est'},
-  {id:'M27',sec:'EST — CÔTE NORD-EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO — coord 095-022',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés pour l\'ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:'hvt14',fenrir:'point',obj:['Pénétrer le complexe','Capturer l\'ingénieur en chef HVT','Saboter les chaînes de production (3)'],xp:2700,rewards:['PRODUCTION BLOQUÉE'],terrain:'Complexe industriel'},
-  {id:'M28',sec:'EST — CÔTE NORD-EST',cat:'p1',name:'EAST BOSTON PORT',loc:'BASE BOSTON / EAST PORT — coord 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif avec cuves de carburant. <strong>Toute la flotte ennemie dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:'hvt9',fenrir:'point',obj:['Neutraliser la défense portuaire','Saboter les cuves de carburant (12 cuves)','Capturer le chef portuaire HVT'],xp:3500,rewards:['PORT DÉTRUIT','FLOTTE PARALYSÉE'],terrain:'Immense port pétrolier avec grues'},
-  {id:'M29',sec:'EST — CÔTE NORD-EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS — coord 088-014',badge:'URGENCE',bclass:'bo',desc:'Station radar de surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:'point',obj:['Approche basse altitude en hélico','Détruire le radar de surveillance','Sécuriser Kansas'],xp:2000,rewards:['RADAR DÉTRUIT'],terrain:'Station radar en zone dégagée'},
-  // CENTRAL-SUD
-  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'BASE DENVER / CAPE RASSA — coord 071-054',badge:'URGENCE',bclass:'bo',desc:'Grande ville avec pont ferroviaire et industrie. <strong>Carrefour central sud — si on le perd tout est coupé.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:'hvt9',fenrir:'point',obj:['Bloquer le pont ferroviaire','Capturer le commandant de zone HVT','Tenir le carrefour 8 minutes'],xp:2500,rewards:['CARREFOUR LIBÉRÉ'],terrain:'Grande ville avec pont ferroviaire'},
-  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — coord 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Petit compound béton avec bunker, accès pont unique. <strong>Très défendable par l\'ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:'hvt4',fenrir:'point',obj:['Traverser le pont sous feu','Forcer l\'entrée du bunker','Capturer l\'opérateur radio pour les codes'],xp:1900,rewards:['CODES RADIO'],terrain:'Compound béton avec pont unique'},
-  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON — coord 056-120',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo/hôpital central. <strong>Scientifique ennemi développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:'hvt6',fenrir:'point',obj:['Infiltration silencieuse du complexe','Sécuriser le labo sans le détruire','Capturer le scientifique HVT'],xp:3000,rewards:['LABO SÉCURISÉ','SCIENTIFIQUE HVT'],terrain:'Complexe labo + hôpital'},
-  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN — coord 038-106',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée avec quelques arbres. <strong>Cache d\'armes découverte par drone.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:'point',obj:['Débarquement amphibie sur l\'îlot','Localiser et détruire la cache d\'armes','Exfiltration avant renforts'],xp:1400,rewards:['CACHE DÉTRUITE'],terrain:'Îlot isolé boisé'},
-  {id:'M34',sec:'CENTRAL-SUD',cat:'p3',name:'STARLIGHT ÉPAVE',loc:'BASE STARLIGHT — coord 040-026',badge:'TACTIQUE',bclass:'bg',desc:'Zone côtière brumeuse avec épave de navire. <strong>Des débarquements ennemis nocturnes se font ici.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:'point',obj:['Poster des guetteurs sur la côte brumeuse','Détruire les embarcations ennemies (3)','Couler l\'épave qui sert de point de rendez-vous'],xp:1700,rewards:['CÔTE SÉCURISÉE'],terrain:'Zone brumeuse avec épave + bouées'},
-  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND — coord 117-062',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments isolés en clairière forestière à 55m d\'altitude. <strong>Sniper d\'élite ennemi basé ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:'hvt13',fenrir:'point',obj:['Approche silencieuse par les bois','Traquer le sniper d\'élite ennemi','Capturer vivant pour interrogatoire'],xp:2600,rewards:['SNIPER CAPTURÉ'],terrain:'Clairière isolée en forêt haute'},
-  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'BASE OKLAHOMA / NORTH FORT — coord 119-095',badge:'URGENCE',bclass:'bo',desc:'Grande ville avec accès par pont. <strong>Artillerie lourde en position vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:'point',obj:['Traverser le pont sud sous feu','Détruire les pièces d\'artillerie lourde (4)','Sécuriser North Fort'],xp:2200,rewards:['ARTILLERIE DÉTRUITE'],terrain:'Grande ville avec pont d\'accès'},
-  // SUD
-  {id:'M37',sec:'SUD — SECTEUR SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'BASE VIRGINIA / NEVADA / LAKE HAVEN — coord 100-040',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport militaire. <strong>Hélicos armés en préparation de décollage.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:'point',obj:['Détruire les hélicos au sol (4)','Neutraliser les positions AA','Sécuriser les 2 bases et l\'aéroport'],xp:2800,rewards:['AÉROPORT LIBÉRÉ','COULOIR AÉRIEN'],terrain:'Aéroport avec 2 bases adjacentes'},
-  {id:'M38',sec:'SUD — SECTEUR SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS — coord 075-040',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec champ de mines sous-marines. <strong>Bloque l\'accès maritime à tout le secteur.</strong>',tag:'dead',tagLbl:'NEUTRALISER MINES',hvt:null,fenrir:'point',obj:['Déminer le chenal d\'accès (8 mines)','Neutraliser la base côtière','Établir une voie maritime ATLAS sécurisée'],xp:2000,rewards:['VOIE MARITIME LIBRE'],terrain:'Base côtière avec champ de mines'},
-  {id:'M39',sec:'SUD — SECTEUR SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA — coord 035-152',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées, fort militaire fortifié côté est. <strong>Dernier bastion ennemi au sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:'hvt9',fenrir:'point',obj:['Traverser le pont inter-île','Assaut sur le fort fortifié','Capturer le commandant du bastion'],xp:2400,rewards:['BASTION SUD LIBÉRÉ'],terrain:'2 îles reliées avec fort fortifié'},
-  {id:'M40',sec:'SUD — SECTEUR SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL — coord 047-047',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ hélico. <strong>Débarquements ennemis réguliers.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:'point',obj:['Poster des sentinelles sur le promontoire','Repousser le débarquement ennemi','Sécuriser le LZ hélico pour ATLAS'],xp:1600,rewards:['PROMONTOIRE SÉCURISÉ'],terrain:'Base militaire sur promontoire + LZ'},
-  {id:'M41',sec:'SUD — SECTEUR SUD',cat:'p3',name:'DELMARE WISCONSIN',loc:'BASE DELMARE / WISCONSIN — coord 020-052',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec pont d\'accès. <strong>Brouilleur radio installé dans le clocher.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN RADIO',hvt:'hvt4',fenrir:'point',obj:['Atteindre le village DelMare','Neutraliser les gardes du clocher','Capturer le technicien radio + désactiver le brouilleur'],xp:1600,rewards:['BROUILLEUR DÉTRUIT','RADIO RÉTABLIE'],terrain:'Village côtier avec pont d\'accès'},
-  {id:'M42',sec:'SUD — SECTEUR SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'BASE NEBRASKA / ACLINE — coord 141-012',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier avec route principale. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:'point',obj:['Détruire les 2 ponts d\'accès','Neutraliser la garnison Nebraska','Poster une sentinelle ATLAS permanente'],xp:1500,rewards:['AXE DE RAVITAILLEMENT COUPÉ'],terrain:'Village en zone forestière'},
-  {id:'M43',sec:'SUD — SECTEUR SUD',cat:'p3',name:'AUGUSTA BELLA VIDA',loc:'BASE AUGUSTA / BELLA VIDA — coord 025-042',badge:'TACTIQUE',bclass:'bg',desc:'Zone résidentielle occupée avec ruins de castle visible. <strong>Civils retenus en otage.</strong>',tag:'dead',tagLbl:'LIBÉRER OTAGES',hvt:null,fenrir:'salute',obj:['Infiltration ultra-discrète','Neutraliser les preneurs d\'otages','Évacuer les civils vers le QG'],xp:2000,rewards:['CIVILS SAUVÉS','MÉDAILLE HUMANITAIRE'],terrain:'Zone résidentielle côtière + château'},
-  {id:'M44',sec:'SUD — SECTEUR SUD',cat:'p4',name:'MICHIGAN SAUVETAGE',loc:'BASE MICHIGAN / DETROIT ISLAND — coord 038-106',badge:'RÉCUP',bclass:'bb',desc:'Île isolée. <strong>Équipe ATLAS portée disparue — dernière transmission de l\'île.</strong>',tag:'dead',tagLbl:'SAUVETAGE ÉQUIPE',hvt:null,fenrir:'salute',obj:['Localiser l\'équipe ATLAS disparue','Neutraliser les forces ennemies','Exfiltrer l\'équipe par voie maritime'],xp:2200,rewards:['ÉQUIPE SAUVÉE'],terrain:'Petite île isolée'},
-  // OFFSHORE
-  {id:'M45',sec:'OFFSHORE — POINTS EN MER',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE — coord 045-110',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée en pleine mer. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR OFFSHORE',hvt:'hvt4',fenrir:'point',obj:['Insertion hélico sur la plateforme','Neutraliser les gardes (6)','Capturer l\'opérateur pour les codes de plateforme'],xp:2800,rewards:['PLATEFORME LIBÉRÉE','CODES OFFSHORE'],terrain:'Plateforme pétrolière en mer'},
-  {id:'M46',sec:'OFFSHORE — POINTS EN MER',cat:'p3',name:'VESPER ARCHIPEL ISOLÉ',loc:'BASE VESPER — coord 050-007',badge:'TACTIQUE',bclass:'bg',desc:'Archipel de 3 îlots isolés en pleine mer. <strong>Caches d\'armes dissimulées sur chaque îlot.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHES',hvt:null,fenrir:'point',obj:['Traverser les 3 îlots par zodiac','Détruire les caches d\'armes (9 au total)','Exfiltration maritime'],xp:1600,rewards:['ARCHIPEL NETTOYÉ'],terrain:'3 îlots séparés par lagons profonds'},
-  // WASHINGTON
-  {id:'M47',sec:'NORD-OUEST — QG & CÔTE OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON — coord 143-066',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs, bâtiments de traitement. <strong>L\'ennemi cache des munitions dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS MUNITIONS',hvt:null,fenrir:'point',obj:['Pénétrer la carrière entre les deux lacs','Localiser et détruire les 5 silos à munitions','Neutraliser les ouvriers armés'],xp:2000,rewards:['STOCKS DÉTRUITS','CARRIÈRE LIBÉRÉE'],terrain:'Carrière de pierre entre 2 lacs'},
-  // FINALE APPROCHE
-  {id:'M48',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS — SYNCHRONISÉ',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants ennemis. <strong>Synchroniser toutes les équipes.</strong>',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:'salute',obj:['Synchroniser toutes les équipes ATLAS','Frapper simultanément 5 derniers objectifs','Couper toutes les communications ennemies','Ouvrir le couloir vers Providence'],xp:3500,rewards:['PRÉPARATION FINALE'],terrain:'Tous secteurs'},
-  // MISSIONS BONUS POINTS RESTANTS
-  {id:'M49',sec:'EST — CÔTE NORD-EST',cat:'p3',name:'MAINE GULFSHORE',loc:'BASE MAINE / GULFSHORE',badge:'TACTIQUE',bclass:'bg',desc:'Grande ville côtière dense. <strong>Combat de rue dans Gulfshore.</strong>',tag:'dead',tagLbl:'CQB URBAIN',hvt:null,fenrir:'point',obj:['Nettoyer Gulfshore bâtiment par bâtiment','Neutraliser les nids de tir (5)','Hisser le drapeau ATLAS'],xp:1800,rewards:['VILLE LIBÉRÉE'],terrain:'Grande ville côtière dense'},
-  {id:'M50',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST — coord 088-030',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée à l\'est. <strong>Parfaite pour une insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:'point',obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration avant renforts'],xp:1400,rewards:['BASE LIBÉRÉE'],terrain:'Base isolée en zone dégagée'},
-  {id:'M51',sec:'CENTRAL-SUD',cat:'p3',name:'COLORADO FORTIFIÉ',loc:'BASE COLORADO',badge:'TACTIQUE',bclass:'bg',desc:'Position fortifiée avec obusiers lourds. <strong>Menacent tout le secteur sud.</strong>',tag:'dead',tagLbl:'DÉTRUIRE OBUSIERS',hvt:null,fenrir:'point',obj:['Approche nocturne du fort','Détruire les 4 obusiers lourds','Sécuriser Colorado'],xp:2200,rewards:['OBUSIERS DÉTRUITS'],terrain:'Fort fortifié en zone forestière'},
-  // FINALE
-  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE — COORD CENTRALE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Toutes les missions accomplies. L\'ennemi lance son assaut final sur le QG ATLAS.</strong> Trois vagues. Aucune retraite possible. L\'île entière se joue ici.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:'victory',obj:['TOUS les joueurs ATLAS convergent sur Providence','Repousser vague 1 : infanterie légère (30 soldats)','Repousser vague 2 : assaut blindé (4 véhicules)','Repousser vague 3 : assaut aérien + 20 élites','Éliminer le Commandant Suprême ennemi'],xp:6000,rewards:['TITRE : DÉFENSEUR DE L\'ÎLE','LOOT TIER S','MÉDAILLE ATLAS SUPREME'],terrain:'QG Providence — défense totale'},
+// HVT photos
+const HVT_PHOTOS=[
+  'images/hvt/Capture d\'écran 2026-05-26 144046.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144133.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144344.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144513.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144724.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144807.png',
+  'images/hvt/Capture d\'écran 2026-05-26 144915.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145009.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145104.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145150.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145402.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145520.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145608.png',
+  'images/hvt/Capture d\'écran 2026-05-26 145643.png',
 ];
 
-const SECTIONS = ['NORD-OUEST — QG & CÔTE OUEST','NORD — SECTEUR CENTRAL-NORD','CENTRAL — SECTEUR AÉROPORTS','CENTRAL — SECTEUR INDUSTRIEL','EST — CÔTE NORD-EST','CENTRAL-SUD','SUD — SECTEUR SUD','OFFSHORE — POINTS EN MER','PRÉ-FINALE','MISSION FINALE'];
-
-const HVT_DATA = [
-  {id:'hvt1',name:'Pilote en Chef',mission:'Arkansas Aéroport',status:'NEUTRALISER'},
-  {id:'hvt2',name:'Général Ennemi',mission:'Nevada / Titan / Junkyard',status:'CAPTURER VIVANT'},
-  {id:'hvt3',name:'Milicien Irrégulier',mission:'Oregon Spirit',status:'CAPTURER'},
-  {id:'hvt4',name:'Coordinateur Radio',mission:'Vermont / Seattle / Apollo',status:'CAPTURER VIVANT'},
-  {id:'hvt5',name:'Agent Civil',mission:'Nebraska Archives',status:'CAPTURER'},
-  {id:'hvt6',name:'Scientifique Civil',mission:'Oregon Labo',status:'CAPTURER VIVANT'},
-  {id:'hvt7',name:'Milicien Urbain',mission:'Ohio / Maine',status:'NEUTRALISER'},
-  {id:'hvt8',name:'Agent Infiltré',mission:'Houston Carrefour',status:'CAPTURER'},
-  {id:'hvt9',name:'Commandant de Zone',mission:'Princeton / Mississippi',status:'CAPTURER VIVANT'},
-  {id:'hvt10',name:'Coordinateur Civil',mission:'Delaware',status:'CAPTURER'},
-  {id:'hvt11',name:'Milicien Tatoué',mission:'Chicago',status:'CAPTURER VIVANT'},
-  {id:'hvt12',name:'Saboteur',mission:'Arkansas',status:'NEUTRALISER'},
-  {id:'hvt13',name:'Sniper Élite',mission:'Richmond',status:'CAPTURER VIVANT'},
-  {id:'hvt14',name:'Ingénieur Industriel',mission:'Idaho / Ohio',status:'CAPTURER'},
+// Images de carte assignées aux missions (par ordre)
+const CARTE=[
+  'images/carte/image14.png','images/carte/image.png',
+  'images/carte/image2 .png','images/carte/image3.png',
+  'images/carte/image4.png','images/carte/image5.png',
+  'images/carte/image6.png','images/carte/image7.png',
+  'images/carte/image8.png','images/carte/image9.png',
+  'images/carte/image10.png','images/carte/image11.png',
+  'images/carte/image12.png','images/carte/image13.png',
+  'images/carte/image15.png','images/carte/image16.1.png',
+  'images/carte/image16.2.png','images/carte/image17.png',
+  'images/carte/image18.png','images/carte/image19.png',
+  'images/carte/image20.png','images/carte/image21.png',
+  'images/carte/image22.png','images/carte/image23.png',
+  'images/carte/image24.png','images/carte/image25.png',
+  'images/carte/image26.png','images/carte/image27.png',
+  'images/carte/image28.png','images/carte/image29.png',
+  'images/carte/image30.png','images/carte/image31.png',
+  'images/carte/image31.1.png','images/carte/image32.png',
+  'images/carte/image33.png','images/carte/image34.png',
+  'images/carte/image35.png','images/carte/image36.png',
+  'images/carte/image37.png','images/carte/image38.png',
+  'images/carte/image39.png','images/carte/image40.png',
+  'images/carte/image41.png','images/carte/image42.png',
+  'images/carte/image43.png','images/carte/image44.png',
+  'images/carte/image45.png','images/carte/image46.png',
+  'images/carte/image47.png','images/carte/image48.png',
+  'images/carte/image49.png','images/carte/image50.png',
 ];
 
-const SAVED_PHOTOS = {};
+const MISSIONS=[
+  {id:'M01',sec:'NORD-OUEST',cat:'p1',name:'DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'QG ATLAS',bclass:'bgold',desc:'Notre quartier général est menacé. <strong>Des infiltrés ont pénétré le périmètre.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Éliminer les 6 infiltrés','Sécuriser la salle de commandement','Rétablir les communications ATLAS'],xp:3000,rewards:['MÉDAILLE HQ','INTEL ENNEMI']},
+  {id:'M02',sec:'NORD-OUEST',cat:'p1',name:'CHICAGO EN FEU',loc:'BASE CHICAGO — 023-151',badge:'CRITIQUE',bclass:'br',desc:'Nœud logistique majeur. <strong>Dépôt d\'armes lourd confirmé.</strong>',tag:'alive',tagLbl:'CAPTURER VIVANT HVT',hvt:10,fenrir:F.arme,obj:['Infiltrer le dépôt sans alarme','Détruire les stocks (4 caisses)','Capturer le responsable logistique HVT'],xp:2500,rewards:['VÉHICULE BLINDÉ','HVT CAPTURÉ']},
+  {id:'M03',sec:'NORD-OUEST',cat:'p2',name:'NASHVILLE CÔTIER',loc:'BASE NASHVILLE',badge:'URGENCE',bclass:'bo',desc:'Fort bétonné avec hélipad. <strong>Convoi ennemi en route.</strong>',tag:'dead',tagLbl:'NEUTRALISER CONVOI',hvt:null,fenrir:F.soldat,obj:['Détruire le convoi avant arrivée','Neutraliser la garnison','Établir LZ ATLAS'],xp:1800,rewards:['FORT LIBÉRÉ']},
+  {id:'M04',sec:'NORD-OUEST',cat:'p2',name:'IOWA CÔTIER',loc:'BASE IOWA',badge:'URGENCE',bclass:'bo',desc:'Position côtière avec dock. <strong>Bateaux ennemis ravitaillent depuis la mer.</strong>',tag:'dead',tagLbl:'NEUTRALISER BATEAUX',hvt:null,fenrir:F.soldat,obj:['Détruire 3 embarcations','Sécuriser le dock','Défense côtière établie'],xp:1500,rewards:['DOCK LIBÉRÉ']},
+  {id:'M05',sec:'NORD-OUEST',cat:'p2',name:'KENTUCKY SUD',loc:'BASE KENTUCKY',badge:'URGENCE',bclass:'bo',desc:'Presqu\'île étroite. <strong>Convoi de munitions remonte vers le centre.</strong>',tag:'dead',tagLbl:'EMBUSCADE',hvt:null,fenrir:F.arme,obj:['Tendre l\'embuscade','Détruire 4 véhicules de convoi','Sécuriser Kentucky'],xp:2000,rewards:['MUNITIONS RÉCUPÉRÉES']},
+  {id:'M06',sec:'NORD-OUEST',cat:'p3',name:'ALASKA EXTRACTION',loc:'BASE ALASKA',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée. <strong>Un prisonnier ATLAS est retenu ici.</strong>',tag:'dead',tagLbl:'SAUVETAGE',hvt:null,fenrir:F.salut,obj:['Insertion hélico nocturne','Neutraliser les geôliers','Extraire le prisonnier'],xp:2500,rewards:['PRISONNIER SAUVÉ','MÉDAILLE SAUVETAGE']},
+  {id:'M07',sec:'NORD-OUEST',cat:'p3',name:'HAWAII FORT',loc:'BASE HAWAII — 057-130',badge:'TACTIQUE',bclass:'bg',desc:'Fort pentagonal avec citernes pétrole. <strong>Accès pont unique.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Neutraliser la garnison','Sécuriser les citernes'],xp:1600,rewards:['FORT HAWAII']},
+  {id:'M08',sec:'NORD',cat:'p1',name:'DELAWARE BROUILLEUR',loc:'BASE DELAWARE',badge:'CRITIQUE',bclass:'br',desc:'Brouilleur radio paralyse nos communications. <strong>Détruire avant tout.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN',hvt:3,fenrir:F.ecran,obj:['Atteindre la base sous brouillage','Détruire le brouilleur','Capturer le technicien'],xp:2200,rewards:['COMMUNICATIONS RÉTABLIES']},
+  {id:'M09',sec:'NORD',cat:'p2',name:'LOUISIANA LOGISTIQUE',loc:'BASE LOUISIANA',badge:'URGENCE',bclass:'bo',desc:'Dépôt logistique central. <strong>Ravitaille 8 bases ennemies.</strong>',tag:'dead',tagLbl:'DÉTRUIRE DÉPÔT',hvt:null,fenrir:F.soldat,obj:['Infiltration nocturne','Détruire les stocks (5)','Exfiltration avant renforts'],xp:2300,rewards:['8 BASES AFFAIBLIES']},
+  {id:'M10',sec:'NORD',cat:'p2',name:'DENVER AA',loc:'BASE DENVER',badge:'URGENCE',bclass:'bo',desc:'Lance-roquettes AA en position. <strong>Nos hélicos sont en danger.</strong>',tag:'dead',tagLbl:'DÉTRUIRE AA',hvt:null,fenrir:F.arme,obj:['Détruire 3 positions AA','Neutraliser la garnison','LZ sécurisé établi'],xp:2100,rewards:['CIEL LIBRE']},
+  {id:'M11',sec:'NORD',cat:'p1',name:'TITAN FORTERESSE',loc:'BASE TITAN — 040-044',badge:'CRITIQUE',bclass:'br',desc:'PC de commandement régional. <strong>Officier HVT présent.</strong>',tag:'alive',tagLbl:'CAPTURER OFFICIER HVT',hvt:1,fenrir:F.baguette,obj:['Assaut coordonné','Capturer l\'officier HVT','Tenir Titan'],xp:3200,rewards:['PC DÉTRUIT','HVT CAPTURÉ','MÉDAILLE TITAN']},
+  {id:'M12',sec:'NORD',cat:'p3',name:'SEATTLE RADIO',loc:'BASE SEATTLE / CAPTIVA',badge:'TACTIQUE',bclass:'bg',desc:'Station radio. <strong>Coordonne les patrouilles du secteur.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.ecran,obj:['Infiltrer la station','Capturer l\'opérateur','Détruire le matériel'],xp:1700,rewards:['FRÉQUENCES ENNEMIES']},
+  {id:'M13',sec:'NORD',cat:'p2',name:'CONCORD PORT',loc:'BASE CONCORD / PORT TERRA',badge:'URGENCE',bclass:'bo',desc:'Grand port militaire. <strong>Carrefour stratégique central.</strong>',tag:'dead',tagLbl:'NEUTRALISER PORT',hvt:null,fenrir:F.tank,obj:['Bloquer les axes','Sécuriser le port','Tenir 10 minutes'],xp:2000,rewards:['PORT LIBÉRÉ']},
+  {id:'M14',sec:'NORD',cat:'p3',name:'HOUSTON BOCA GRANDE',loc:'BASE HOUSTON / BOCA GRANDE',badge:'TACTIQUE',bclass:'bg',desc:'Village sur presqu\'île. <strong>Axe de transit ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire les blindés de patrouille','Sécuriser Houston','Poster sentinelle ATLAS'],xp:1600,rewards:['AXE BLOQUÉ']},
+  {id:'M15',sec:'NORD',cat:'p3',name:'VERMONT LAUREL',loc:'BASE VERMONT',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec installation militaire. <strong>Relais de communication ennemi.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Assaut sur l\'installation','Capturer l\'opérateur','Détruire les antennes'],xp:2200,rewards:['RÉSEAU COUPÉ']},
+  {id:'M16',sec:'CENTRAL',cat:'p1',name:'ARKANSAS AÉROPORT',loc:'ARKANSAS — ÎLE AÉROPORT',badge:'CRITIQUE',bclass:'br',desc:'Île = aéroport militaire. <strong>Bombardiers prêts au décollage.</strong>',tag:'alive',tagLbl:'CAPTURER PILOTE HVT',hvt:0,fenrir:F.tank,obj:['Neutraliser la défense AA','Détruire 3 bombardiers','Capturer le pilote HVT','Tenir 5 minutes'],xp:3500,rewards:['AÉROPORT LIBÉRÉ','PILOTE HVT']},
+  {id:'M17',sec:'CENTRAL',cat:'p1',name:'NEVADA COMMANDEMENT',loc:'BASE NEVADA / LAKE HAVEN AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Aéroport avec base. <strong>Général de brigade — HVT OMEGA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT OMEGA',hvt:1,fenrir:F.grade,obj:['Pénétrer le PC','Capturer le Général HVT','Récupérer les documents'],xp:4000,rewards:['GÉNÉRAL CAPTURÉ','PLAN OFFENSIF','MÉDAILLE OMEGA']},
+  {id:'M18',sec:'CENTRAL',cat:'p1',name:'MISSOURI ORION AIRPORT',loc:'ORION MILITARY AIRPORT',badge:'CRITIQUE',bclass:'br',desc:'Île aéroport avec 2 ponts. <strong>Hélicoptères toutes les 5 minutes.</strong>',tag:'dead',tagLbl:'DÉTRUIRE HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Sécuriser la tour','Rétablir les vols ATLAS'],xp:3000,rewards:['AÉROPORT LIBÉRÉ']},
+  {id:'M19',sec:'CENTRAL',cat:'p1',name:'IDAHO ORION INDUSTRIAL',loc:'ORION INDUSTRIAL COMPLEX',badge:'CRITIQUE',bclass:'br',desc:'Île industrielle 2 ponts ferrés. <strong>Raffinerie ennemie.</strong>',tag:'alive',tagLbl:'CAPTURER DIRECTEUR HVT',hvt:13,fenrir:F.arme,obj:['Traverser les 2 ponts','Neutraliser la garnison','Capturer le directeur HVT','Saboter les installations'],xp:3500,rewards:['RAFFINERIE DÉTRUITE']},
+  {id:'M20',sec:'CENTRAL',cat:'p1',name:'PRINCETON PORT',loc:'ORION PORT — 089-070',badge:'CRITIQUE',bclass:'br',desc:'Énorme port à conteneurs. <strong>Commandant ennemi dirige depuis ce port.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Assaut massif','Capturer le Commandant','Détruire les installations'],xp:4500,rewards:['COMMANDANT CAPTURÉ','MÉDAILLE PRINCETON']},
+  {id:'M21',sec:'CENTRAL',cat:'p2',name:'JUNKYARD PALMDALE',loc:'JUNKYARD / PALMDALE — 062-069',badge:'URGENCE',bclass:'bo',desc:'Village forestier avec gare de triage. <strong>Général dans son bunker — HVT ALPHA.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT ALPHA',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Transport immédiat ATLAS'],xp:4200,rewards:['GÉNÉRAL HVT ALPHA']},
+  {id:'M22',sec:'CENTRAL',cat:'p2',name:'MISSISSIPPI CASTLE RUINS',loc:'FLATS CASTLE RUINS — 115-016',badge:'URGENCE',bclass:'bo',desc:'Ruines de château médiéval sur falaise. <strong>Pont stratégique contrôlé.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR',hvt:8,fenrir:F.soldat,obj:['Escalader le promontoire','Sécuriser les ruines','Capturer l\'ingénieur'],xp:2100,rewards:['CHÂTEAU LIBÉRÉ']},
+  {id:'M23',sec:'EST',cat:'p1',name:'CALIFORNIA CÔTE EST',loc:'BASE CALIFORNIA / CAPTIVA',badge:'CRITIQUE',bclass:'br',desc:'Presqu\'île avec tour. <strong>Renforts maritimes toutes les 20 minutes.</strong>',tag:'dead',tagLbl:'COUPER LES RENFORTS',hvt:null,fenrir:F.tank,obj:['Détruire les jetées','Neutraliser défenses côtières','Tenir contre 3 vagues'],xp:3000,rewards:['CÔTE EST LIBÉRÉE']},
+  {id:'M24',sec:'EST',cat:'p2',name:'VESPER ARCHIPEL',loc:'BASE VESPER / TOUR — 050-007',badge:'URGENCE',bclass:'bo',desc:'Archipel de 3 îlots. <strong>Tour d\'observation ennemi.</strong>',tag:'dead',tagLbl:'NEUTRALISER TOUR',hvt:null,fenrir:F.soldat,obj:['Traverser les îlots','Escalader la tour','Installer relais ATLAS'],xp:1500,rewards:['ARCHIPEL LIBÉRÉ']},
+  {id:'M25',sec:'EST',cat:'p2',name:'ALABAMA SAM',loc:'BASE ALABAMA',badge:'URGENCE',bclass:'bo',desc:'Lance-missiles sol-air. <strong>Menace nos drones et hélicos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE SAM',hvt:null,fenrir:F.arme,obj:['Localiser 4 positions SAM','Détruire les lance-missiles','Sécuriser Alabama'],xp:2300,rewards:['CIEL LIBRE']},
+  {id:'M26',sec:'EST',cat:'p1',name:'JUNKYARD GÉNÉRAL',loc:'BASE JUNKYARD — 073-012',badge:'CRITIQUE',bclass:'br',desc:'Zone industrielle nord-est. <strong>Général — HVT priorité maximale.</strong>',tag:'alive',tagLbl:'CAPTURER GÉNÉRAL HVT',hvt:1,fenrir:F.grade,obj:['Pénétrer sans détection','Capturer le Général','Aucun tir d\'alarme'],xp:4200,rewards:['GÉNÉRAL CAPTURÉ']},
+  {id:'M27',sec:'EST',cat:'p2',name:'OHIO INDUSTRIEL',loc:'BASE OHIO',badge:'URGENCE',bclass:'bo',desc:'Complexe industriel. <strong>Produit véhicules blindés.</strong>',tag:'alive',tagLbl:'CAPTURER INGÉNIEUR HVT',hvt:13,fenrir:F.ecran,obj:['Pénétrer le complexe','Capturer l\'ingénieur HVT','Saboter production (3)'],xp:2700,rewards:['PRODUCTION BLOQUÉE']},
+  {id:'M28',sec:'EST',cat:'p1',name:'EAST BOSTON PORT',loc:'EAST PORT — 145-087',badge:'CRITIQUE',bclass:'br',desc:'Port pétrolier massif. <strong>Toute la flotte ennemie dépend de ce port.</strong>',tag:'alive',tagLbl:'CAPTURER CHEF PORTUAIRE',hvt:8,fenrir:F.tank,obj:['Neutraliser défense portuaire','Saboter 12 cuves','Capturer le chef portuaire'],xp:3500,rewards:['PORT DÉTRUIT','FLOTTE PARALYSÉE']},
+  {id:'M29',sec:'EST',cat:'p2',name:'KANSAS RADAR',loc:'BASE KANSAS',badge:'URGENCE',bclass:'bo',desc:'Station radar de surveillance. <strong>Détecte tous nos mouvements.</strong>',tag:'dead',tagLbl:'DÉTRUIRE RADAR',hvt:null,fenrir:F.ecran,obj:['Approche basse altitude','Détruire le radar','Sécuriser Kansas'],xp:2000,rewards:['RADAR DÉTRUIT']},
+  {id:'M30',sec:'CENTRAL-SUD',cat:'p2',name:'CAPE RASSA DENVER',loc:'DENVER / CAPE RASSA — 071-054',badge:'URGENCE',bclass:'bo',desc:'Grande ville avec pont ferroviaire. <strong>Carrefour central sud.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.baguette,obj:['Bloquer le pont ferroviaire','Capturer le commandant HVT','Tenir 8 minutes'],xp:2500,rewards:['CARREFOUR LIBÉRÉ']},
+  {id:'M31',sec:'CENTRAL-SUD',cat:'p3',name:'APOLLO BUNKER',loc:'BASE APOLLO — 139-058',badge:'TACTIQUE',bclass:'bg',desc:'Compound béton accès pont unique. <strong>Très défendable.</strong>',tag:'alive',tagLbl:'CAPTURER RADIO HVT',hvt:3,fenrir:F.ecran,obj:['Traverser le pont','Forcer le bunker','Capturer l\'opérateur radio'],xp:1900,rewards:['CODES RADIO']},
+  {id:'M32',sec:'CENTRAL-SUD',cat:'p2',name:'OREGON LABO',loc:'BASE OREGON',badge:'URGENCE',bclass:'bo',desc:'Complexe avec labo. <strong>Scientifique ennemi développe armes chimiques.</strong>',tag:'alive',tagLbl:'CAPTURER SCIENTIFIQUE HVT',hvt:5,fenrir:F.surpris,obj:['Infiltration silencieuse','Sécuriser le labo','Capturer le scientifique HVT'],xp:3000,rewards:['LABO SÉCURISÉ','SCIENTIFIQUE HVT']},
+  {id:'M33',sec:'CENTRAL-SUD',cat:'p3',name:'MICHIGAN ILOT',loc:'BASE MICHIGAN — 038-106',badge:'TACTIQUE',bclass:'bg',desc:'Petite île isolée. <strong>Cache d\'armes découverte.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHE',hvt:null,fenrir:F.soldat,obj:['Débarquement amphibie','Détruire la cache','Exfiltration'],xp:1400,rewards:['CACHE DÉTRUITE']},
+  {id:'M34',sec:'CENTRAL-SUD',cat:'p3',name:'STARLIGHT ÉPAVE',loc:'BASE STARLIGHT',badge:'TACTIQUE',bclass:'bg',desc:'Zone brumeuse avec épave. <strong>Débarquements ennemis nocturnes.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.arme,obj:['Guetteurs sur la côte','Détruire 3 embarcations','Couler l\'épave'],xp:1700,rewards:['CÔTE SÉCURISÉE']},
+  {id:'M35',sec:'CENTRAL-SUD',cat:'p3',name:'RICHMOND CLAIRIÈRE',loc:'BASE RICHMOND — 117-062',badge:'TACTIQUE',bclass:'bg',desc:'2 bâtiments en clairière à 55m. <strong>Sniper d\'élite ennemi basé ici.</strong>',tag:'alive',tagLbl:'CAPTURER SNIPER ELITE HVT',hvt:12,fenrir:F.arme,obj:['Approche silencieuse','Traquer le sniper','Capturer vivant'],xp:2600,rewards:['SNIPER CAPTURÉ']},
+  {id:'M36',sec:'CENTRAL-SUD',cat:'p2',name:'NORTH FORT OKLAHOMA',loc:'NORTH FORT — 119-095',badge:'URGENCE',bclass:'bo',desc:'Grande ville accès pont. <strong>Artillerie lourde vise nos bases.</strong>',tag:'dead',tagLbl:'DÉTRUIRE ARTILLERIE',hvt:null,fenrir:F.tank,obj:['Traverser le pont','Détruire 4 pièces artillerie','Sécuriser North Fort'],xp:2200,rewards:['ARTILLERIE DÉTRUITE']},
+  {id:'M37',sec:'SUD',cat:'p2',name:'VIRGINIA NEVADA AIRPORT',loc:'VIRGINIA / NEVADA / LAKE HAVEN',badge:'URGENCE',bclass:'bo',desc:'Double base + aéroport. <strong>Hélicos armés en préparation.</strong>',tag:'dead',tagLbl:'NEUTRALISER HÉLICOS',hvt:null,fenrir:F.tank,obj:['Détruire 4 hélicos','Neutraliser positions AA','Sécuriser les 2 bases et l\'aéroport'],xp:2800,rewards:['AÉROPORT LIBÉRÉ']},
+  {id:'M38',sec:'SUD',cat:'p3',name:'MASSACHUSETTS MINES',loc:'BASE MASSACHUSETTS',badge:'TACTIQUE',bclass:'bg',desc:'Base côtière avec mines sous-marines. <strong>Bloque l\'accès maritime.</strong>',tag:'dead',tagLbl:'DÉMINER',hvt:null,fenrir:F.soldat,obj:['Déminer 8 mines','Neutraliser la base','Voie maritime ATLAS établie'],xp:2000,rewards:['VOIE MARITIME LIBRE']},
+  {id:'M39',sec:'SUD',cat:'p2',name:'OMAHA FORT',loc:'BASE OMAHA — 035-152',badge:'URGENCE',bclass:'bo',desc:'Deux îles reliées fort fortifié. <strong>Dernier bastion ennemi sud-ouest.</strong>',tag:'alive',tagLbl:'CAPTURER COMMANDANT',hvt:8,fenrir:F.arme,obj:['Traverser le pont inter-île','Assaut sur le fort','Capturer le commandant'],xp:2400,rewards:['BASTION SUD LIBÉRÉ']},
+  {id:'M40',sec:'SUD',cat:'p3',name:'MONTANA SANIBEL',loc:'BASE MONTANA / SANIBEL',badge:'TACTIQUE',bclass:'bg',desc:'Base sur promontoire côtier avec LZ. <strong>Débarquements ennemis réguliers.</strong>',tag:'dead',tagLbl:'REPOUSSER DÉBARQUEMENT',hvt:null,fenrir:F.soldat,obj:['Sentinelles sur le promontoire','Repousser le débarquement','Sécuriser le LZ'],xp:1600,rewards:['PROMONTOIRE SÉCURISÉ']},
+  {id:'M41',sec:'SUD',cat:'p3',name:'DELMARE WISCONSIN',loc:'DELMARE / WISCONSIN',badge:'TACTIQUE',bclass:'bg',desc:'Village côtier avec pont. <strong>Brouilleur radio dans le clocher.</strong>',tag:'alive',tagLbl:'CAPTURER TECHNICIEN RADIO',hvt:3,fenrir:F.ecran,obj:['Atteindre le village','Neutraliser les gardes','Capturer le technicien + désactiver'],xp:1600,rewards:['BROUILLEUR DÉTRUIT']},
+  {id:'M42',sec:'SUD',cat:'p3',name:'NEBRASKA ACLINE',loc:'NEBRASKA / ACLINE — 141-012',badge:'TACTIQUE',bclass:'bg',desc:'Village forestier. <strong>Axe de ravitaillement ennemi.</strong>',tag:'dead',tagLbl:'BLOQUER L\'AXE',hvt:null,fenrir:F.soldat,obj:['Détruire 2 ponts','Neutraliser la garnison','Sentinelle ATLAS permanente'],xp:1500,rewards:['AXE COUPÉ']},
+  {id:'M43',sec:'SUD',cat:'p3',name:'AUGUSTA BELLA VIDA',loc:'AUGUSTA / BELLA VIDA',badge:'TACTIQUE',bclass:'bg',desc:'Zone résidentielle occupée. <strong>Civils retenus en otage.</strong>',tag:'dead',tagLbl:'LIBÉRER OTAGES',hvt:null,fenrir:F.salut,obj:['Infiltration ultra-discrète','Neutraliser preneurs d\'otages','Évacuer les civils'],xp:2000,rewards:['CIVILS SAUVÉS','MÉDAILLE HUMANITAIRE']},
+  {id:'M44',sec:'SUD',cat:'p4',name:'MICHIGAN SAUVETAGE',loc:'BASE MICHIGAN',badge:'RÉCUP',bclass:'bb',desc:'Île isolée. <strong>Équipe ATLAS portée disparue.</strong>',tag:'dead',tagLbl:'SAUVETAGE ÉQUIPE',hvt:null,fenrir:F.salut,obj:['Localiser l\'équipe','Neutraliser les ennemis','Exfiltrer par voie maritime'],xp:2200,rewards:['ÉQUIPE SAUVÉE']},
+  {id:'M45',sec:'OFFSHORE',cat:'p2',name:'PLATEFORME OFFSHORE',loc:'TOUR OFFSHORE — 045-110',badge:'URGENCE',bclass:'bo',desc:'Plateforme pétrolière militarisée. <strong>Accès hélico uniquement.</strong>',tag:'alive',tagLbl:'CAPTURER OPÉRATEUR',hvt:3,fenrir:F.tank,obj:['Insertion hélico','Neutraliser les gardes (6)','Capturer l\'opérateur'],xp:2800,rewards:['PLATEFORME LIBÉRÉE']},
+  {id:'M46',sec:'OFFSHORE',cat:'p3',name:'VESPER ARCHIPEL ISOLÉ',loc:'BASE VESPER',badge:'TACTIQUE',bclass:'bg',desc:'3 îlots en pleine mer. <strong>Caches d\'armes sur chaque îlot.</strong>',tag:'dead',tagLbl:'DÉTRUIRE CACHES',hvt:null,fenrir:F.arme,obj:['Traverser par zodiac','Détruire 9 caches','Exfiltration maritime'],xp:1600,rewards:['ARCHIPEL NETTOYÉ']},
+  {id:'M47',sec:'NORD-OUEST',cat:'p2',name:'WASHINGTON CARRIÈRE',loc:'BASE WASHINGTON — 143-066',badge:'URGENCE',bclass:'bo',desc:'Carrière de pierre entre 2 lacs. <strong>Munitions cachées dans les silos.</strong>',tag:'dead',tagLbl:'DÉTRUIRE STOCKS',hvt:null,fenrir:F.soldat,obj:['Pénétrer la carrière','Détruire 5 silos à munitions','Neutraliser les ouvriers armés'],xp:2000,rewards:['STOCKS DÉTRUITS']},
+  {id:'M48',sec:'CENTRAL-SUD',cat:'p3',name:'MAINE GULFSHORE',loc:'BASE MAINE / GULFSHORE',badge:'TACTIQUE',bclass:'bg',desc:'Grande ville côtière dense. <strong>Combat de rue.</strong>',tag:'dead',tagLbl:'CQB URBAIN',hvt:null,fenrir:F.arme,obj:['Nettoyer bâtiment par bâtiment','Neutraliser 5 nids de tir','Hisser le drapeau ATLAS'],xp:1800,rewards:['VILLE LIBÉRÉE']},
+  {id:'M49',sec:'CENTRAL-SUD',cat:'p3',name:'SUNBURST ISOLÉ',loc:'BASE SUNBURST',badge:'TACTIQUE',bclass:'bg',desc:'Base isolée à l\'est. <strong>Insertion rapide.</strong>',tag:'dead',tagLbl:'NEUTRALISER',hvt:null,fenrir:F.soldat,obj:['Insertion hélico nocturne','Neutraliser la garnison (8)','Exfiltration'],xp:1400,rewards:['BASE LIBÉRÉE']},
+  {id:'M50',sec:'SUD',cat:'p3',name:'COLORADO FORTIFIÉ',loc:'BASE COLORADO',badge:'TACTIQUE',bclass:'bg',desc:'Position fortifiée avec obusiers. <strong>Menacent tout le secteur sud.</strong>',tag:'dead',tagLbl:'DÉTRUIRE OBUSIERS',hvt:null,fenrir:F.tank,obj:['Approche nocturne','Détruire 4 obusiers lourds','Sécuriser Colorado'],xp:2200,rewards:['OBUSIERS DÉTRUITS']},
+  {id:'M51',sec:'PRÉ-FINALE',cat:'pF',name:'OPÉRATION DÉCAPITATION',loc:'TOUS SECTEURS',badge:'PRÉ-FINALE',bclass:'bgold',desc:'Frappe simultanée sur les derniers commandants. <strong>Synchroniser toutes les équipes.</strong>',tag:'hv',tagLbl:'CAPTURER / NEUTRALISER',hvt:null,fenrir:F.baguette,obj:['Synchroniser toutes les équipes','Frapper simultanément 5 objectifs','Couper les communications ennemies','Ouvrir le couloir vers Providence'],xp:3500,rewards:['PRÉPARATION FINALE']},
+  {id:'M52',sec:'MISSION FINALE',cat:'pF',name:'LAST STAND — DÉFENSE DE PROVIDENCE',loc:'HQ PROVIDENCE',badge:'FINALE ABSOLUE',bclass:'bgold',desc:'<strong>Toutes missions accomplies. L\'ennemi lance son assaut final.</strong> Trois vagues. Aucune retraite.',tag:'hv',tagLbl:'DERNIÈRE LIGNE',hvt:null,fenrir:F.gagne,obj:['TOUS convergent sur Providence','Vague 1 : infanterie (30)','Vague 2 : blindés (4)','Vague 3 : aérien + 20 élites','Éliminer le Commandant Suprême'],xp:6000,rewards:['DÉFENSEUR DE L\'ÎLE','LOOT TIER S','MÉDAILLE ATLAS']},
+];
 
-// ============ AUTH SIMULATION ============
-function simulateLogin() {
-  // En production: redirect vers Discord OAuth2
-  // URL: https://discord.com/api/oauth2/authorize?client_id=TON_CLIENT_ID&redirect_uri=TON_REDIRECT&response_type=code&scope=identify%20guilds.members.read
-  const name = prompt('Mode démo — Ton pseudo Discord ?', 'Contractuel') || 'Contractuel';
-  loginSuccess({name: name, avatar: null, rank: 'Contractuel'});
-}
+const SECTIONS=['NORD-OUEST','NORD','CENTRAL','EST','CENTRAL-SUD','SUD','OFFSHORE','PRÉ-FINALE','MISSION FINALE'];
 
-function demoMode() {
-  loginSuccess({name: 'Sergent DFT', avatar: null, rank: 'Sergent'});
-}
-
-function loginSuccess(user) {
-  document.getElementById('loginScreen').classList.add('hidden');
-  document.getElementById('app').classList.add('show');
-  document.getElementById('userName').textContent = user.name.toUpperCase();
-  document.getElementById('userRank').textContent = 'GRADE: ' + user.rank.toUpperCase();
-  buildMissions();
-  loadSavedProgress();
-}
-
-// ============ BUILD MISSIONS ============
-function buildMissions() {
-  const cont = document.getElementById('allMissions');
-  let html = '';
-  SECTIONS.forEach(sec => {
-    const ms = MISSIONS.filter(m => m.sec === sec);
-    if (!ms.length) return;
-    html += `<div class="sec-hdr"><span class="slbl">${sec}</span><div class="sline"></div></div><div class="grid">`;
-    ms.forEach(m => {
-      html += `<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()}">
+function buildMissions(){
+  const cont=document.getElementById('allMissions');
+  let html='';
+  SECTIONS.forEach(sec=>{
+    const ms=MISSIONS.filter(m=>m.sec===sec);
+    if(!ms.length) return;
+    html+=`<div class="sec-hdr"><span class="slbl">${sec}</span><div class="sline"></div></div><div class="grid">`;
+    ms.forEach((m,idx)=>{
+      const carteImg=CARTE[idx]||'';
+      const hvtImg=m.hvt!==null?HVT_PHOTOS[m.hvt]:'';
+      html+=`<div class="mc ${m.cat}" id="${m.id}" data-cat="${m.cat}" data-name="${m.name.toLowerCase()} ${m.loc.toLowerCase()}">
         <div class="mc-head" onclick="toggle('${m.id}')">
           <div class="mc-thumb">
-            <div style="background:#0a1520;width:100%;height:44px;display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">TERRAIN</div>
-            <div style="background:#060e14;padding:2px 4px;font-size:7px;letter-spacing:1px;color:#3a5060;font-family:sans-serif;line-height:1.3">${m.terrain}</div>
+            ${carteImg?`<img src="${carteImg}" alt="terrain" onerror="this.style.display='none'"><div class="mc-thumb-overlay">${m.id}</div>`:`<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:8px;letter-spacing:2px;color:#2a3a4a;font-family:Oswald,sans-serif">${m.id}</div>`}
           </div>
           <div class="mc-info">
-            <div class="mc-top"><div><div class="mid">${m.id} — ${m.sec.split('—')[0].trim()}</div><div class="mtitle">${m.name}</div></div><span class="mbadge ${m.bclass}">${m.badge}</span></div>
+            <div class="mc-top"><div><div class="mid">${m.id} — ${m.sec}</div><div class="mtitle">${m.name}</div></div><span class="mbadge ${m.bclass}">${m.badge}</span></div>
             <div class="mloc">📍 ${m.loc}</div>
             <div class="mdesc">${m.desc}</div>
           </div>
         </div>
-        <div class="hint" onclick="toggle('${m.id}')">▼ briefing + HVT + objectifs</div>
+        <div class="hint" onclick="toggle('${m.id}')">▼ briefing complet</div>
         <div class="mdetail">
           <div class="det-photos">
-            <div class="hvt-slot" id="hvt-slot-${m.id}" onclick="addPhoto('${m.id}')">
-              <div class="hvt-slot-inner" id="hvt-inner-${m.id}">
-                <div class="hvt-icon">📷</div>
-                <div class="hvt-lbl">PHOTO HVT / TERRAIN</div>
-                <div class="hvt-sub">Cliquer pour charger<br>votre capture Arma Reforger</div>
-              </div>
-            </div>
-            <div style="background:#0a1520;border:1px solid #2a2820;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
-              <div style="font-size:8px;letter-spacing:2px;color:#3a5060;text-align:center;padding:4px;font-family:'Oswald',sans-serif">CARTE TERRAIN</div>
-              <div style="font-size:8px;color:#2a3a4a;text-align:center;font-family:sans-serif;padding:0 8px;line-height:1.5">${m.terrain}</div>
-              ${m.hvt ? `<div style="font-size:8px;color:var(--gold);letter-spacing:2px;font-family:'Oswald',sans-serif">HVT ASSIGNÉ</div>` : ''}
-            </div>
+            ${carteImg?`<div class="det-photo"><img src="${carteImg}" alt="carte"><div class="det-photo-lbl">TERRAIN / CARTE</div></div>`:`<div class="det-photo" style="display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:2px;color:#2a3a4a">PAS DE CARTE</div>`}
+            ${hvtImg?`<div class="det-photo"><img src="${hvtImg}" alt="HVT"><div class="det-photo-lbl">PHOTO HVT</div></div>`:`<div class="hvt-slot" onclick="addPhoto('${m.id}')"><div class="hvt-lbl">📷 PHOTO HVT<br><span style="font-size:8px;color:#2a1818;font-family:sans-serif">Cliquer pour charger</span></div></div>`}
           </div>
-          <span class="photo-tag ${m.tag==='alive'?'tag-alive':m.tag==='dead'?'tag-dead':'tag-hv'}">${m.tagLbl}</span>
-          ${m.hvt ? buildHVTInfo(m.hvt) : ''}
-          <div class="objs">
-            ${m.obj.map((o,i) => `<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <img src="${m.fenrir}" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);object-fit:cover" alt="Fenrir" onerror="this.style.display='none'">
+            <span class="photo-tag ${m.tag==='alive'?'tag-alive':m.tag==='dead'?'tag-dead':'tag-hv'}">${m.tagLbl}</span>
           </div>
-          <div class="rwds"><span class="rpill">+${m.xp} XP</span>${m.rewards.map(r => `<span class="rpill">${r}</span>`).join('')}</div>
+          <div class="objs">${m.obj.map((o,i)=>`<div class="obj"><span class="onum">0${i+1}</span><span>${o}</span></div>`).join('')}</div>
+          <div class="rwds"><span class="rpill">+${m.xp} XP</span>${m.rewards.map(r=>`<span class="rpill">${r}</span>`).join('')}</div>
           <button class="done-btn" onclick="markDone('${m.id}')">✓ MARQUER COMPLÉTÉE</button>
         </div>
       </div>`;
     });
-    html += '</div>';
+    html+='</div>';
   });
-  cont.innerHTML = html;
+  cont.innerHTML=html;
 }
 
-function buildHVTInfo(hvtId) {
-  const hvt = HVT_DATA.find(h => h.id === hvtId);
-  if (!hvt) return '';
-  return `<div style="background:#100808;border:1px solid #2a1010;padding:6px;margin-bottom:8px;font-size:10px;color:#aa7060;font-family:sans-serif">
-    <span style="color:#ff5050;font-family:Oswald,sans-serif;letter-spacing:2px;font-size:9px">HVT ASSIGNÉ</span><br>
-    <strong style="color:#e0d0c0">${hvt.name}</strong> — ${hvt.status}
-  </div>`;
+function toggle(id){document.getElementById(id)?.classList.toggle('open')}
+function markDone(id){document.getElementById(id)?.classList.toggle('done-mc');saveProgress();updateProgress()}
+
+function updateProgress(){
+  const done=document.querySelectorAll('.mc.done-mc').length;
+  document.getElementById('sDone').textContent=done;
+  const pct=Math.round((done/52)*100);
+  document.getElementById('pbFill').style.width=pct+'%';
+  document.getElementById('pbPct').textContent=pct+'%';
 }
 
-function toggle(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.toggle('open');
-}
-
-function markDone(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.toggle('done-mc');
-  saveProgress();
-  updateProgress();
-  if (el.classList.contains('done-mc')) showFenrirReaction('victory');
-}
-
-function updateProgress() {
-  const done = document.querySelectorAll('.mc.done-mc').length;
-  document.getElementById('sDone').textContent = done;
-  const pct = Math.round((done / 52) * 100);
-  document.getElementById('pbFill').style.width = pct + '%';
-  document.getElementById('pbPct').textContent = pct + '%';
-}
-
-function filt(cat, btn) {
-  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
+function filt(cat,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.querySelectorAll('.mc').forEach(mc => {
-    mc.classList.toggle('hidden', cat !== 'all' && mc.dataset.cat !== cat);
-  });
+  document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',cat!=='all'&&mc.dataset.cat!==cat));
 }
 
-function search(q) {
-  const s = q.toLowerCase().trim();
-  document.querySelectorAll('.mc').forEach(mc => {
-    mc.classList.toggle('hidden', !!s && !mc.dataset.name.includes(s));
-  });
+function search(q){
+  const s=q.toLowerCase().trim();
+  document.querySelectorAll('.mc').forEach(mc=>mc.classList.toggle('hidden',!!s&&!mc.dataset.name.includes(s)));
 }
 
-function addPhoto(id) {
-  const inp = document.createElement('input');
-  inp.type = 'file';
-  inp.accept = 'image/*';
-  inp.onchange = e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      SAVED_PHOTOS[id] = ev.target.result;
-      const slot = document.getElementById('hvt-slot-' + id);
-      const inner = document.getElementById('hvt-inner-' + id);
-      if (slot && inner) {
-        const img = document.createElement('img');
-        img.src = ev.target.result;
-        img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
-        slot.appendChild(img);
-        inner.style.display = 'none';
-      }
-      saveProgress();
-    };
-    reader.readAsDataURL(file);
-  };
-  inp.click();
+const SAVED_PHOTOS={};
+function addPhoto(id){
+  const inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';
+  inp.onchange=e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=ev=>{
+      SAVED_PHOTOS[id]=ev.target.result;
+      const slot=document.querySelector(`#${id} .hvt-slot`);
+      if(slot){slot.innerHTML=`<img src="${ev.target.result}" class="hvt-photo" alt="HVT">`;slot.onclick=null;}
+    };r.readAsDataURL(f);
+  };inp.click();
 }
 
-function showFenrirReaction(type) {
-  // Future: affiche une réaction Fenrir animée
+function saveProgress(){
+  try{localStorage.setItem('atlas_progress',JSON.stringify(Array.from(document.querySelectorAll('.mc.done-mc')).map(e=>e.id)));}catch(e){}
+}
+function loadProgress(){
+  try{(JSON.parse(localStorage.getItem('atlas_progress')||'[]')).forEach(id=>{document.getElementById(id)?.classList.add('done-mc')});updateProgress();}catch(e){}
 }
 
-function saveProgress() {
-  try {
-    const done = Array.from(document.querySelectorAll('.mc.done-mc')).map(el => el.id);
-    localStorage.setItem('atlas_progress', JSON.stringify(done));
-    const photos = {};
-    Object.keys(SAVED_PHOTOS).forEach(k => { if (SAVED_PHOTOS[k]) photos[k] = SAVED_PHOTOS[k]; });
-    // Photos trop grandes pour localStorage — on les garde en mémoire
-  } catch(e) {}
+// Auth Discord
+function doLogin(){
+  const redirect=encodeURIComponent('https://firestorm-bzh.github.io/Mission-DFT/callback.html');
+  window.location.href=`https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify%20guilds.members.read`;
 }
 
-function loadSavedProgress() {
-  try {
-    const saved = JSON.parse(localStorage.getItem('atlas_progress') || '[]');
-    saved.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.add('done-mc');
-    });
-    updateProgress();
-  } catch(e) {}
+function loginSuccess(user){
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('app').classList.add('show');
+  document.getElementById('userName').textContent=(user.name||'CONTRACTUEL').toUpperCase();
+  document.getElementById('userRank').textContent='GRADE: '+(user.grade||'CONTRACTUEL').toUpperCase();
+  if(user.avatar){document.getElementById('userAvatar').src=user.avatar;}
+  buildMissions();
+  loadProgress();
 }
+
+// Vérifier si on a déjà une session
+window.addEventListener('load',()=>{
+  try{
+    const sess=JSON.parse(sessionStorage.getItem('atlas_user')||'null');
+    if(sess&&sess.loginTime&&(Date.now()-sess.loginTime)<86400000){
+      loginSuccess(sess);return;
+    }
+  }catch(e){}
+});
 </script>
 </body>
 </html>
